@@ -1,0 +1,16 @@
+{
+  "name": "nant-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "nant-cli build:icons"
+  },
+  "devDependencies": {
+    "@xnate-design/nant-cli": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
