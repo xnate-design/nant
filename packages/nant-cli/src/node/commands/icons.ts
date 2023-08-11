@@ -1,4 +1,5 @@
 import { resolve, parse } from 'path';
+import logger from '../shared/logger';
 import fse from 'fs-extra';
 import { webfont } from 'webfont';
 import sharp from 'sharp';
@@ -11,8 +12,6 @@ const ICONS_SVG_DIR = resolve(CWD, 'svg');
 const ICONS_FONTS_DIR = resolve(ICONS_DIST_DIR, 'fonts');
 const ICONS_PNG_DIR = resolve(ICONS_DIST_DIR, 'png');
 const ICONS_CSS_DIR = resolve(ICONS_DIST_DIR, 'css');
-
-console.log(webfont, 'webfont typeof');
 
 const name = 'nant-webfont';
 const fontFamilyClassName = 'nant-icon--set';
@@ -135,5 +134,5 @@ export async function icons() {
     writeFile(resolve(ICONS_DIST_DIR, `index.js`), indexTmp),
   ]);
 
-  console.log('build success');
+  logger.success(`build icons success`);
 }

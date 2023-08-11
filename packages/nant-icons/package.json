@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "nant-cli build:icons"
+    "build": "nant build:icons"
   },
   "devDependencies": {
-    "@xnate-design/nant-cli": "workspace:*"
+    "@xnate-design/nant": "workspace:*"
   },
   "keywords": [],
   "author": "",

@@ -6,6 +6,15 @@ const program = new Command();
 console.log('nant cli');
 
 program
+  .command('init')
+  .description('init nant ui template')
+
+  .action(async () => {
+    const { init } = await import('./commands/init.js');
+    return init();
+  });
+
+program
   .command('build:icons')
   .description('Build icons')
   .action(async () => {
