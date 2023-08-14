@@ -1,0 +1,21 @@
+{
+  "name": "nant-vite-plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.4.9",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^2.3.0",
+    "fs-extra": "^11.1.1"
+  }
+}

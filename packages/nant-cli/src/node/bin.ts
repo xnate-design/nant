@@ -15,6 +15,15 @@ program
   });
 
 program
+  .command('dev')
+  .description('Run nant ui development environment')
+
+  .action(async () => {
+    const { dev } = await import('./commands/dev.js');
+    return dev();
+  });
+
+program
   .command('build:icons')
   .description('Build icons')
   .action(async () => {
