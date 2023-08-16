@@ -3,8 +3,9 @@ import Inspect from 'vite-plugin-inspect';
 
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import { SiteConfig } from './../config/siteConfig.js';
-import { resolveAliases, DIST_CLIENT_PATH, APP_PATH } from './alias.js';
+import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH } from './alias.js';
 import { compilePage } from '../compiler/compilePage.js';
+import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
 import { markdownPlugin } from './markdown.js';
 
 import type { Plugin, ResolvedConfig, Rollup, UserConfig } from 'vite';
@@ -30,13 +31,40 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
     cleanUrls,
   } = siteConfig;
 
+  const siteData = site;
   let config: ResolvedConfig;
 
   const nantPlugin: Plugin = {
     name: 'nant',
 
+    options(option) {
+      console.log('options', option);
+    },
+
+    buildStart(option) {
+      console.log('buildStart', option);
+    },
+
+    resolveId(id) {
+      console.log('resolveId', id);
+      if (id === SITE_DATA_REQUEST_PATH) return SITE_DATA_REQUEST_PATH;
+    },
+
+    load(id) {
+      console.log('load()', id);
+      if (id === SITE_DATA_REQUEST_PATH) {
+        let data = siteData;
+        data = serializeFunctions(data);
+        return `${deserializeFunctions};export default deserializeFunctions(JSON.parse(${JSON.stringify(
+          JSON.stringify(data),
+        )}))`;
+      }
+    },
+
     // vite hook self - config
-    config() {
+    config(config) {
+      console.log(config, 'config');
+
       const baseConfig: UserConfig = {
         resolve: {
           alias: resolveAliases(siteConfig),
@@ -51,8 +79,16 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
       return userViteConfig ? mergeConfig(baseConfig, userViteConfig) : baseConfig;
     },
 
+    // vite hook self - configResolved
+    configResolved(resolvedConfig) {
+      console.log(resolvedConfig, 'configResolved');
+      config = resolvedConfig;
+    },
+
     // vite hook self - configureServer
     configureServer(server) {
+      console.log(server, 'configureServer');
+
       if (configPath) {
         server.watcher.add(configPath);
         configDeps.forEach((file) => server.watcher.add(file));
@@ -95,9 +131,12 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
       };
     },
 
-    // vite hook self - configResolved
-    configResolved(resolvedConfig) {
-      config = resolvedConfig;
+    transformIndexHtml(html) {
+      console.log(html, 'transformIndexHtml');
+    },
+
+    handleHotUpdate(ctx) {
+      console.log(ctx, 'handleHotUpdate');
     },
   };
   return [Inspect(), nantPlugin, markdownPlugin, react()];

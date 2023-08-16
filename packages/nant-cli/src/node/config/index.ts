@@ -5,7 +5,8 @@ import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, norma
 import { APPEARANCE_KEY, DEFAULT_THEME_DIR } from '../shared/constant.js';
 import { compilePage } from '../compiler/compilePage.js';
 import type { ConfigEnv } from 'vite';
-import type { RawConfigExports, SiteData, HeadConfig, UserConfig, SiteConfig } from './siteConfig.js';
+import type { SiteData, HeadConfig } from '../../../types/shared';
+import type { RawConfigExports, UserConfig, SiteConfig } from './siteConfig.js';
 
 const supportConfigExts = ['js', 'ts', 'mjs', 'mts'];
 

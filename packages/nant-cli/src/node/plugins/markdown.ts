@@ -8,8 +8,6 @@ export const markdownPlugin: Plugin = {
   name: 'vite-plugin-nant-markdown',
   enforce: 'pre',
   transform(code, id) {
-    console.log(id, 'markdown');
-
     if (!/\.md$/.test(id)) {
       return;
     }
