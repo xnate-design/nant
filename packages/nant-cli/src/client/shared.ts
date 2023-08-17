@@ -12,7 +12,7 @@ export type {
 
 export const EXTERNAL_URL_RE = /^[a-z]+:/i;
 export const PATHNAME_PROTOCOL_RE = /^pathname:\/\//;
-export const APPEARANCE_KEY = 'vitepress-theme-appearance';
+export const APPEARANCE_KEY = 'nant-theme';
 export const HASH_RE = /#.*$/;
 export const EXT_RE = /(index)?\.(md|html)$/;
 

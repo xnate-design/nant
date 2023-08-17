@@ -1,29 +1,35 @@
 {
-  "hash": "bf025be4",
-  "browserHash": "193bcf7a",
+  "hash": "0be8e1e5",
+  "browserHash": "fe0a6d09",
   "optimized": {
     "react": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "ae4769da",
+      "fileHash": "c6f0dba9",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "fda5706f",
+      "fileHash": "e5c5c6d0",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../../../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "58579800",
+      "fileHash": "2a30b9c4",
       "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../../../../node_modules/.pnpm/react-router-dom@6.15.0_react-dom@18.2.0_react@18.2.0/node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "0109e253",
+      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-KF5C35LM": {
-      "file": "chunk-KF5C35LM.js"
+    "chunk-5KIMBXF3": {
+      "file": "chunk-5KIMBXF3.js"
     }
   }
 }

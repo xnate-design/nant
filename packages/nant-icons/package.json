@@ -1,5 +1,5 @@
 {
-  "name": "nant-icons",
+  "name": "@nant/nant-icons",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build": "nant build:icons"
   },
   "devDependencies": {
-    "@xnate-design/nant": "workspace:*"
+    "@nant/cli": "workspace:*"
   },
   "keywords": [],
   "author": "",

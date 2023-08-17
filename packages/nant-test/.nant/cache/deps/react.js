@@ -1,3 +1,3 @@
-import { require_react } from './chunk-KF5C35LM.js';
+import { require_react } from './chunk-5KIMBXF3.js';
 export default require_react();
 //# sourceMappingURL=react.js.map

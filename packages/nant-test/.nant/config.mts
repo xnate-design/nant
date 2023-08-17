@@ -1,4 +1,4 @@
-import { defineConfig } from '@xnate-design/nant';
+import { defineConfig } from '@nant/cli';
 
 export default defineConfig({
   title: 'Nant',
