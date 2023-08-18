@@ -1,21 +1,9 @@
 import type { Plugin, ResolvedConfig, Rollup, UserConfig } from 'vite';
+import mdx from '@mdx-js/rollup';
 
-const markdownToReact = (code: string) => {
-  console.log(code, 'code');
-};
-
-export const markdownPlugin: Plugin = {
-  name: 'vite-plugin-nant-markdown',
-  enforce: 'pre',
-  transform(code, id) {
-    if (!/\.md$/.test(id)) {
-      return;
-    }
-    try {
-      return markdownToReact(code);
-    } catch (error: any) {
-      this.error(error);
-      return '';
-    }
-  },
+export const mdxPlugin = () => {
+  return mdx({
+    remarkPlugins: [],
+    rehypePlugins: [],
+  });
 };

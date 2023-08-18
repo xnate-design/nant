@@ -5,18 +5,41 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Examples', link: '/guide/intro' },
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-        ],
-      },
-    ],
+    sidebar: {
+      '/guide': [
+        {
+          text: {
+            'zh-CN': '介绍',
+            'en-US': 'intro',
+          },
+          path: '/guide/intro',
+        },
+        {
+          text: {
+            'zh-CN': '使用',
+            'en-US': 'usage',
+          },
+          path: '/guide/usage',
+        },
+      ],
+      components: [
+        {
+          title: '基础组件',
+          children: [
+            {
+              text: {
+                'zh-CN': 'Button 按钮',
+                'en-US': 'Button',
+              },
+              path: '/components/button',
+            },
+          ],
+        },
+      ],
+    },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
   },

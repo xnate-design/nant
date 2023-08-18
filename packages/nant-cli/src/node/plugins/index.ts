@@ -1,12 +1,14 @@
 import react from '@vitejs/plugin-react';
 import Inspect from 'vite-plugin-inspect';
+import UnoCSS from 'unocss/vite';
 
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import { SiteConfig } from './../config/siteConfig.js';
 import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH } from './alias.js';
 import { compilePage } from '../compiler/compilePage.js';
 import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
-import { markdown as markdownPlugin } from '@nant/vite-plugins';
+import { mdxPlugin } from './markdown.js';
+import { babel } from '@rollup/plugin-babel';
 
 import type { Plugin, ResolvedConfig, Rollup, UserConfig } from 'vite';
 
@@ -52,7 +54,7 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
 
     load(id) {
       if (id === SITE_DATA_REQUEST_PATH) {
-        let data = siteData;
+        let data = config.nant;
 
         if (config.command === 'build') {
           console.log('build');
@@ -142,5 +144,16 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
       // console.log(ctx, 'handleHotUpdate');
     },
   };
-  return [Inspect(), nantPlugin, markdownPlugin(), react()];
+  return [
+    Inspect(),
+    nantPlugin,
+    mdxPlugin(),
+    UnoCSS(),
+    react(),
+    babel({
+      // Also run on what used to be `.mdx` (but is now JS):
+      extensions: ['.js', '.tsx', '.jsx', '.cjs', '.mjs', '.md', '.mdx'],
+      // Other options…
+    }),
+  ];
 };

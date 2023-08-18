@@ -4,7 +4,7 @@ declare module '@siteData' {
   export default data;
 }
 
-declare module '@theme' {
+declare module '@theme/index' {
   import type { Theme } from 'nant';
   const theme: Theme;
   export default theme;

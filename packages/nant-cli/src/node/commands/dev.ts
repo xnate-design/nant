@@ -30,6 +30,9 @@ async function createServer() {
     customLogger: config.logger,
     configFile: config.vite?.configFile,
     server: {},
+    optimizeDeps: {
+      include: ['react/jsx-runtime'],
+    },
     plugins,
   });
 }
