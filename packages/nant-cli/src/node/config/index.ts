@@ -5,7 +5,7 @@ import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, norma
 import { APPEARANCE_KEY, DEFAULT_THEME_DIR } from '../shared/constant.js';
 import { compilePage } from '../compiler/compilePage.js';
 import type { ConfigEnv } from 'vite';
-import type { SiteData, HeadConfig } from '../../../types/shared';
+import type { SiteData, HeadConfig, DefaultTheme } from '../../../types/shared';
 import type { RawConfigExports, UserConfig, SiteConfig } from './siteConfig.js';
 
 const supportConfigExts = ['js', 'ts', 'mjs', 'mts'];
@@ -14,13 +14,13 @@ const resolve = (root: string, file: string) => {
   return normalizePath(path.resolve(root, '.nant', file));
 };
 
-export type UserConfigFn<ThemeConfig> = (env: ConfigEnv) => UserConfig<ThemeConfig> | Promise<UserConfig<ThemeConfig>>;
-export type UserConfigExport<ThemeConfig> =
-  | UserConfig<ThemeConfig>
-  | Promise<UserConfig<ThemeConfig>>
-  | UserConfigFn<ThemeConfig>;
+// export type UserConfigFn<ThemeConfig> = (env: ConfigEnv) => UserConfig<ThemeConfig> | Promise<UserConfig<ThemeConfig>>;
+// export type UserConfigExport<ThemeConfig> =
+//   | UserConfig<ThemeConfig>
+//   | Promise<UserConfig<ThemeConfig>>
+//   | UserConfigFn<ThemeConfig>;
 
-export function defineConfig(config: UserConfig) {
+export function defineConfig(config: UserConfig<DefaultTheme.Config>) {
   return config;
 }
 
@@ -147,7 +147,6 @@ export async function resolveConfig(
   mode = 'development',
 ) {
   root = normalizePath(root);
-  console.log(root);
 
   const [userConfig, configPath, configDeps] = await resolveUserConfig(root, command, mode);
 

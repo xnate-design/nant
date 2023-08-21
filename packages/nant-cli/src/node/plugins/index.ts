@@ -4,7 +4,7 @@ import UnoCSS from 'unocss/vite';
 
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import { SiteConfig } from './../config/siteConfig.js';
-import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH } from './alias.js';
+import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH } from '../config/alias.js';
 import { compilePage } from '../compiler/compilePage.js';
 import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
 import { mdxPlugin } from './markdown.js';
@@ -74,6 +74,9 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
         resolve: {
           alias: resolveAliases(siteConfig),
         },
+        optimizeDeps: {
+          include: ['react/jsx-runtime'],
+        },
         server: {
           fs: {
             allow: [DIST_CLIENT_PATH, srcDir, searchForWorkspaceRoot(process.cwd())],
@@ -140,16 +143,24 @@ export const createVitePlugins = async (siteConfig: SiteConfig) => {
       // console.log(html, 'transformIndexHtml');
     },
 
-    handleHotUpdate(ctx) {
-      // console.log(ctx, 'handleHotUpdate');
+    async handleHotUpdate(ctx) {
+      console.log('handleHotUpdate');
+
+      const { file, read, server } = ctx;
+
+      if (file.endsWith('.md')) {
+        const content = await read();
+
+        console.log(content, 'content');
+      }
     },
   };
   return [
+    react(),
     Inspect(),
     nantPlugin,
     mdxPlugin(),
     UnoCSS(),
-    react(),
     babel({
       // Also run on what used to be `.mdx` (but is now JS):
       extensions: ['.js', '.tsx', '.jsx', '.cjs', '.mjs', '.md', '.mdx'],

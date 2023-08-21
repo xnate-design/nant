@@ -10,7 +10,7 @@ import Layout from '../theme-default/Layout';
 
 const LazyImportComponent = (props: { lazyChildren: any }) => {
   return (
-    <React.Suspense fallback={<div>...</div>}>
+    <React.Suspense fallback={null}>
       <props.lazyChildren />
     </React.Suspense>
   );
@@ -26,10 +26,9 @@ export const getRouterConfig = () => {
       element: <Layout />,
       children: pages.map((page: any) => ({
         path: page.path,
-        element: <LazyImportComponent lazyChildren={React.lazy(() => import(page.filePath))} />,
+        element: <LazyImportComponent lazyChildren={React.lazy(() => import(`/* @vite-ignore */${page.filePath}`))} />,
       })),
     },
   ];
-
   return router;
 };

@@ -1,7 +1,8 @@
 import { defineConfig } from '@nant/cli';
 
 export default defineConfig({
-  title: 'Nant',
+  title: 'Nant uioo',
+  description: 'nant react ui',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -11,30 +12,21 @@ export default defineConfig({
     sidebar: {
       '/guide': [
         {
-          text: {
-            'zh-CN': '介绍',
-            'en-US': 'intro',
-          },
-          path: '/guide/intro',
+          text: '介绍',
+          link: '/guide/intro',
         },
         {
-          text: {
-            'zh-CN': '使用',
-            'en-US': 'usage',
-          },
-          path: '/guide/usage',
+          text: '使用',
+          link: '/guide/usage',
         },
       ],
-      components: [
+      '/components': [
         {
-          title: '基础组件',
-          children: [
+          text: '基础组件',
+          items: [
             {
-              text: {
-                'zh-CN': 'Button 按钮',
-                'en-US': 'Button',
-              },
-              path: '/components/button',
+              text: 'Button 按钮',
+              link: '/components/button',
             },
           ],
         },

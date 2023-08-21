@@ -14,7 +14,7 @@ const Layout = (props: ILayout) => {
     <div className="xnate-site ">
       <>
         <div className="xnate-site-container font-bold">
-          layout
+          layoutd
           <Outlet />
         </div>
       </>

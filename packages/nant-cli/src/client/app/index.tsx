@@ -9,9 +9,13 @@ const routerConfig = getRouterConfig();
 const router = createBrowserRouter(routerConfig);
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = document.getElementById('root')!;
-ReactDOM.createRoot(root).render(
+const container = document.getElementById('root')!;
+const root = ReactDOM.createRoot(container);
+
+const App = (
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+root.render(App);

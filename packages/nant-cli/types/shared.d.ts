@@ -1,3 +1,5 @@
+export type { DefaultTheme } from './default-theme';
+
 export type Awaitable<T> = T | PromiseLike<T>;
 
 export type HeadConfig = [string, Record<string, string>] | [string, Record<string, string>, string];
