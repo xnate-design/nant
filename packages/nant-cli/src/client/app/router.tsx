@@ -5,13 +5,15 @@ import theme from '@theme/index';
 
 // console.log(theme, 'theme');
 
+import { MDXComponents } from '../theme-default/components/MDX/MDXComponents';
+
 import siteData from '@siteData';
 import Layout from '../theme-default/Layout';
 
 const LazyImportComponent = (props: { lazyChildren: any }) => {
   return (
     <React.Suspense fallback={null}>
-      <props.lazyChildren />
+      <props.lazyChildren components={MDXComponents} />
     </React.Suspense>
   );
 };

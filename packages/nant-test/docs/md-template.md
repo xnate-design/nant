@@ -1,15 +1,14 @@
 # Markdown Extension Examples
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+This page containsdd
 
 ## Syntax Highlighting
 
-VitePress supports
+VitePres
 
 **Input**
 
-````
-```js{4}
+```js
 export default {
   data () {
     return {
@@ -18,45 +17,15 @@ export default {
   }
 }
 ```
-````
 
 **Output**
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+
 
 ## Custom Containers
 
 **Input**
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
 
 **Output**
 

@@ -70,7 +70,7 @@ button { margin-right: 10px; }
 
 Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
 
-</LearnMore>
+</LearnMore>resolveSiteDataHead
 
 ## State: a component's memory {/*state-a-components-memory*/}
 

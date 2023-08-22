@@ -19,3 +19,10 @@ const App = (
 );
 
 root.render(App);
+
+if (import.meta.hot) {
+  import.meta.hot.on('nant.md', (data: any) => {
+    console.log(data);
+    root.render(App);
+  });
+}

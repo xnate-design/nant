@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 declare module '@siteData' {
   import type { SiteData } from 'nant';
   const data: SiteData;

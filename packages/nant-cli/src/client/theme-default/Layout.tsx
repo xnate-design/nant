@@ -11,10 +11,10 @@ const Layout = (props: ILayout) => {
   const { pathname } = useLocation();
 
   return (
-    <div className="xnate-site ">
+    <div className="xnate-site">
       <>
         <div className="xnate-site-container font-bold">
-          layoutd
+          layout nant ui
           <Outlet />
         </div>
       </>

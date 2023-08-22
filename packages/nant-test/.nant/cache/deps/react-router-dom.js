@@ -1,4 +1,5 @@
-import { __toESM, require_react } from './chunk-5KIMBXF3.js';
+import { require_react } from './chunk-BI65ZRTA.js';
+import { __toESM } from './chunk-UXIASGQL.js';
 
 // ../../node_modules/.pnpm/react-router-dom@6.15.0_react-dom@18.2.0_react@18.2.0/node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());

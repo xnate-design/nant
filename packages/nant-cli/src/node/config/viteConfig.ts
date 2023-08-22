@@ -45,7 +45,7 @@ export const resolveInlineConfig = (config: SiteConfig): InlineConfig => {
     resolve,
     optimizeDeps,
     server,
-    plugins: [react(), mdxPlugin(), html(injectHtmlData), Inspect(), UnoCSS()],
+    plugins: [react(), html(injectHtmlData), Inspect(), UnoCSS()],
     base: site?.base,
     configFile: vite?.configFile,
   };
