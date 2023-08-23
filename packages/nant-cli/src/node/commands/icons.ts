@@ -1,10 +1,11 @@
 import { resolve, parse } from 'path';
-import logger from '../shared/logger';
+import logger from '../shared/logger.js';
 import fse from 'fs-extra';
-import { webfont } from 'webfont';
 import sharp from 'sharp';
-
-const { readdirSync, writeFile, ensureDir, removeSync } = fse;
+import svgToFont from 'svgtofont';
+import svgTransform from '../compiler/compileSvg.js';
+import { toPascalCase } from '../shared/fsUtils.js';
+const { readdirSync, writeFile, readFileSync, ensureDir, removeSync } = fse;
 
 const CWD = process.cwd();
 const ICONS_DIST_DIR = resolve(CWD, 'dist');
@@ -12,28 +13,16 @@ const ICONS_SVG_DIR = resolve(CWD, 'svg');
 const ICONS_FONTS_DIR = resolve(ICONS_DIST_DIR, 'fonts');
 const ICONS_PNG_DIR = resolve(ICONS_DIST_DIR, 'png');
 const ICONS_CSS_DIR = resolve(ICONS_DIST_DIR, 'css');
-
-const name = 'nant-webfont';
-const fontFamilyClassName = 'nant-icon--set';
-const namespace = 'nant-icon';
-const base64 = true;
-const fontWeight = 'normal';
-const fontStyle = 'normal';
-const publicPath = ICONS_FONTS_DIR;
+const ICONS_REACT_DIR = resolve(ICONS_DIST_DIR, 'react');
 
 const removeDir = async () => {
   removeSync(ICONS_DIST_DIR);
-  await Promise.all([ensureDir(ICONS_FONTS_DIR), ensureDir(ICONS_PNG_DIR), ensureDir(ICONS_CSS_DIR)]);
-};
-
-const buildWebFont = (name: string) => {
-  return webfont({
-    files: `${ICONS_SVG_DIR}/*.svg`,
-    fontName: name,
-    formats: ['ttf'],
-    fontHeight: '512',
-    descent: 64,
-  });
+  await Promise.all([
+    ensureDir(ICONS_FONTS_DIR),
+    ensureDir(ICONS_PNG_DIR),
+    ensureDir(ICONS_CSS_DIR),
+    ensureDir(ICONS_REACT_DIR),
+  ]);
 };
 
 const buildPNG = async (svgFiles: string[]) => {
@@ -71,68 +60,50 @@ const buildPNG = async (svgFiles: string[]) => {
   );
 };
 
-const buildScriptAndCSS = async (svgFiles: string[], ttf: Buffer | string) => {
-  const icons = svgFiles.map((svg) => {
-    const i = svg.indexOf('-');
-    const extIdx = svg.lastIndexOf('.');
-    return {
-      name: svg.slice(i + 1, extIdx),
-      pointCode: svg.slice(0, i),
-    };
-  });
+const buildWebFont = async () => {
+  try {
+    await svgToFont({
+      src: ICONS_SVG_DIR,
+      dist: ICONS_DIST_DIR,
+      fontName: 'nant-icon',
+      css: true,
+      outSVGPath: true,
+      startUnicode: 20000, // unicode start number
+      // outSVGReact: true,
+      typescript: true,
+    });
+  } catch (error) {
+    console.error(error, 'err');
+  }
+};
 
-  const iconsName = icons.map((icon) => `${icon.name}`);
-
-  const indexTmp = `\
-export const pointCodes = {
-  ${icons.map(({ name, pointCode }) => `'${name}': '${pointCode}'`).join(',\n ')}
-}
-export default [
-  ${iconsName.join(',\n ')}
-]
+const reactTypeSource = (name: string) => `import React from 'react';
+export declare const ${name}: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 `;
 
-  const cssTemplate = `\
-@font-face {
-  font-family: "${name}";
-  src: url("${
-    base64 ? `data:font/truetype;charset=utf-8;base64,${ttf.toString('base64')}` : `${publicPath}${name}-webfont.ttf`
-  }") format("truetype");
-  font-weight: ${fontWeight};
-  font-style: ${fontStyle};
-}
+const buildReactFile = async (svgFiles: string[]) => {
+  return Promise.all(
+    svgFiles.map(async (svgPath) => {
+      const svg = readFileSync(resolve(ICONS_SVG_DIR, svgPath), 'utf8');
+      const name = toPascalCase(svgPath);
+      const output = await svgTransform.start(svg, { name });
+      await writeFile(resolve(ICONS_REACT_DIR, `${name}.jsx`), output);
+      await writeFile(resolve(ICONS_REACT_DIR, `${name}.d.ts`), reactTypeSource(name ?? 'ErrorComponent'));
+      return `export * from './${name}';`;
+    }),
+  );
+};
 
-.${fontFamilyClassName} {
-  font-family: "${name}";
-}
+const buildReactComponent = async (svgFiles: string[]) => {
+  const exportFiles = await buildReactFile(svgFiles);
 
-${icons
-  .map(
-    (icon) => `.${namespace}-${icon.name}::before {
-  content: "\\${icon.pointCode}";
-}`,
-  )
-  .join('\n\n')}
-`;
-
-  return {
-    cssTemplate,
-    indexTmp,
-  };
+  await writeFile(resolve(ICONS_REACT_DIR, `index.js`), exportFiles.join('\n'));
 };
 
 export async function icons() {
   await removeDir();
   const svgFiles = readdirSync(ICONS_SVG_DIR);
-  const [{ ttf }] = await Promise.all([buildWebFont(name), buildPNG(svgFiles)]);
-  const { cssTemplate, indexTmp } = await buildScriptAndCSS(svgFiles, ttf ?? '');
-
-  await Promise.all([
-    writeFile(resolve(ICONS_FONTS_DIR, `${name}-webfont.tff`), ttf ?? ''),
-    writeFile(resolve(ICONS_CSS_DIR, `${name}.css`), cssTemplate),
-    writeFile(resolve(ICONS_CSS_DIR, `${name}.scss`), cssTemplate),
-    writeFile(resolve(ICONS_DIST_DIR, `index.js`), indexTmp),
-  ]);
+  await Promise.all([buildWebFont(), buildPNG(svgFiles), buildReactComponent(svgFiles)]);
 
   logger.success(`build icons success`);
 }

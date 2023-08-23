@@ -207,5 +207,16 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
       }
     },
   };
-  return [nantMdx(), react(), Inspect(), nantPlugin, UnoCSS()];
+  return [
+    nantMdx(),
+    react({
+      babel: {
+        plugins: ['@babel/plugin-transform-react-jsx'],
+      },
+    }),
+    Inspect(),
+    nantPlugin,
+    UnoCSS(),
+    // babel({ extensions: ['.js', '.jsx', '.cjs', '.mjs', '.md', '.mdx'] }),
+  ];
 };

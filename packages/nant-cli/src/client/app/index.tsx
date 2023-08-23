@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getRouterConfig } from './router.jsx';
 import 'virtual:uno.css';
+import '@unocss/reset/tailwind.css';
 
 const routerConfig = getRouterConfig();
 
