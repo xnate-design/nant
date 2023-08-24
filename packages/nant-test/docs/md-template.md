@@ -1,6 +1,5 @@
 # Markdown Extension Examples
 
-This page containsdd
 
 ## Syntax Highlighting
 

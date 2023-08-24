@@ -22,6 +22,7 @@ export async function dev(options?: DevCommandOptions) {
   // 1. resolve config
   // 2. createViteServer
 
+  // process.env.NODE_ENV = 'development';
   const isRestart = Boolean(server);
 
   server = await createServer();
@@ -32,13 +33,13 @@ export async function dev(options?: DevCommandOptions) {
 async function createServer() {
   const config = await resolveConfig();
   const plugins = await createVitePlugins(config);
-  const inlineConfig = resolveInlineConfig(config);
+  // const inlineConfig = resolveInlineConfig(config);
 
   // return createViteServer(inlineConfig);
   return createViteServer({
     root: config.srcDir,
     base: config.site?.base,
-    cacheDir: config.cacheDir,
+    // cacheDir: config.cacheDir,
     customLogger: config.logger,
     configFile: config.vite?.configFile,
     server: {},

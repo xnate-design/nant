@@ -6,7 +6,6 @@ import 'virtual:uno.css';
 import '@unocss/reset/tailwind.css';
 
 const routerConfig = getRouterConfig();
-
 const router = createBrowserRouter(routerConfig);
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -20,10 +19,3 @@ const App = (
 );
 
 root.render(App);
-
-if (import.meta.hot) {
-  import.meta.hot.on('nant.md', (data: any) => {
-    console.log(data);
-    root.render(App);
-  });
-}

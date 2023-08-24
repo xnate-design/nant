@@ -10,6 +10,9 @@ import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js
 import { mdxPlugin } from './markdown.js';
 import { nantMdx } from '@nant/vite-plugins';
 import { babel } from '@rollup/plugin-babel';
+import mdx from '@mdx-js/rollup';
+
+import unocssConfig from '../config/unoConfig.js';
 
 import type { Plugin, PluginOption, ResolvedConfig, Rollup, UserConfig } from 'vite';
 
@@ -76,7 +79,7 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
           alias: resolveAliases(siteConfig),
         },
         optimizeDeps: {
-          include: ['react/jsx-runtime'],
+          // include: ['react/jsx-runtime'],
         },
         server: {
           fs: {
@@ -172,7 +175,7 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
       })();
     </script>
   </head>
-  <body>
+  <body class="antialiased text-base bg-wash dark:bg-wash-dark text-secondary dark:text-secondary-dark">
     <div id="root"></div>
     <script type="module" src="/@fs/${APP_PATH}/index.jsx"></script>
   </body>
@@ -190,33 +193,15 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
     transformIndexHtml(html) {
       // console.log(html, 'transformIndexHtml');
     },
-
-    async handleHotUpdate(ctx) {
-      const { file, read, server } = ctx;
-
-      console.log(file, 'handleHotUpdate');
-
-      if (file.endsWith('.md')) {
-        const content = await read();
-
-        server.ws.send({
-          type: 'custom',
-          event: 'nant.md',
-          data: { file, content },
-        });
-      }
-    },
   };
   return [
+    nantPlugin,
     nantMdx(),
     react({
-      babel: {
-        plugins: ['@babel/plugin-transform-react-jsx'],
-      },
+      jsxRuntime: 'classic',
+      include: /\.(mdx|md|js|jsx|ts|tsx)$/,
     }),
     Inspect(),
-    nantPlugin,
-    UnoCSS(),
-    // babel({ extensions: ['.js', '.jsx', '.cjs', '.mjs', '.md', '.mdx'] }),
+    UnoCSS(unocssConfig),
   ];
 };

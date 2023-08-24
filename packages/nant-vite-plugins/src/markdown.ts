@@ -1,5 +1,4 @@
 import type { Plugin, ResolvedConfig, Rollup, UserConfig } from 'vite';
-import { compile } from '@mdx-js/mdx';
 
 import { visit } from 'unist-util-visit';
 import remarkGfm from 'remark-gfm';
@@ -46,6 +45,7 @@ export const nantMdx = (options?: Options): Plugin => {
   const remarkPlugins = [remarkGfm, remarkFrontMatter, externalLinks, images, unrwapImages];
   const rehypePlugins = [rehypeMetaAsAttributes];
 
+  const mdMap = new Map<string, string>();
   const { include, exclude, ...rest } = options || {};
   const { extnames, process } = createFormatAwareProcessors({
     SourceMapGenerator,
@@ -64,8 +64,7 @@ export const nantMdx = (options?: Options): Plugin => {
         const compiled = await process(file);
         const code = String(compiled.value);
         const result = { code, map: compiled.map };
-        console.log(result, 'result:');
-
+        // console.log(code, 'odedata');
         return result;
       }
     },

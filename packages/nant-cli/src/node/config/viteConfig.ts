@@ -21,7 +21,7 @@ export const resolveInlineConfig = (config: SiteConfig): InlineConfig => {
   };
 
   const optimizeDeps = {
-    include: ['react/jsx-runtime'],
+    // include: ['react/jsx-runtime'],
   };
 
   const server = {
