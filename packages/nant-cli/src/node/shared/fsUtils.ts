@@ -1,5 +1,6 @@
 import fse from 'fs-extra';
 import { fileURLToPath } from 'url';
+import { CLI_PACKAGE_JSON } from './constant.js';
 
 const {
   appendFileSync,
@@ -21,3 +22,7 @@ export const toPascalCase = (str: string) =>
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     ?.map((x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
     .join('');
+
+export function getCliVersion() {
+  return readJSONSync(CLI_PACKAGE_JSON).version;
+}

@@ -6,8 +6,10 @@
 node_modules
 package-lock.json
 
+package/nant-test/.nant/cache
 packages/**/lib
 packages/**/.nant
+packages/**/.nant/cache
 packages/**/dist
 packages/**/node_modules
 packages/**/package-lock.json

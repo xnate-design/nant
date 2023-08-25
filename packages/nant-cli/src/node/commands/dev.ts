@@ -1,12 +1,12 @@
 import { createServer as createViteServer, createLogger } from 'vite';
 import c from 'picocolors';
-import { version } from '../../../package.json';
 import { resolveConfig } from '../config/index.js';
 import { createVitePlugins } from '../plugins/index.js';
 import { bindShortcuts } from '../utils/shortcuts.js';
+import { getCliVersion } from '../shared/fsUtils.js';
 
 const logVersion = (logger = createLogger()) => {
-  logger.info(`\n  ${c.green(`${c.bold('nant')} v${version}`)}\n`, {
+  logger.info(`\n  ${c.green(`${c.bold('nant')} v${getCliVersion()}`)}\n`, {
     clear: !logger.hasWarned,
   });
 };

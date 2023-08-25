@@ -1,53 +1,47 @@
 {
-  "hash": "550973c2",
-  "browserHash": "c4065b6c",
+  "hash": "ff8df5f0",
+  "browserHash": "9e7f813a",
   "optimized": {
     "react": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "8498d27e",
+      "fileHash": "d1e80b9d",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "760fb312",
-      "needsInterop": true
-    },
-    "react/jsx-runtime": {
-      "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
-      "file": "react_jsx-runtime.js",
-      "fileHash": "d90cb630",
+      "fileHash": "3ca4d57e",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../../../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "de1e31fb",
+      "fileHash": "69acbfd2",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../../../../node_modules/.pnpm/react-router-dom@6.15.0_react-dom@18.2.0_react@18.2.0/node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "8b6f17b1",
+      "fileHash": "cde81663",
       "needsInterop": false
     },
     "clsx": {
       "src": "../../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs",
       "file": "clsx.js",
-      "fileHash": "4dcd0f4c",
+      "fileHash": "c9df7ac7",
       "needsInterop": false
     },
     "prism-react-renderer": {
       "src": "../../../../../node_modules/.pnpm/prism-react-renderer@2.0.6_react@18.2.0/node_modules/prism-react-renderer/dist/index.mjs",
       "file": "prism-react-renderer.js",
-      "fileHash": "7140501d",
+      "fileHash": "f1bf231d",
       "needsInterop": false
     },
     "parse-numeric-range": {
       "src": "../../../../../node_modules/.pnpm/parse-numeric-range@1.3.0/node_modules/parse-numeric-range/index.js",
       "file": "parse-numeric-range.js",
-      "fileHash": "170229e5",
+      "fileHash": "096ab734",
       "needsInterop": true
     }
   },
