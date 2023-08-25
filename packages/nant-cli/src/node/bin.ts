@@ -28,7 +28,6 @@ program
   .description('Build icons')
   .action(async () => {
     console.log('Building icons...');
-
     const { icons } = await import('./commands/icons.js');
     return icons();
   });

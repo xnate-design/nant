@@ -1,45 +1,44 @@
-import { createServer as createViteServer, ViteDevServer } from 'vite';
-
-import type { UserConfig, PluginOption } from 'vite';
-import fse from 'fs-extra';
-import chokidar, { FSWatcher } from 'chokidar';
-
+import { createServer as createViteServer, createLogger } from 'vite';
+import c from 'picocolors';
+import { version } from '../../../package.json';
 import { resolveConfig } from '../config/index.js';
 import { createVitePlugins } from '../plugins/index.js';
-import { resolveInlineConfig } from '../config/viteConfig.js';
-import { CONFIG_PATH } from '../shared/constant.js';
-interface DevCommandOptions {
-  force?: boolean;
+import { bindShortcuts } from '../utils/shortcuts.js';
+
+const logVersion = (logger = createLogger()) => {
+  logger.info(`\n  ${c.green(`${c.bold('nant')} v${version}`)}\n`, {
+    clear: !logger.hasWarned,
+  });
+};
+
+export async function dev() {
+  process.env.NODE_ENV = 'development';
+
+  const createDevServer = async () => {
+    const server = await createServer(async () => {
+      await server.close();
+      await createDevServer();
+    });
+    await server.listen();
+    logVersion(server.config.logger);
+    server.printUrls();
+    bindShortcuts(server, createDevServer);
+  };
+
+  createDevServer().catch((err) => {
+    createLogger().error(`${c.red(`failed to start server. error:`)}\n${err.stack}`);
+    process.exit(1);
+  });
 }
 
-const { ensureDirSync, pathExistsSync } = fse;
-
-let server: ViteDevServer;
-// let watcher:
-let watcher: FSWatcher;
-
-export async function dev(options?: DevCommandOptions) {
-  // 1. resolve config
-  // 2. createViteServer
-
-  // process.env.NODE_ENV = 'development';
-  const isRestart = Boolean(server);
-
-  server = await createServer();
-  await server.listen();
-  server.printUrls();
-}
-
-async function createServer() {
+async function createServer(recreateServer?: () => Promise<void>) {
   const config = await resolveConfig();
-  const plugins = await createVitePlugins(config);
-  // const inlineConfig = resolveInlineConfig(config);
+  const plugins = await createVitePlugins(config, recreateServer);
 
-  // return createViteServer(inlineConfig);
   return createViteServer({
     root: config.srcDir,
     base: config.site?.base,
-    // cacheDir: config.cacheDir,
+    cacheDir: config.cacheDir,
     customLogger: config.logger,
     configFile: config.vite?.configFile,
     server: {},

@@ -42,9 +42,13 @@ const copyToClipboard = (str: string) => {
   }
 };
 
+interface childPropsType {
+  props?: any;
+}
+
 const CodeBlock = (props: CodeBlockProps) => {
   const [isCopied, setIsCopied] = React.useState(false);
-  const childProps = props.children || {};
+  const childProps: childPropsType = props.children || {};
   const { className = '', children = '', live = false, file = '', light = '' } = childProps.props || {};
   const code = children.trim();
   const language = className.replace(/language-/, '');

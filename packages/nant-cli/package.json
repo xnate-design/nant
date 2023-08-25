@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "tsc --watch --sourcemap",
+    "build": "rimraf ./lib && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -54,6 +55,7 @@
     "@types/svg-parser": "^2.0.3",
     "@unocss/reset": "^0.55.2",
     "parse-numeric-range": "^1.3.0",
+    "rimraf": "^5.0.1",
     "vite-plugin-inspect": "^0.7.38"
   }
 }

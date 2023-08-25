@@ -16,4 +16,8 @@ export default {
   title(text: string): void {
     console.log(po.cyan(text));
   },
+
+  green(text: string): string {
+    return po.green(text);
+  },
 };

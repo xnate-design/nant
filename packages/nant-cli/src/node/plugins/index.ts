@@ -1,20 +1,19 @@
 import react from '@vitejs/plugin-react';
 import Inspect from 'vite-plugin-inspect';
+import path from 'path';
 import UnoCSS from 'unocss/vite';
+import unocssConfig from '../config/unoConfig.js';
+import logger from '../shared/logger.js';
 
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import { SiteConfig } from './../config/siteConfig.js';
 import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH } from '../config/alias.js';
 import { compilePage } from '../compiler/compilePage.js';
 import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
-import { mdxPlugin } from './markdown.js';
 import { nantMdx } from '@nant/vite-plugins';
-import { babel } from '@rollup/plugin-babel';
-import mdx from '@mdx-js/rollup';
+import { resolveUserConfig } from '../config/index.js';
 
-import unocssConfig from '../config/unoConfig.js';
-
-import type { Plugin, PluginOption, ResolvedConfig, Rollup, UserConfig } from 'vite';
+import type { Plugin, PluginOption, ResolvedConfig, UserConfig } from 'vite';
 
 declare module 'vite' {
   interface UserConfig {
@@ -24,7 +23,10 @@ declare module 'vite' {
 
 const cleanUrl = (url: string): string => url.replace(/#.*$/s, '').replace(/\?.*$/s, '');
 
-export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginOption[]> => {
+export const createVitePlugins = async (
+  siteConfig: SiteConfig,
+  recreateServer?: () => Promise<void>,
+): Promise<PluginOption[]> => {
   const {
     srcDir,
     configPath,
@@ -43,16 +45,7 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
   const nantPlugin: Plugin = {
     name: 'nant',
 
-    options(option) {
-      // console.log('options', option);
-    },
-
-    buildStart(option) {
-      // console.log('buildStart', option);
-    },
-
     resolveId(id) {
-      // console.log('resolveId', id);
       if (id === SITE_DATA_REQUEST_PATH) return SITE_DATA_REQUEST_PATH;
     },
 
@@ -71,15 +64,13 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
     },
 
     // vite hook self - config
-    config(config) {
-      // console.log(config, 'config');
-
+    config() {
       const baseConfig: UserConfig = {
         resolve: {
           alias: resolveAliases(siteConfig),
         },
         optimizeDeps: {
-          // include: ['react/jsx-runtime'],
+          include: ['react/jsx-dev-runtime'],
         },
         server: {
           fs: {
@@ -93,14 +84,11 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
 
     // vite hook self - configResolved
     configResolved(resolvedConfig) {
-      // console.log(resolvedConfig, 'configResolved');
       config = resolvedConfig;
     },
 
     // vite hook self - configureServer
     configureServer(server) {
-      // console.log(server, 'configureServer');
-
       if (configPath) {
         server.watcher.add(configPath);
         configDeps.forEach((file) => server.watcher.add(file));
@@ -190,15 +178,29 @@ export const createVitePlugins = async (siteConfig: SiteConfig): Promise<PluginO
       };
     },
 
-    transformIndexHtml(html) {
-      // console.log(html, 'transformIndexHtml');
+    async handleHotUpdate(ctx) {
+      const { file } = ctx;
+      if (file === configPath || configDeps.includes(file)) {
+        siteConfig.logger.info(logger.green(`${path.relative(process.cwd(), file)} changed, restarting server...\n`), {
+          clear: true,
+          timestamp: true,
+        });
+
+        try {
+          await resolveUserConfig(siteConfig.root, 'serve', 'development');
+        } catch (err: any) {
+          return;
+        }
+
+        await recreateServer?.();
+        return;
+      }
     },
   };
   return [
     nantPlugin,
-    nantMdx(),
+    nantMdx({ development: true }),
     react({
-      jsxRuntime: 'classic',
       include: /\.(mdx|md|js|jsx|ts|tsx)$/,
     }),
     Inspect(),

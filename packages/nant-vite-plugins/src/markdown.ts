@@ -1,4 +1,4 @@
-import type { Plugin, ResolvedConfig, Rollup, UserConfig } from 'vite';
+import type { Plugin } from 'vite';
 
 import { visit } from 'unist-util-visit';
 import remarkGfm from 'remark-gfm';
@@ -8,7 +8,7 @@ import images from 'remark-images';
 import unrwapImages from 'remark-unwrap-images';
 
 import { SourceMapGenerator } from 'source-map';
-import { VFile, Compatible, VFileCompatible } from 'vfile';
+import { VFile } from 'vfile';
 import { createFilter } from '@rollup/pluginutils';
 import { createFormatAwareProcessors } from '@mdx-js/mdx/lib/util/create-format-aware-processors.js';
 
@@ -45,7 +45,6 @@ export const nantMdx = (options?: Options): Plugin => {
   const remarkPlugins = [remarkGfm, remarkFrontMatter, externalLinks, images, unrwapImages];
   const rehypePlugins = [rehypeMetaAsAttributes];
 
-  const mdMap = new Map<string, string>();
   const { include, exclude, ...rest } = options || {};
   const { extnames, process } = createFormatAwareProcessors({
     SourceMapGenerator,
@@ -59,12 +58,10 @@ export const nantMdx = (options?: Options): Plugin => {
     enforce: 'pre',
     async transform(value, path) {
       const file: any = new VFile({ value, path });
-
       if (file.extname && filter(file.path) && extnames.includes(file.extname)) {
         const compiled = await process(file);
         const code = String(compiled.value);
         const result = { code, map: compiled.map };
-        // console.log(code, 'odedata');
         return result;
       }
     },

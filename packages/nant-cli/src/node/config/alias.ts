@@ -6,8 +6,6 @@ import type { Alias, AliasOptions } from 'vite';
 
 const PKG_ROOT = resolve(fileURLToPath(import.meta.url), '../../..');
 
-console.log(PKG_ROOT, 'PKG_ROOT');
-
 export const DIST_CLIENT_PATH = resolve(PKG_ROOT, 'client');
 export const APP_PATH = join(DIST_CLIENT_PATH, 'app');
 export const SHARED_PATH = join(DIST_CLIENT_PATH, 'shared');
