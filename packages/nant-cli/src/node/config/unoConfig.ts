@@ -14,14 +14,14 @@ import {
 import type { UserConfig } from 'unocss';
 
 const colors = {
-  primary: '#23272F',
-  'primary-dark': '#F6F7F9',
+  primary: 'rgba(60, 60, 67)',
+  'primary-dark': 'rgba(255, 255, 245, 0.86)',
 
-  secondary: '#404756',
-  'secondary-dark': '#EBECF0',
+  secondary: 'rgba(60, 60, 67, 0.75)',
+  'secondary-dark': 'rgba(235, 235, 245, 0.6)',
 
-  tertiary: '#5E687E',
-  'tertiary-dark': '#99A1B3',
+  tertiary: 'rgba(60, 60, 67, 0.33)',
+  'tertiary-dark': 'rgba(235, 235, 245, 0.38)',
 
   link: '#087EA4', // blue-50
   'link-dark': '#149ECA', // blue-40
@@ -29,7 +29,7 @@ const colors = {
   syntax: '',
 
   wash: '#FFFFFF',
-  'wash-dark': '#23272F',
+  'wash-dark': '#1b1b1f',
 
   card: '#F6F7F9', // gray-05
   'card-dark': '#343A46', // gray-80

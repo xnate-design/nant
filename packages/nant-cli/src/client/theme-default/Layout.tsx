@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams, useLocation, Outlet, useNavigate } from 'react-router-dom';
-
+import SiteContext from './SiteContext';
+import { TopNav } from './components/Layout';
 import Home from './Home';
 
 interface ILayout {
@@ -12,6 +13,12 @@ const Layout = (props: ILayout) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
+  const config = useContext(SiteContext);
+
+  const isHome = pathname === '/';
+
+  console.log(config, 'config');
+
   console.log(pathname, 'pathname');
 
   let content = null;
@@ -21,18 +28,19 @@ const Layout = (props: ILayout) => {
   } else {
     content = (
       <>
-        <div></div>
+        <div>
+          <Outlet />
+        </div>
       </>
     );
   }
 
   return (
-    <>
-      <div className="">
-        layout nant ui
-        <Outlet />
-      </div>
-    </>
+    <div className="">
+      <TopNav />
+      layout nant ui
+      <main>{content}</main>
+    </div>
   );
 };
 

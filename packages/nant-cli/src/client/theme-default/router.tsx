@@ -1,14 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import React, { LazyExoticComponent, lazy } from 'react';
 
-import theme from '@theme/index';
-
-// console.log(theme, 'theme');
-
-import { MDXComponents } from '../theme-default/components/MDX/MDXComponents';
+import { MDXComponents } from './components/MDX/MDXComponents';
 
 import siteData from '@siteData';
-import Layout from '../theme-default/Layout';
+import Layout from './Layout';
 
 const LazyImportComponent = (props: { lazyChildren: any }) => {
   return (

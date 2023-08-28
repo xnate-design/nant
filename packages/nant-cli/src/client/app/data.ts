@@ -1,30 +1,27 @@
+import { SideBar } from './../../../types/default-theme.d';
 import siteData from '@siteData';
-import type { PageData, SiteData } from '../shared';
+import type { PageData, SiteData, DefaultTheme } from '../shared';
 
-export const initData = () => {
-  console.log(siteData, 'siteData');
-
-  const routes = [];
-  return siteData;
+export const initData = (): NantData => {
+  return {
+    site: siteData.site,
+    theme: siteData.site.themeConfig,
+    nav: siteData.site.themeConfig.nav,
+    sideBar: siteData.site.themeConfig.sidebar,
+  };
 };
 
-// hmr
-// if (import.meta.hot) {
-//   import.meta.hot.accept('/@siteData', (m) => {
-//     if (m) {
-//     }
-//   });
-// }
-
 export interface NantData<T = any> {
-  site: SiteData<T>;
-  theme: T;
-  page: PageData;
-  frontmatter: PageData['frontmatter'];
-  params: PageData['params'];
-  title: string;
-  lang: string;
-  isDark: boolean;
-  dir: string;
-  localeIndex: string;
+  site?: SiteData<T>;
+  theme?: T;
+  nav?: DefaultTheme.NavItem[];
+  sideBar?: DefaultTheme.SideBar;
+  page?: PageData;
+  frontmatter?: PageData['frontmatter'];
+  params?: PageData['params'];
+  title?: string;
+  lang?: string;
+  isDark?: boolean;
+  dir?: string;
+  localeIndex?: string;
 }

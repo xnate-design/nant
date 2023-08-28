@@ -8,6 +8,7 @@ export type {
   LocaleSpecificConfig,
   PageData,
   SiteData,
+  DefaultTheme,
 } from '../../types/shared';
 
 export const EXTERNAL_URL_RE = /^[a-z]+:/i;

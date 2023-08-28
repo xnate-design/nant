@@ -14,13 +14,7 @@ const resolve = (root: string, file: string) => {
   return normalizePath(path.resolve(root, '.nant', file));
 };
 
-// export type UserConfigFn<ThemeConfig> = (env: ConfigEnv) => UserConfig<ThemeConfig> | Promise<UserConfig<ThemeConfig>>;
-// export type UserConfigExport<ThemeConfig> =
-//   | UserConfig<ThemeConfig>
-//   | Promise<UserConfig<ThemeConfig>>
-//   | UserConfigFn<ThemeConfig>;
-
-export function defineConfig(config: UserConfig<DefaultTheme.Config>) {
+export function defineConfig(config: UserConfig<DefaultTheme.SiteConfig>) {
   return config;
 }
 
@@ -101,16 +95,14 @@ export async function resolveSiteData(
   return {
     lang: userConfig.lang || 'en-US',
     dir: userConfig.dir || 'ltr',
-    title: userConfig.title || 'VitePress',
+    title: userConfig.title || 'Nant',
     titleTemplate: userConfig.titleTemplate,
-    description: userConfig.description || 'A VitePress site',
+    description: userConfig.description || 'A Nant site',
     base: userConfig.base ? userConfig.base.replace(/([^/])$/, '$1/') : '/',
     head: resolveSiteDataHead(userConfig),
     appearance: userConfig.appearance ?? true,
     themeConfig: userConfig.themeConfig || {},
     locales: userConfig.locales || {},
-    scrollOffset: userConfig.scrollOffset ?? 90,
-    cleanUrls: !!userConfig.cleanUrls,
     contentProps: userConfig.contentProps,
   };
 }

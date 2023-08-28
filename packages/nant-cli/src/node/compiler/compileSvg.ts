@@ -31,7 +31,7 @@ class SvgTransform {
     return replaced;
   };
   clean = (svg: any) => {
-    const plugins = [
+    const plugins: svgo.PluginConfig[] = [
       'cleanupAttrs', // 清除换行符、尾随和重复空格的属性
       'mergeStyles', // 将多个样式元素合并为一个
       'removeDoctype', //删除doctype声明
@@ -63,21 +63,13 @@ class SvgTransform {
       'convertEllipseToCircle', //将非偏心转换<ellipse>为<circle>
       'sortDefsChildren', //排序子<defs>级以提高压缩率
       'removeUselessDefs', //删除没用的<defs>
-
-      'convertStyleToAttrs', // 将样式转换为属性
-    ];
-    const optionsList = [
       'removeXMLNS', //删除xmlns属性
       'minifyStyles', // 使用CSSO缩小<style>元素内容
       'removeEmptyAttrs', // 删除空属性
-      // "inlineStyles", // 将样式从<style>元素移动和合并到元素style属性 有bug
       'collapseGroups', //折叠无用的组
+      'inlineStyles', // 将样式从<style>元素移动和合并到元素style属性 有bug
+      'convertStyleToAttrs', // 将样式转换为属性
     ];
-    optionsList.forEach((key) => {
-      if (this.options[key]) {
-        plugins.push(key);
-      }
-    });
     svg = svg.replaceAll('mix-blend-mode:passthrough', '');
     const cleaned = svgo.optimize(svg, {
       multipass: true, // boolean. false by default
@@ -88,6 +80,7 @@ class SvgTransform {
             delim: '_dxc-svg-to-react_',
           },
         },
+        ...plugins,
       ],
     });
     this.cleaned = cleaned.data as string;
@@ -122,15 +115,16 @@ class SvgTransform {
       if (width) {
         if (width === height) {
           this.size = width;
-          propsArr.push(`width={size}`);
-          propsArr.push(`height={size}`);
+          propsArr.push(`width='1.33em'`);
+          propsArr.push(`height='1.33em'`);
         } else {
           this.width = width;
           this.height = height;
-          propsArr.push(`width={width}`);
-          propsArr.push(`height={height}`);
+          propsArr.push(`width='1.33em'`);
+          propsArr.push(`height='1.33em'`);
         }
       }
+      propsArr.push(`fill="currentColor"`);
       props = other;
     } else {
       props = properties;
@@ -155,6 +149,10 @@ class SvgTransform {
           continue;
         }
       }
+
+      if (key === 'stroke') {
+        props[key] = 'currentColor';
+      }
       //   str.match(/ab/igm).length
       propsArr.push(`${this.transformKey(key)}="${props[key]}"`);
     }
@@ -170,7 +168,7 @@ class SvgTransform {
   structure = (src: string): string => {
     const propsArr = [];
     if (this.size) {
-      propsArr.push(`size="${this.size}"`);
+      // propsArr.push(`size="${this.size}"`);
     }
     if (this.width) {
       propsArr.push(`width="${this.width}"`);
@@ -191,7 +189,8 @@ class SvgTransform {
       props = 'props';
       this.extraProps = 'props';
     }
-    return `import React from 'react';
+    return `
+import React from 'react';
 export const ${this.options.name} = (${props}) => {
   return ${src};
 };

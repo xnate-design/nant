@@ -12,6 +12,7 @@ export namespace DefaultTheme {
 
   export interface NavItemWithChildren {
     text?: string;
+    link?: string;
     items: (NavItemWithChildren | NavItemWithLink)[];
     activeMatch?: string;
   }
@@ -59,12 +60,12 @@ export namespace DefaultTheme {
     copyright?: string;
   }
 
-  export interface Config {
+  export interface SiteConfig {
     logo?: string;
     logoUrl?: string;
     siteTitle?: string;
     outLine?: string;
-    nav: NavItem[];
+    nav?: NavItem[];
     sidebar?: SideBar;
     socialLinks?: SocialLink[];
     footer?: Footer;

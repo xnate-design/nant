@@ -85,7 +85,7 @@ const buildReactFile = async (svgFiles: string[]) => {
   return Promise.all(
     svgFiles.map(async (svgPath) => {
       const svg = readFileSync(resolve(ICONS_SVG_DIR, svgPath), 'utf8');
-      const name = toPascalCase(svgPath);
+      const name = toPascalCase(svgPath)?.replace(/Svg/g, '');
       const output = await svgTransform.start(svg, { name });
       await writeFile(resolve(ICONS_REACT_DIR, `${name}.jsx`), output);
       await writeFile(resolve(ICONS_REACT_DIR, `${name}.d.ts`), reactTypeSource(name ?? 'ErrorComponent'));
@@ -96,14 +96,13 @@ const buildReactFile = async (svgFiles: string[]) => {
 
 const buildReactComponent = async (svgFiles: string[]) => {
   const exportFiles = await buildReactFile(svgFiles);
-
   await writeFile(resolve(ICONS_REACT_DIR, `index.js`), exportFiles.join('\n'));
 };
 
 export async function icons() {
   await removeDir();
   const svgFiles = readdirSync(ICONS_SVG_DIR);
-  await Promise.all([buildWebFont(), buildPNG(svgFiles), buildReactComponent(svgFiles)]);
+  await Promise.all([buildReactComponent(svgFiles)]);
 
   logger.success(`build icons success`);
 }

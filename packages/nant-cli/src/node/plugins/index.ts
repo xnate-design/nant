@@ -163,7 +163,7 @@ export const createVitePlugins = async (
       })();
     </script>
   </head>
-  <body class="antialiased text-base bg-wash dark:bg-wash-dark text-secondary dark:text-secondary-dark">
+  <body class="antialiased min-h-screen w-full text-base bg-wash dark:bg-wash-dark text-primary dark:text-primary-dark">
     <div id="root"></div>
     <script type="module" src="/@fs/${APP_PATH}/index.jsx"></script>
   </body>

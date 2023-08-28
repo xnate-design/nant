@@ -4,7 +4,6 @@ import rangeParser from 'parse-numeric-range';
 // import theme from '../../../../common/theme/codeTheme';
 import React from 'react';
 import NantIcon from '../../Icons';
-import { AccessibilitySharpSvg } from '@nant/nant-icons/dist/react/AccessibilitySharpSvg';
 
 interface CodeBlockProps {
   children: React.ReactNode & {
@@ -54,8 +53,8 @@ const CodeBlock = (props: CodeBlockProps) => {
   const language = className.replace(/language-/, '');
   const highlights = calculateLinesToHighlight(light || '');
   return (
-    <div className=" text-primary ">
-      <AccessibilitySharpSvg />
+    <div className=" ">
+      <div className=" dark:text-primary-dark"></div>
       <div className="xnate-site-md__code-tab">
         <div className="xnate-site-md__code-tab-left">{file && `${file}`}</div>
         <div className="xnate-site-md__code-tab-right">

@@ -2,11 +2,13 @@ import { defineConfig } from '@nant/cli';
 
 export default defineConfig({
   title: 'Nant ui',
-  description: 'nant react ui',
+  description: 'nant react component ui',
   themeConfig: {
+    logo: '',
+
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/guide/intro' },
+      { text: 'Docs', link: '/docs/intro' },
     ],
 
     sidebar: {
