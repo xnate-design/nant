@@ -179,13 +179,6 @@ export async function resolveConfig(
     tempDir: resolve(root, '.temp'),
     vite: userConfig.vite,
     markdown: userConfig.markdown,
-    lastUpdated: userConfig.lastUpdated ?? !!userConfig.themeConfig?.lastUpdated,
-    shouldPreload: userConfig.shouldPreload,
-    useWebFonts: userConfig.useWebFonts ?? typeof process.versions.webcontainer === 'string',
-    buildEnd: userConfig.buildEnd,
-    transformHead: userConfig.transformHead,
-    transformHtml: userConfig.transformHtml,
-    transformPageData: userConfig.transformPageData,
   };
 
   return config;

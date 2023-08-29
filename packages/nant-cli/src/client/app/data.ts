@@ -1,4 +1,3 @@
-import { SideBar } from './../../../types/default-theme.d';
 import siteData from '@siteData';
 import type { PageData, SiteData, DefaultTheme } from '../shared';
 

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import cn from 'clsx';
+import clsx from 'clsx';
 
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
@@ -13,125 +13,143 @@ import { MoonOutline } from '@nant/nant-icons/dist/react/MoonOutline';
 import { LogoGithub } from '@nant/nant-icons/dist/react/LogoGithub';
 import { lowerCase } from 'lodash-es';
 
-export const TopNav = () => {
+import { DefaultTheme } from 'nant/theme';
+
+interface TopContentProps {
+  nav: DefaultTheme.NavItem[] | undefined;
+  section?: string;
+  hasSideBar?: boolean;
+}
+
+export const TopNav = ({ hasSideBar = false }) => {
   const { nav, site } = useContext(SiteContext);
   const section = useActiveSection();
 
   console.log(section, 'section');
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const headerClass = clsx('fixed top-0 left-0 w-full', {
+    'h-screen sticky top-0 lg:bottom-0 lg:h-screen flex flex-col shadow-lg dark:shadow-lg z-20': isOpen,
+  });
+
+  const navClass = clsx(
+    'relative border-b border-transparent h-16 whitespace-nowrap pr-2 pl-6',
+    hasSideBar ? 'lg:p-0' : 'md:px-8',
+  );
+
+  const containerClass = clsx('flex justify-between m-auto ', hasSideBar ? 'lg:max-w-full' : 'max-width-nav');
+
   return (
     <>
-      <div
-        className={cn(
-          isOpen
-            ? 'h-screen sticky top-0 lg:bottom-0 lg:h-screen flex flex-col shadow-lg dark:shadow-lg z-20'
-            : 'z-50 sticky top-0',
-        )}
-      >
-        <nav
-          className={cn(
-            'duration-300 backdrop-filter  backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pr-5 lg:pl-4 z-50',
-          )}
-        >
-          <div className="h-16 w-full gap-0 sm:gap-3 flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="3xl:flex-1 flex flex-row ">
-                <button
-                  type="button"
-                  aria-label="Menu"
-                  onClick={() => setIsOpen(!isOpen)}
-                  className={cn(
-                    'active:scale-95 transition-transform flex lg:hidden w-12 h-12 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link',
-                    {
-                      'text-link dark:text-link-dark': isOpen,
-                    },
-                  )}
-                >
-                  {isOpen ? <CloseOutline /> : <ReorderFourOutline />}
-                </button>
-                <div className="3xl:flex-1 flex items-center">
-                  <Link to="/">
-                    <div
-                      className={`active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2`}
-                    >
-                      <Logo className="text-sm mr-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out" />
-                      <span className="sr-only 3xl:not-sr-only">{site?.title}</span>
-                      <span className="">{site?.title}</span>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="text-sm font-bold justify-center items-center gap-1.5 flex 3xl:flex-1 flex-row 3xl:justify-end">
-                <div className="mx-2.5 gap-1 hidden lg:flex">
-                  {nav?.map((item, idx) => (
-                    <NavItem key={idx} isActive={section === lowerCase(item.text)} url={item.link}>
-                      {item.text}
-                    </NavItem>
-                  ))}
-                </div>
-                <div className="flex w-full md:hidden"></div>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center -space-x-2.5 xs:space-x-0 ">
-            <div className="flex dark:hidden">
-              <button
-                type="button"
-                aria-label="Use Dark Mode"
-                onClick={() => {
-                  window.__setPreferredTheme('dark');
-                }}
-                className="active:scale-95 transition-transform flex w-12 h-12 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
-              >
-                <SunnyOutline />
-              </button>
-            </div>
-            <div className="hidden dark:flex">
-              <button
-                type="button"
-                aria-label="Use Light Mode"
-                onClick={() => {
-                  window.__setPreferredTheme('light');
-                }}
-                className="active:scale-95 transition-transform flex w-12 h-12 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
-              >
-                <MoonOutline />
-              </button>
-            </div>
-            <div className="flex">
-              <Link
-                to="https://github.com/Wangbaoqi/nateTech"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Open on GitHub"
-                className="active:scale-95 transition-transform flex w-12 h-12 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
-              >
-                <LogoGithub />
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <header className={headerClass}>
+        <div className={navClass}>
+          <section className={containerClass}>
+            <TopTitle hasSideBar={hasSideBar} title={site?.title} />
+            <TopContent hasSideBar={hasSideBar} section={section} nav={nav} />
+          </section>
+        </div>
+      </header>
     </>
+  );
+};
+
+const TopTitle = ({ hasSideBar = false, title = '' }) => {
+  const titleClass = clsx('flex-shrink height-nav-title', {
+    'lg:absolute top-0 lg:left-0 lg:px-8 lg:w-18 lg:h-16 lg:bg-transparent 2xl:pl-nav-title 2xl:width-top-nav':
+      hasSideBar,
+  });
+
+  const linkClass = clsx(
+    'border-b  flex items-center gap-2 border-transparent h-16 w-full text-base font-bold',
+    'lg:border-border' && hasSideBar,
+  );
+
+  return (
+    <div className={titleClass}>
+      <div className="pointer-events-auto">
+        <Link to="/" className={linkClass}>
+          <Logo className="text-xl" />
+          <span>{title}</span>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const TopContent = ({ nav = [], section = '', hasSideBar = false }: TopContentProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const contentClass = clsx('flex-grow pointer-events-none ', {
+    '2xl:pr-top-content 2xl:pl-top-content lg:pl-72 lg:pr-8': hasSideBar,
+  });
+  const contentBodyClass = clsx('flex flex-end items-center height-nav-title pointer-events-auto');
+
+  const themeBtnClass = clsx('');
+  return (
+    <div className={contentClass}>
+      <div className={contentBodyClass}>
+        <div className="flex-grow"></div>
+        <nav className="md:flex hidden md:pr-4">
+          {nav?.map((item, idx) => (
+            <NavItem key={idx} isActive={section === lowerCase(item.text)} url={item.link}>
+              {item.text}
+            </NavItem>
+          ))}
+        </nav>
+        <div className="flex dark:hidden">
+          <button
+            type="button"
+            aria-label="Use Dark Mode"
+            onClick={() => {
+              window.__setPreferredTheme('dark');
+            }}
+            className="active:scale-95 transition-transform flex px-2 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
+          >
+            <SunnyOutline />
+          </button>
+        </div>
+        <div className="hidden dark:flex">
+          <button
+            type="button"
+            aria-label="Use Light Mode"
+            onClick={() => {
+              window.__setPreferredTheme('light');
+            }}
+            className="active:scale-95 transition-transform flex px-2 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
+          >
+            <MoonOutline />
+          </button>
+        </div>
+        <div className="flex">
+          <Link
+            to="https://github.com/Wangbaoqi/nateTech"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Open on GitHub"
+            className="active:scale-95 transition-transform flex px-2 items-center justify-center text-primary dark:text-primary-dark hover:text-secondary hover:dark:text-secondary-dark outline-link"
+          >
+            <LogoGithub />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
 const NavItem = ({ url, isActive, target, children }: any) => {
   return (
-    <div className="flex flex-auto sm:flex-1">
-      <Link
-        target={target}
-        to={url}
-        className={cn(
-          'active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-1.5 xs:px-3 sm:px-4 rounded-full capitalize',
-          !isActive && 'hover:text-link hover:dark:text-link-dark',
-          isActive && 'text-link dark:text-link-dark',
-        )}
-      >
-        {children}
-      </Link>
-    </div>
+    <Link
+      target={target}
+      to={url}
+      className={clsx(
+        'flex items-center px-2 text-sm font-medium capitalize h-16',
+        !isActive && 'hover:text-link hover:dark:text-link-dark',
+        isActive && 'text-link dark:text-link-dark',
+      )}
+    >
+      {children}
+    </Link>
   );
 };
 

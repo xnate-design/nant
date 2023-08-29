@@ -9,6 +9,7 @@ import {
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
+  Rule,
 } from 'unocss';
 
 import type { UserConfig } from 'unocss';
@@ -98,8 +99,19 @@ const colors = {
   'red-10': '#F2DBD9', // unused
   'red-5': '#FAF1F0',
 };
+const shortcuts = {};
+
+const rules: Rule[] = [
+  ['max-width-nav', { 'max-width': 'calc(1536px - 64px)' }],
+  ['pl-nav-title', { 'padding-left': 'max(32px,calc((100% - (1536px - 64px)) / 2))' }],
+  ['height-nav-title', { height: 'calc(64px - 1px)' }],
+  ['width-top-nav', { width: 'calc((100% - (1536px - 64px)) / 2 + 288px - 32px)' }],
+  ['pr-top-content', { 'padding-right': 'calc((100vw - 1536px) / 2 + 32px)' }],
+  ['pl-top-content', { 'padding-left': 'calc((100vw - 1536px) / 2 + 288px)' }],
+];
 
 const unocssConfig: UserConfig = defineConfig({
+  rules,
   shortcuts: [
     // ...
   ],

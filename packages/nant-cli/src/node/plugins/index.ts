@@ -27,17 +27,7 @@ export const createVitePlugins = async (
   siteConfig: SiteConfig,
   recreateServer?: () => Promise<void>,
 ): Promise<PluginOption[]> => {
-  const {
-    srcDir,
-    configPath,
-    configDeps,
-    markdown,
-    site,
-    vite: userViteConfig,
-    pages,
-    lastUpdated,
-    cleanUrls,
-  } = siteConfig;
+  const { srcDir, configPath, configDeps, markdown, site, vite: userViteConfig, pages } = siteConfig;
 
   const siteData = site;
   let config: ResolvedConfig;

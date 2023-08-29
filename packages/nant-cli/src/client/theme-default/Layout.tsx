@@ -17,13 +17,15 @@ const Layout = (props: ILayout) => {
 
   const isHome = pathname === '/';
 
+  const hasSideBar = !isHome;
+
   console.log(config, 'config');
 
   console.log(pathname, 'pathname');
 
   let content = null;
 
-  if (pathname === '/') {
+  if (isHome) {
     content = <Home />;
   } else {
     content = (
@@ -36,10 +38,9 @@ const Layout = (props: ILayout) => {
   }
 
   return (
-    <div className="">
-      <TopNav />
-      layout nant ui
-      <main>{content}</main>
+    <div className="min-h-screen">
+      <TopNav hasSideBar={hasSideBar} />
+      <main className="pt-16">{content}</main>
     </div>
   );
 };
