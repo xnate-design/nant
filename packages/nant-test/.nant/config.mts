@@ -7,19 +7,37 @@ export default defineConfig({
     logo: '',
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Docs', link: '/docs/intro' },
+      { text: 'Guide', link: '/docs/intro', activeMatch: '/docs' },
+      { text: 'Components', link: '/components/button', activeMatch: '/components' },
     ],
 
     sidebar: {
-      '/guide': [
+      '/docs': [
         {
-          text: '介绍',
-          link: '/guide/intro',
+          text: 'Guide',
+          items: [
+            {
+              text: 'intro',
+              link: '/docs/intro',
+            },
+            {
+              text: 'start',
+              link: '/docs/start',
+            },
+          ],
         },
         {
-          text: '使用',
-          link: '/guide/usage',
+          text: 'Guide1',
+          items: [
+            {
+              text: 'intro',
+              link: '/docs/intro',
+            },
+            {
+              text: 'start',
+              link: '/docs/start',
+            },
+          ],
         },
       ],
       '/components': [

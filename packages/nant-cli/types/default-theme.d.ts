@@ -8,6 +8,7 @@ export namespace DefaultTheme {
     activeMatch?: string;
     target?: string;
     rel?: string;
+    items?: (NavItemWithChildren | NavItemWithLink)[];
   }
 
   export interface NavItemWithChildren {
@@ -18,7 +19,7 @@ export namespace DefaultTheme {
   }
 
   // SideBar
-  export type SideBar = SideBarItem[] | SideBarMulti;
+  export type SideBar = SideBarMulti;
 
   export interface SideBarItem {
     text?: string;
@@ -30,7 +31,7 @@ export namespace DefaultTheme {
   }
 
   export interface SideBarMulti {
-    [path: string]: SideBarItem[] | { items: SideBarItem[]; base: string };
+    [path: string]: SideBarItem[];
   }
 
   // EditLink

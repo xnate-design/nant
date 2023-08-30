@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams, useLocation, Outlet, useNavigate } from 'react-router-dom';
 import SiteContext from './SiteContext';
-import { TopNav } from './components/Layout';
+import { TopNav, SideBar, Main } from './components/Layout';
 import Home from './Home';
 
 interface ILayout {
@@ -16,12 +16,7 @@ const Layout = (props: ILayout) => {
   const config = useContext(SiteContext);
 
   const isHome = pathname === '/';
-
   const hasSideBar = !isHome;
-
-  console.log(config, 'config');
-
-  console.log(pathname, 'pathname');
 
   let content = null;
 
@@ -30,9 +25,9 @@ const Layout = (props: ILayout) => {
   } else {
     content = (
       <>
-        <div>
+        <Main hasSideBar={hasSideBar}>
           <Outlet />
-        </div>
+        </Main>
       </>
     );
   }
@@ -40,7 +35,8 @@ const Layout = (props: ILayout) => {
   return (
     <div className="min-h-screen">
       <TopNav hasSideBar={hasSideBar} />
-      <main className="pt-16">{content}</main>
+      {hasSideBar ? <SideBar /> : ''}
+      {content}
     </div>
   );
 };

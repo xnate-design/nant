@@ -25,17 +25,15 @@ export const TopNav = ({ hasSideBar = false }) => {
   const { nav, site } = useContext(SiteContext);
   const section = useActiveSection();
 
-  console.log(section, 'section');
-
   const [isOpen, setIsOpen] = useState(false);
 
-  const headerClass = clsx('fixed top-0 left-0 w-full', {
+  const headerClass = clsx('lg:fixed relative top-0 left-0 w-full z-20', {
     'h-screen sticky top-0 lg:bottom-0 lg:h-screen flex flex-col shadow-lg dark:shadow-lg z-20': isOpen,
   });
 
   const navClass = clsx(
-    'relative border-b border-transparent h-16 whitespace-nowrap pr-2 pl-6',
-    hasSideBar ? 'lg:p-0' : 'md:px-8',
+    'relative border-b border-transparent h-16 whitespace-nowrap pr-2 pl-6 md:px-8',
+    hasSideBar ? 'lg:p-0 ' : '',
   );
 
   const containerClass = clsx('flex justify-between m-auto ', hasSideBar ? 'lg:max-w-full' : 'max-width-nav');
@@ -56,14 +54,13 @@ export const TopNav = ({ hasSideBar = false }) => {
 
 const TopTitle = ({ hasSideBar = false, title = '' }) => {
   const titleClass = clsx('flex-shrink height-nav-title', {
-    'lg:absolute top-0 lg:left-0 lg:px-8 lg:w-18 lg:h-16 lg:bg-transparent 2xl:pl-nav-title 2xl:width-top-nav':
+    'lg:absolute top-0 lg:left-0 lg:px-8 lg:w-72 lg:h-16 lg:bg-transparent 2xl:pl-nav-title 2xl:width-top-nav':
       hasSideBar,
   });
 
-  const linkClass = clsx(
-    'border-b  flex items-center gap-2 border-transparent h-16 w-full text-base font-bold',
-    'lg:border-border' && hasSideBar,
-  );
+  const linkClass = clsx('border-b flex items-center gap-2 border-transparent h-16 w-full text-base font-bold ', {
+    'lg:border-divider lg:dark:border-divider-dark': hasSideBar,
+  });
 
   return (
     <div className={titleClass}>
@@ -92,7 +89,7 @@ const TopContent = ({ nav = [], section = '', hasSideBar = false }: TopContentPr
         <div className="flex-grow"></div>
         <nav className="md:flex hidden md:pr-4">
           {nav?.map((item, idx) => (
-            <NavItem key={idx} isActive={section === lowerCase(item.text)} url={item.link}>
+            <NavItem key={idx} isActive={section === item.activeMatch} url={item.link}>
               {item.text}
             </NavItem>
           ))}

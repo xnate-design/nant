@@ -29,6 +29,9 @@ const colors = {
 
   syntax: '',
 
+  alt: '#f6f6f7',
+  'alt-dark': '#161618',
+
   wash: '#FFFFFF',
   'wash-dark': '#1b1b1f',
 
@@ -36,9 +39,12 @@ const colors = {
   'card-dark': '#343A46', // gray-80
   highlight: '#E6F7FF', // blue-10
   'highlight-dark': 'rgba(88,175,223,.1)',
+
   border: '#EBECF0', // gray-10
   'border-dark': '#343A46', // gray-80
 
+  divider: '#e2e2e3',
+  'divider-dark': '#2e2e32',
   // Gray
   'gray-95': '#16181D',
   'gray-90': '#23272F',
@@ -108,6 +114,9 @@ const rules: Rule[] = [
   ['width-top-nav', { width: 'calc((100% - (1536px - 64px)) / 2 + 288px - 32px)' }],
   ['pr-top-content', { 'padding-right': 'calc((100vw - 1536px) / 2 + 32px)' }],
   ['pl-top-content', { 'padding-left': 'calc((100vw - 1536px) / 2 + 288px)' }],
+  ['pr-main-content', { 'padding-right': 'calc((100vw - 1536px) / 2)' }],
+  ['width-side-bar', { width: 'calc(100vw - 64px)' }],
+  ['transition-side-bar', { transition: 'opacity .5s,transform .25s ease' }],
 ];
 
 const unocssConfig: UserConfig = defineConfig({

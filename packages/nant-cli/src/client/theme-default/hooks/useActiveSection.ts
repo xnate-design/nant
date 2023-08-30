@@ -13,7 +13,7 @@ export const useActiveSection = () => {
 
   if (cleanedPath === '/') return 'home';
 
-  if (cleanedPath.startsWith(`/${s}`)) return s;
+  if (cleanedPath.startsWith(`/${s}`)) return `/${s}`;
 
   return 'unknown';
 };
