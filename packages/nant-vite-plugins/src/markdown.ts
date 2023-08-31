@@ -6,6 +6,10 @@ import remarkFrontMatter from 'remark-frontmatter';
 import externalLinks from 'remark-external-links';
 import images from 'remark-images';
 import unrwapImages from 'remark-unwrap-images';
+import withSlugs from 'rehype-slug';
+import withToc from '@stefanprobst/rehype-extract-toc';
+import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import { SourceMapGenerator } from 'source-map';
 import { VFile } from 'vfile';
@@ -31,6 +35,8 @@ export type RollupPluginOptions = {
  */
 export type Options = CompileOptions & RollupPluginOptions;
 
+export type { Toc } from '@stefanprobst/rehype-extract-toc';
+
 function rehypeMetaAsAttributes() {
   return (tree: any) => {
     visit(tree, 'element', (node) => {
@@ -43,7 +49,7 @@ function rehypeMetaAsAttributes() {
 
 export const nantMdx = (options?: Options): Plugin => {
   const remarkPlugins = [remarkGfm, remarkFrontMatter, externalLinks, images, unrwapImages];
-  const rehypePlugins = [rehypeMetaAsAttributes];
+  const rehypePlugins = [rehypeMetaAsAttributes, rehypeAutolinkHeadings, withSlugs, withToc, withTocExport];
 
   const { include, exclude, ...rest } = options || {};
   const { extnames, process } = createFormatAwareProcessors({

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams, useLocation, Outlet, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, Outlet, useNavigate, useLoaderData } from 'react-router-dom';
 import SiteContext from './SiteContext';
-import { TopNav, SideBar, Main } from './components/Layout';
+import { TopNav, SideBar, Main, MdxContainer } from './components/Layout';
 import Home from './Home';
+import type { Toc } from '@nant/vite-plugins';
 
 interface ILayout {
   children?: React.ReactElement;
@@ -14,9 +15,12 @@ const Layout = (props: ILayout) => {
   const { pathname } = useLocation();
 
   const config = useContext(SiteContext);
+  const toc = useLoaderData() as Toc;
 
   const isHome = pathname === '/';
   const hasSideBar = !isHome;
+
+  console.log(toc, 'toc');
 
   let content = null;
 

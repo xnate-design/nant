@@ -2,19 +2,6 @@ import { useContext, useState, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import SiteContext from '../../SiteContext';
-import { useActiveSection } from '../../hooks';
-import { Logo } from '../Logo';
-import { CloseOutline } from '@nant/nant-icons/dist/react/CloseOutline';
-import { ReorderFourOutline } from '@nant/nant-icons/dist/react/ReorderFourOutline';
-import { SearchOutline } from '@nant/nant-icons/dist/react/SearchOutline';
-import { SunnyOutline } from '@nant/nant-icons/dist/react/SunnyOutline';
-import { MoonOutline } from '@nant/nant-icons/dist/react/MoonOutline';
-import { LogoGithub } from '@nant/nant-icons/dist/react/LogoGithub';
-import { lowerCase } from 'lodash-es';
-
-import { DefaultTheme } from 'nant/theme';
-
 interface MainProps {
   children: ReactElement;
   hasSideBar: boolean;

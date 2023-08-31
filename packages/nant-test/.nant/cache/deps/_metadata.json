@@ -1,54 +1,48 @@
 {
-  "hash": "ff8df5f0",
-  "browserHash": "871b4075",
+  "hash": "d618e1d8",
+  "browserHash": "a1a92f5c",
   "optimized": {
     "react": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "347d7658",
+      "fileHash": "f9edcce1",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../../../../node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "1bf95d41",
+      "fileHash": "e1407626",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../../../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "39adb4c8",
+      "fileHash": "9d5767c3",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../../../../node_modules/.pnpm/react-router-dom@6.15.0_react-dom@18.2.0_react@18.2.0/node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "23da41ef",
+      "fileHash": "9a3b0f88",
       "needsInterop": false
     },
     "clsx": {
       "src": "../../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs",
       "file": "clsx.js",
-      "fileHash": "8c9dad5e",
+      "fileHash": "f7022632",
       "needsInterop": false
     },
     "prism-react-renderer": {
       "src": "../../../../../node_modules/.pnpm/prism-react-renderer@2.0.6_react@18.2.0/node_modules/prism-react-renderer/dist/index.mjs",
       "file": "prism-react-renderer.js",
-      "fileHash": "4efd47cf",
+      "fileHash": "b2adcbe9",
       "needsInterop": false
     },
     "parse-numeric-range": {
       "src": "../../../../../node_modules/.pnpm/parse-numeric-range@1.3.0/node_modules/parse-numeric-range/index.js",
       "file": "parse-numeric-range.js",
-      "fileHash": "3e5c005c",
+      "fileHash": "645ec186",
       "needsInterop": true
-    },
-    "lodash-es": {
-      "src": "../../../../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/lodash.js",
-      "file": "lodash-es.js",
-      "fileHash": "d51053be",
-      "needsInterop": false
     }
   },
   "chunks": {

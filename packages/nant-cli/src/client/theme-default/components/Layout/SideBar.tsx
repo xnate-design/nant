@@ -1,17 +1,9 @@
 import { useContext, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
-import { Logo } from '../Logo';
-import { CloseOutline } from '@nant/nant-icons/dist/react/CloseOutline';
-import { ReorderFourOutline } from '@nant/nant-icons/dist/react/ReorderFourOutline';
-import { SearchOutline } from '@nant/nant-icons/dist/react/SearchOutline';
-import { SunnyOutline } from '@nant/nant-icons/dist/react/SunnyOutline';
-import { MoonOutline } from '@nant/nant-icons/dist/react/MoonOutline';
-import { LogoGithub } from '@nant/nant-icons/dist/react/LogoGithub';
-import { lowerCase } from 'lodash-es';
+import { ChevronForwardOutline as ArrowRight } from '@nant/nant-icons/dist/react/ChevronForwardOutline';
 
 import { DefaultTheme } from 'nant/theme';
 
@@ -24,7 +16,7 @@ export const SideBar = () => {
     return sideBar[section];
   }, [sideBar, section]);
 
-  console.log(sideBarGroup, 'sideBarGroup');
+  console.log(pathname, 'sideBarGroup');
 
   const sideClass = clsx(
     'fixed top-0 bottom-0 left-0 px-8 pt-8 pb-24 width-side-bar max-w-xs opacity-0 lg:bg-alt lg:dark:bg=al-dark lg:translate-x-0 lg:w-72',
@@ -38,7 +30,14 @@ export const SideBar = () => {
       <div className={curtainClass}></div>
       <div className="">
         {sideBarGroup.map((sideBar, id) => {
-          return <SideGroup key={id} item={sideBar} level={0} />;
+          return (
+            <div
+              key={id}
+              className="lg:(pt-3 width-side-group) border-b-1 border-divider dark:border-divider-dark last:border-b-0 group"
+            >
+              <SideGroupItem item={sideBar} level={0} />
+            </div>
+          );
         })}
       </div>
     </aside>
@@ -50,33 +49,66 @@ interface SideGroupProps {
   level: number;
 }
 
-const SideGroup = ({ item = {}, level = 0 }: SideGroupProps) => {
+const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
+  const { pathname } = useLocation();
+  const [collapsed, setCollapsed] = useState(false);
+  console.log(item.link, pathname);
+
+  const itemClass = clsx(
+    item.link === pathname ? 'text-link dark:text-link-dark' : 'text-secondary dark:text-secondary-dark',
+    'flex items-center text-sm flex-grow py-1  font-medium capitalize hover:text-link hover:dark:text-link-dark',
+  );
+
+  const itemsClass = clsx('items', {
+    hidden: collapsed,
+  });
+
+  const iconClass = clsx('text-sm transition-transform', collapsed ? 'rotate-0' : 'rotate-90');
+
   const sideItem = () => {
     if (item.text) {
-      if (item.link) return <Link to={item.link}>{item.text}</Link>;
+      if (item.link)
+        return (
+          <div className="item relative w-full flex ">
+            <Link className={itemClass} to={item.link}>
+              {item.text}
+            </Link>
+          </div>
+        );
 
-      return <h2 className="">{item.text}</h2>;
+      return (
+        <div className="relative w-full flex cursor-pointer" onClick={() => setCollapsed(!collapsed)}>
+          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-sm py-1 dark:text-primary-dark">
+            {item.text}
+          </h2>
+          <button className="h-8 w-8 text-tertiary dark:text-tertiary-dark flex justify-center items-center -mr-2 cursor-pointer">
+            <ArrowRight className={iconClass} />
+          </button>
+        </div>
+      );
     }
   };
 
   const sideItems = () => {
     if (item.items && item.items.length) {
       return (
-        <>
+        <div className={itemsClass}>
           {item.items.map((subItem, sIdx) => {
-            return <SideGroup key={sIdx} item={subItem} level={level + 1} />;
+            return <SideGroupItem key={sIdx} item={subItem} level={level + 1} />;
           })}
-        </>
+        </div>
       );
     }
   };
 
+  const sectionClass = clsx('barItem ', {
+    'pb-6': !level,
+  });
+
   return (
-    <section className="md:pt-3">
-      <div className="">
-        {sideItem()}
-        {sideItems()}
-      </div>
+    <section className={sectionClass}>
+      {sideItem()}
+      {sideItems()}
     </section>
   );
 };

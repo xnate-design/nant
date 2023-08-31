@@ -116,6 +116,7 @@ const rules: Rule[] = [
   ['pl-top-content', { 'padding-left': 'calc((100vw - 1536px) / 2 + 288px)' }],
   ['pr-main-content', { 'padding-right': 'calc((100vw - 1536px) / 2)' }],
   ['width-side-bar', { width: 'calc(100vw - 64px)' }],
+  ['width-side-group', { width: 'calc(288px - 64px)' }],
   ['transition-side-bar', { transition: 'opacity .5s,transform .25s ease' }],
 ];
 
@@ -134,8 +135,12 @@ const unocssConfig: UserConfig = defineConfig({
     presetIcons(),
     presetTypography(),
     presetWebFonts({
+      provider: 'google',
       fonts: {
         // ...
+        base: [
+          // 'Inter',
+        ],
       },
     }),
   ],

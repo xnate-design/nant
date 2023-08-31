@@ -80,7 +80,9 @@ const TopContent = ({ nav = [], section = '', hasSideBar = false }: TopContentPr
   const contentClass = clsx('flex-grow pointer-events-none ', {
     '2xl:pr-top-content 2xl:pl-top-content lg:pl-72 lg:pr-8': hasSideBar,
   });
-  const contentBodyClass = clsx('flex flex-end items-center height-nav-title pointer-events-auto');
+  const contentBodyClass = clsx(
+    'flex flex-end items-center height-nav-title pointer-events-auto bg-wash dark:bg-wash-dark',
+  );
 
   const themeBtnClass = clsx('');
   return (

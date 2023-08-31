@@ -4,6 +4,8 @@ import { getRouterConfig } from './router.jsx';
 import 'virtual:uno.css';
 import '@unocss/reset/tailwind.css';
 
+// import './styles/index.css';
+
 const routerConfig = getRouterConfig();
 const router = createBrowserRouter(routerConfig);
 
