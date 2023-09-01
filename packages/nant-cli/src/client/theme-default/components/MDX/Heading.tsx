@@ -1,6 +1,9 @@
 import cn from 'clsx';
 import * as React from 'react';
 import { forwardRefWithAs } from '../forwardRefWithAs';
+
+import { LinkOutline } from '@nant/nant-icons/dist/react/LinkOutline';
+
 export interface HeadingProps {
   className?: string;
   isPageAnchor?: boolean;
@@ -8,8 +11,6 @@ export interface HeadingProps {
   id?: string;
   as?: any;
 }
-
-import style from './styles/base.css?inline';
 
 const Heading = forwardRefWithAs<HeadingProps, 'div'>(function Heading(
   { as: Comp = 'div', className, children, id, isPageAnchor = true, ...props },
@@ -20,22 +21,20 @@ const Heading = forwardRefWithAs<HeadingProps, 'div'>(function Heading(
     label = 'Link for ' + children;
   }
 
+  const headClass = cn(className, 'flex items-center gap-2');
+
+  const anchorClass = cn('');
+
   return (
-    <Comp id={id} {...props} ref={ref} className={cn('mdx-heading', className)}>
-      {children}
+    <Comp id={id} {...props} ref={ref} className={headClass}>
       {isPageAnchor && (
-        <a
-          href={`#${id}`}
-          aria-label={label}
-          title={label}
-          className={cn('mdx-header-anchor', Comp === 'h1' ? 'hidden' : 'inline-block')}
-        >
+        <a href={`#${id}`} aria-label={label} title={label} className={cn('mdx-header-anchor')}>
           <svg
             width="1em"
             height="1em"
             viewBox="0 0 13 13"
             xmlns="http://www.w3.org/2000/svg"
-            className="text-gray-70 ml-2 h-5 w-5"
+            className="text-2xl text-link dark:text-link-dark"
           >
             <g fill="currentColor" fillRule="evenodd">
               <path d="M7.778 7.975a2.5 2.5 0 0 0 .347-3.837L6.017 2.03a2.498 2.498 0 0 0-3.542-.007 2.5 2.5 0 0 0 .006 3.543l1.153 1.15c.07-.29.154-.563.25-.773.036-.077.084-.16.14-.25L3.18 4.85a1.496 1.496 0 0 1 .002-2.12 1.496 1.496 0 0 1 2.12 0l2.124 2.123a1.496 1.496 0 0 1-.333 2.37c.16.246.42.504.685.752z" />
@@ -44,12 +43,13 @@ const Heading = forwardRefWithAs<HeadingProps, 'div'>(function Heading(
           </svg>
         </a>
       )}
+      {children}
     </Comp>
   );
 });
 
 export const H1 = ({ className, ...props }: HeadingProps) => (
-  <Heading as="h1" className={cn(className, 'text-5xl font-display font-bold leading-tight')} {...props} />
+  <Heading as="h1" className={cn(className, 'text-4xl font-display font-bold leading-tight')} {...props} />
 );
 
 export const H2 = ({ className, ...props }: HeadingProps) => (

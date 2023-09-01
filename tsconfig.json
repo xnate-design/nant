@@ -4,6 +4,7 @@
     "strict": true,
     "declaration": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     // skip declare file type check
     "skipLibCheck": true,
     // 是否通过为所有导入模块创建命名空间对象，允许CommonJS和ES模块之间的互操作性，开启改选项时，也自动开启- allowSyntheticDefaultImports选项，默认：false。

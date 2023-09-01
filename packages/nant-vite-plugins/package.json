@@ -23,6 +23,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
+    "@nant/cli": "workspace:*",
     "@babel/core": "^7.22.10",
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@babel/preset-react": "^7.22.5",

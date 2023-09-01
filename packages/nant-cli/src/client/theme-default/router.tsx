@@ -5,20 +5,6 @@ import { MDXComponents } from './components/MDX/MDXComponents';
 import { MdxContainer } from './components/Layout';
 import siteData from '@siteData';
 import Layout from './Layout';
-import { Toc } from '@nant/vite-plugins';
-
-const LazyImportComponent = (props: { lazyChildren: any }) => {
-  const toc = useLoaderData() as Toc;
-
-  console.log(toc, 'lazyChildren');
-
-  return (
-    <React.Suspense fallback={null}>
-      {/* {props.lazyChildren({ components: MDXComponents })} */}
-      <props.lazyChildren components={MDXComponents} />
-    </React.Suspense>
-  );
-};
 
 export const getRouterConfig = () => {
   const { pages } = siteData;

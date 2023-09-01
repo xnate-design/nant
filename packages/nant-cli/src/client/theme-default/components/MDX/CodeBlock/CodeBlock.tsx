@@ -3,7 +3,6 @@ import { Highlight, themes } from 'prism-react-renderer';
 import rangeParser from 'parse-numeric-range';
 // import theme from '../../../../common/theme/codeTheme';
 import React from 'react';
-import NantIcon from '../../Icons';
 
 interface CodeBlockProps {
   children: React.ReactNode & {

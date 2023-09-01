@@ -9,7 +9,7 @@
     "nant": "./lib/node/bin.js"
   },
   "scripts": {
-    "dev": "tsc --watch --sourcemap",
+    "dev": "rimraf ./lib && tsc --watch --sourcemap",
     "build": "rimraf ./lib && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

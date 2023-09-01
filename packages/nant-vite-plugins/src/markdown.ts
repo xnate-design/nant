@@ -33,7 +33,12 @@ export type RollupPluginOptions = {
 /**
  * Configuration.
  */
-export type Options = CompileOptions & RollupPluginOptions;
+
+type Components = {
+  componentKeys?: string[];
+};
+
+export type Options = Components & CompileOptions & RollupPluginOptions;
 
 export type { Toc } from '@stefanprobst/rehype-extract-toc';
 

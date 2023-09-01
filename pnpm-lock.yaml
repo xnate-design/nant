@@ -234,6 +234,9 @@ importers:
       '@mdx-js/mdx':
         specifier: ^2.3.0
         version: 2.3.0
+      '@nant/cli':
+        specifier: workspace:*
+        version: link:../nant-cli
       '@rollup/pluginutils':
         specifier: ^5.0.3
         version: 5.0.3(rollup@3.28.1)
