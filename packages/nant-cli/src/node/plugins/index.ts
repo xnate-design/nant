@@ -188,9 +188,13 @@ export const createVitePlugins = async (
     },
   };
 
+  const options = {
+    // providerImportSource: '@mdx-js/react',
+  };
+
   return [
     nantPlugin,
-    nantMdx({ development: true }),
+    nantMdx({ development: true, ...options }),
     react({
       include: /\.(mdx|md|js|jsx|ts|tsx)$/,
     }),

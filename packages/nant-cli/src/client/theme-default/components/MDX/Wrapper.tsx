@@ -1,4 +1,4 @@
-interface WrapperMdxProps {
+export interface WrapperMdxProps {
   children?: React.ReactElement;
 }
 

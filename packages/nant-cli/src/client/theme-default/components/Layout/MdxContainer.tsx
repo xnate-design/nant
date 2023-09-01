@@ -2,6 +2,7 @@ import type { Toc } from '@nant/vite-plugins';
 import React, { LazyExoticComponent } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { MDXComponents } from '../MDX/MDXComponents';
+
 import clsx from 'clsx';
 
 interface WrapperMdxProps {
@@ -11,7 +12,8 @@ interface WrapperMdxProps {
 export function MdxContainer(props: WrapperMdxProps) {
   const toc = useLoaderData() as Toc;
 
-  console.log(toc);
+  const { lazyChildren } = props;
+  console.log(lazyChildren);
 
   const mainClass = clsx('w-full px-6 pt-8 pb-28', 'lg:(pt-8) md:(pt-12 pb-32)');
 

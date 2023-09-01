@@ -54,7 +54,7 @@ function rehypeMetaAsAttributes() {
 
 export const nantMdx = (options?: Options): Plugin => {
   const remarkPlugins = [remarkGfm, remarkFrontMatter, externalLinks, images, unrwapImages];
-  const rehypePlugins = [rehypeMetaAsAttributes, rehypeAutolinkHeadings, withSlugs, withToc, withTocExport];
+  const rehypePlugins = [rehypeMetaAsAttributes, rehypeAutolinkHeadings, withSlugs, withToc];
 
   const { include, exclude, ...rest } = options || {};
   const { extnames, process } = createFormatAwareProcessors({
@@ -72,6 +72,8 @@ export const nantMdx = (options?: Options): Plugin => {
       if (file.extname && filter(file.path) && extnames.includes(file.extname)) {
         const compiled = await process(file);
         const code = String(compiled.value);
+        console.log(code, 'generated');
+
         const result = { code, map: compiled.map };
         return result;
       }
