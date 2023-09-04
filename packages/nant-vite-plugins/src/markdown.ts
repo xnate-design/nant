@@ -15,6 +15,7 @@ import { SourceMapGenerator } from 'source-map';
 import { VFile } from 'vfile';
 import { createFilter } from '@rollup/pluginutils';
 import { createFormatAwareProcessors } from '@mdx-js/mdx/lib/util/create-format-aware-processors.js';
+import { compile } from '@mdx-js/mdx';
 
 export type CompileOptions = Omit<import('@mdx-js/mdx').CompileOptions, 'SourceMapGenerator'>;
 /**
@@ -55,14 +56,10 @@ function rehypeMetaAsAttributes() {
 export const nantMdx = (options?: Options): Plugin => {
   const remarkPlugins = [remarkGfm, remarkFrontMatter, externalLinks, images, unrwapImages];
   const rehypePlugins = [rehypeMetaAsAttributes, rehypeAutolinkHeadings, withSlugs, withToc];
+  const { include, exclude, development, ...rest } = options || {};
+  const extnames: string[] = ['.md', '.mdx'];
+  const jsxEnv = development || development === undefined ? '_jsxDEV' : '_jsx';
 
-  const { include, exclude, ...rest } = options || {};
-  const { extnames, process } = createFormatAwareProcessors({
-    SourceMapGenerator,
-    remarkPlugins,
-    rehypePlugins,
-    ...rest,
-  });
   const filter = createFilter(include, exclude);
   return {
     name: 'vite-plugin-nant-mdx',
@@ -70,10 +67,21 @@ export const nantMdx = (options?: Options): Plugin => {
     async transform(value, path) {
       const file: any = new VFile({ value, path });
       if (file.extname && filter(file.path) && extnames.includes(file.extname)) {
-        const compiled = await process(file);
-        const code = String(compiled.value);
-        console.log(code, 'generated');
+        const compiled = await compile(value, {
+          rehypePlugins,
+          remarkPlugins,
+          development,
+          ...rest,
+        });
 
+        const { data } = compiled;
+        const toc = JSON.stringify({ toc: data.toc ?? [] });
+        const jsxCode = String(compiled.value);
+        const suffix = `export default function(props) {
+          return ${jsxEnv}("div", { children: ${jsxEnv}(MDXContent, Object.assign({}, props, ${toc})) })
+        }`;
+
+        const code = jsxCode.replace('export default MDXContent;', suffix);
         const result = { code, map: compiled.map };
         return result;
       }

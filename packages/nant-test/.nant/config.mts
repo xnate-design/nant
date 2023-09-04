@@ -26,19 +26,6 @@ export default defineConfig({
             },
           ],
         },
-        {
-          text: 'Guide1',
-          items: [
-            {
-              text: 'intro',
-              link: '/docs/intro',
-            },
-            {
-              text: 'start',
-              link: '/docs/start',
-            },
-          ],
-        },
       ],
       '/components': [
         {

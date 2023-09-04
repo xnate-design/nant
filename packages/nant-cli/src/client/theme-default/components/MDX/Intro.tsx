@@ -5,7 +5,5 @@ export interface IntroProps {
 }
 
 export function Intro({ children }: IntroProps) {
-  return (
-    <div className="font-display text-[17px]  text-primary dark:text-primary-dark leading-relaxed">{children}</div>
-  );
+  return <div className="font-display text-[16px] text-primary dark:text-primary-dark leading-relaxed">{children}</div>;
 }
