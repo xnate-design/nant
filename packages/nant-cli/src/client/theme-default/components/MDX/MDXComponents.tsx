@@ -5,6 +5,8 @@ import { Intro } from './Intro';
 import WrapperMdx from './Wrapper';
 import ConsoleBlock from './ConsoleBlock';
 import ExpandableCallout from './ExpandableCallout';
+import TerminalBlock from './TerminalBlock';
+import clsx from 'clsx';
 
 const P = (p: JSX.IntrinsicElements['p']) => <p className="whitespace-pre-wrap leading-7 my-4" {...p} />;
 const Strong = (strong: JSX.IntrinsicElements['strong']) => <strong className="font-bold" {...strong} />;
@@ -27,9 +29,37 @@ const Blockquote = ({ children, ...props }: JSX.IntrinsicElements['blockquote'])
 const Note = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="note">{children}</ExpandableCallout>
 );
+const Wip = ({ children }: { children: React.ReactNode }) => (
+  <ExpandableCallout type="wip">{children}</ExpandableCallout>
+);
+const Pitfall = ({ children }: { children: React.ReactNode }) => (
+  <ExpandableCallout type="pitfall">{children}</ExpandableCallout>
+);
+const Deprecated = ({ children }: { children: React.ReactNode }) => (
+  <ExpandableCallout type="deprecated">{children}</ExpandableCallout>
+);
 
 function Image(props: any) {
   return <img className="max-w-[calc(min(700px,100%))]" {...props} />;
+}
+
+function CodeStep({ children, step }: { children: any; step: number }) {
+  return (
+    <span
+      data-step={step}
+      className={clsx(
+        'code-step bg-opacity-10 dark:bg-opacity-20 relative rounded px-[6px] py-[1.5px] border-b-[2px] border-opacity-60',
+        {
+          'bg-blue-40 border-blue-40 text-blue-60 dark:text-blue-30': step === 1,
+          'bg-yellow-40 border-yellow-40 text-yellow-60 dark:text-yellow-30': step === 2,
+          'bg-purple-40 border-purple-40 text-purple-60 dark:text-purple-30': step === 3,
+          'bg-green-40 border-green-40 text-green-60 dark:text-green-30': step === 4,
+        },
+      )}
+    >
+      {children}
+    </span>
+  );
 }
 
 export const MDXComponents = {
@@ -51,4 +81,9 @@ export const MDXComponents = {
   Intro,
   ConsoleBlock,
   Note,
+  Wip,
+  Pitfall,
+  Deprecated,
+  TerminalBlock,
+  CodeStep,
 };

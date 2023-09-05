@@ -1,9 +1,9 @@
-import cn from 'clsx';
-import { Highlight, themes } from 'prism-react-renderer';
+import clsx from 'clsx';
+import { Highlight } from 'prism-react-renderer';
 import rangeParser from 'parse-numeric-range';
 // import theme from '../../../../common/theme/codeTheme';
 import React from 'react';
-
+import themes from '../../../theme';
 interface CodeBlockProps {
   children: React.ReactNode & {
     props: {
@@ -47,48 +47,47 @@ interface childPropsType {
 const CodeBlock = (props: CodeBlockProps) => {
   const [isCopied, setIsCopied] = React.useState(false);
   const childProps: childPropsType = props.children || {};
-  const { className = '', children = '', live = false, file = '', light = '' } = childProps.props || {};
+  const { className = '', children = '', meta = '' } = childProps.props || {};
+
+  const metaList = meta.split(' ');
+  const showLineNumbers = meta.match(/showLineNumber/g);
+  const lightString = meta.match(/\{([^}]+)\}/g);
+  const light = lightString?.[0]?.slice(1, -1);
+
+  console.log(meta, 'CodeBlock');
+
   const code = children.trim();
   const language = className.replace(/language-/, '');
-  const highlights = calculateLinesToHighlight(light || '');
+  const highlights = calculateLinesToHighlight(light ?? '');
+
+  const codeClass = clsx('bg-wash dark:bg-alt-dark rounded-2xl shadow-lg overflow-x-auto my-8');
+
+  const wrapperClass = clsx('w-full sp-wrapper');
   return (
-    <div className=" ">
-      <div className=" dark:text-primary-dark"></div>
-      <div className="xnate-site-md__code-tab">
-        <div className="xnate-site-md__code-tab-left">{file && `${file}`}</div>
-        <div className="xnate-site-md__code-tab-right">
-          <span
-            className="xnate-site-md__code-tab-icon"
-            onClick={() => {
-              copyToClipboard(code);
-              setIsCopied(true);
-              setTimeout(() => setIsCopied(false), 1000);
-            }}
-          >
-            {isCopied ? '🎉 Copied!' : ''}
-          </span>
-        </div>
-      </div>
-      <div className="xnate-site-md__code-box">
-        <Highlight code={code} language={language} theme={themes.nightOwl}>
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className="xnate-site-md__code-box-pre font-source-code">
-              {tokens.map((line, i) => (
-                <div
-                  key={i}
-                  {...getLineProps({ line, key: i })}
-                  style={{
-                    background: highlights(i) ? '#00f5c426' : 'transparent',
-                    display: 'block',
-                    lineHeight: '1.375',
-                  }}
-                >
-                  <span className="xnate-site-md__code-box-number">{i + 1}</span>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
+    <div className={codeClass}>
+      <div className={wrapperClass}>
+        <Highlight code={code} language={language} theme={themes}>
+          {({ tokens, getLineProps, getTokenProps }) => (
+            <pre className="font-wotfard text-[15px]">
+              <code className="leading-6 py-8 font-base block ">
+                {tokens.map((line, i) => (
+                  <div
+                    key={i}
+                    {...getLineProps({ line, key: i })}
+                    className="ml-2 flex"
+                    style={{
+                      background: highlights(i) ? '#00f5c426' : 'transparent',
+                      display: 'block',
+                      lineHeight: '1.375',
+                    }}
+                  >
+                    {showLineNumbers ? <span className="inline-block text-sm w-6 text-right mr-4">{i + 1}</span> : ''}
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </code>
             </pre>
           )}
         </Highlight>

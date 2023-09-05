@@ -1,0 +1,49 @@
+
+
+
+/* Default theme */
+html .nant-mdx {
+  --sp-colors-accent: #087ea4;
+  --sp-colors-clickable: #959da5;
+  --sp-colors-disabled: #24292e;
+  --sp-colors-error: #811e18;
+  --sp-colors-error-surface: #ffcdca;
+  --sp-colors-surface1: #fff;
+  --sp-colors-surface2: #e4e7eb;
+  --sp-colors-divider: #e2e2e3;
+  --sp-colors-soft: #f6f6f7;
+
+
+  --sp-syntax-color-plain: #24292e;
+  --sp-syntax-color-comment: #6a737d;
+  --sp-syntax-color-keyword: #d73a49;
+  --sp-syntax-color-tag: #22863a;
+  --sp-syntax-color-punctuation: #24292e;
+  --sp-syntax-color-definition: #6f42c1;
+  --sp-syntax-color-property: #005cc5;
+  --sp-syntax-color-static: #032f62;
+  --sp-syntax-color-string: #032f62;
+}
+
+/* Dark theme */
+html.dark .nant-mdx {
+  --sp-colors-accent: #149eca;
+  --sp-colors-clickable: #999;
+  --sp-colors-disabled: #fff;
+  --sp-colors-error: #811e18;
+  --sp-colors-error-surface: #ffcdca;
+  --sp-colors-surface1: #16181d;
+  --sp-colors-surface2: #343a46;
+  --sp-colors-divider: #2e2e32;
+  --sp-colors-soft: #202127;
+
+  --sp-syntax-color-plain: #ffffff;
+  --sp-syntax-color-comment: #757575;
+  --sp-syntax-color-keyword: #77b7d7;
+  --sp-syntax-color-tag: #dfab5c;
+  --sp-syntax-color-punctuation: #ffffff;
+  --sp-syntax-color-definition: #86d9ca;
+  --sp-syntax-color-property: #77b7d7;
+  --sp-syntax-color-static: #c64640;
+  --sp-syntax-color-string: #977cdc;
+}

@@ -56,7 +56,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
 
   const itemClass = clsx(
     item.link === pathname ? 'text-link dark:text-link-dark' : 'text-secondary dark:text-secondary-dark',
-    'flex items-center text-sm flex-grow py-1  font-medium capitalize hover:text-link hover:dark:text-link-dark',
+    'flex items-center text-[15px] flex-grow py-1  font-medium capitalize hover:text-link hover:dark:text-link-dark',
   );
 
   const itemsClass = clsx('items', {

@@ -6,7 +6,7 @@
 
 <Intro>
 
-Some things on the screen update in response to user input. For example,
+测试自定义React组件 规范dd
 
 </Intro>
 
@@ -26,19 +26,67 @@ There is no one-to-one replacement for the old render callback API — it depend
 
 </Note>
 
+## Deprecated
+
+<Deprecated>
+
+This API will be removed in a future major version of React. [Use `createRef` instead.](/reference/react/createRef)
+
+</Deprecated>
+
+## Pitfall
+
+<Pitfall>
+
+This API will be removed in a future major version of React. [Use `createRef` instead.](/reference/react/createRef)
+
+</Pitfall>
+
+## Wip
+
+<Wip>
+
+This API will be removed in a future major version of React. [Use `createRef` instead.](/reference/react/createRef)
+
+</Wip>
+
+
+## TerminalBlock
+
+<TerminalBlock>
+npm help
+</TerminalBlock>
+
+## CodeStep
+
+<CodeStep step={1}>codeStep1</CodeStep>
+<CodeStep step={2}>codeStep2</CodeStep>
+<CodeStep step={3}>codeStep3</CodeStep>
+<CodeStep step={4}>codeStep4</CodeStep>
+
 ## CodeBlock
 
-```js
-class Greeting extends Component {
-  render() {
-    return <h1>Hello, {this.props.name}!</h1>;
+```jsx showLineNumber {1,4-6,11}
+export default function MyApp () {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
   }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
 }
 ```
 
 ## blockquote
 
-> Note
+> Blockquote
 >
 > `useId` is **not** for generating [keys in a list](/learn/rendering-lists#where-to-get-your-key). Keys should be generated from your data.
 
@@ -51,3 +99,12 @@ class Greeting extends Component {
 ![JS执行顺序](https://media.wangbaoqi.tech/assets/blog/browser/event_1.webp)
 
 
+你好 测试
+我们是一个非常牛逼的任务
+
+
+| Tables        |      Are      |  Cool |  Cool |
+| ------------- | :-----------: | ----: | ----: |
+| col 3 is      | right-aligned | $1600 | $1600 |
+| col 2 is      |   centered    |   $12 |   $12 |
+| zebra stripes |   are neat    |    $1 |   $12 |

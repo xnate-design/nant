@@ -135,12 +135,10 @@ const unocssConfig: UserConfig = defineConfig({
     presetIcons(),
     presetTypography(),
     presetWebFonts({
-      provider: 'google',
       fonts: {
-        // ...
-        base: [
-          // 'Inter',
-        ],
+        provider: 'google',
+        mono: ['Fira Code', 'Fira Mono:400,700'],
+        base: ['Source Code Pro', 'monospace'],
       },
     }),
   ],
