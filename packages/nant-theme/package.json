@@ -1,0 +1,30 @@
+{
+  "name": "@nant/theme-default",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsc --watch --sourcemap",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@nant/nant-icons": "workspace:*",
+    "@nant/vite-plugins": "workspace:*",
+    "@types/lodash-es": "^4.17.8",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "typescript": "^4.7.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "lodash-es": "^4.17.21",
+    "parse-numeric-range": "^1.3.0",
+    "prism-react-renderer": "^2.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
+  }
+}

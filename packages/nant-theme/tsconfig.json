@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "paths": {
+      "nant/theme": ["./theme-default.d.ts"]
+    }
+  },
+  "include": ["src/**/*", "theme-default.d.ts"]
+}

@@ -1,11 +1,13 @@
 import fse from 'fs-extra';
 import path from 'path';
+
+import { isObject } from '@nant/shared';
 import logger from '../shared/logger.js';
 import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, normalizePath } from 'vite';
-import { APPEARANCE_KEY, DEFAULT_THEME_DIR } from '../shared/constant.js';
+import { DEFAULT_THEME_DIR } from '../shared/constant.js';
 import { compilePage } from '../compiler/compilePage.js';
 import type { ConfigEnv } from 'vite';
-import type { SiteData, HeadConfig, DefaultTheme } from '../../../types/shared';
+import type { SiteData, DefaultTheme } from '../../../types/shared';
 import type { RawConfigExports, UserConfig, SiteConfig } from './siteConfig.js';
 
 const supportConfigExts = ['js', 'ts', 'mjs', 'mts'];
@@ -52,38 +54,6 @@ function mergeConfig(a: UserConfig, b: UserConfig, isRoot = true) {
   return merged;
 }
 
-function isObject(value: unknown): value is Record<string, any> {
-  return Object.prototype.toString.call(value) === '[object Object]';
-}
-
-function resolveSiteDataHead(userConfig?: UserConfig): HeadConfig[] {
-  const head = userConfig?.head ?? [];
-
-  // add inline script to apply dark mode, if user enables the feature.
-  // this is required to prevent "flash" on initial page load.
-  if (userConfig?.appearance ?? true) {
-    // if appearance mode set to light or dark, default to the defined mode
-    // in case the user didn't specify a preference - otherwise, default to auto
-    const fallbackPreference = userConfig?.appearance !== true ? userConfig?.appearance ?? '' : 'auto';
-
-    head.push([
-      'script',
-      { id: 'check-dark-light' },
-      `
-        ;(() => {
-          const preference = localStorage.getItem('${APPEARANCE_KEY}') || '${fallbackPreference}'
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          if (!preference || preference === 'auto' ? prefersDark : preference === 'dark') {
-            document.documentElement.classList.add('dark')
-          }
-        })()
-      `,
-    ]);
-  }
-
-  return head;
-}
-
 export async function resolveSiteData(
   root: string,
   userConfig?: UserConfig,
@@ -93,17 +63,10 @@ export async function resolveSiteData(
   userConfig = userConfig || (await resolveUserConfig(root, command, mode))[0];
 
   return {
-    lang: userConfig.lang || 'en-US',
-    dir: userConfig.dir || 'ltr',
     title: userConfig.title || 'Nant',
-    titleTemplate: userConfig.titleTemplate,
     description: userConfig.description || 'A Nant site',
     base: userConfig.base ? userConfig.base.replace(/([^/])$/, '$1/') : '/',
-    head: resolveSiteDataHead(userConfig),
-    appearance: userConfig.appearance ?? true,
     themeConfig: userConfig.themeConfig || {},
-    locales: userConfig.locales || {},
-    contentProps: userConfig.contentProps,
   };
 }
 
@@ -178,7 +141,6 @@ export async function resolveConfig(
     logger,
     tempDir: resolve(root, '.temp'),
     vite: userConfig.vite,
-    markdown: userConfig.markdown,
   };
 
   return config;

@@ -7,6 +7,7 @@ import type { Alias, AliasOptions } from 'vite';
 const PKG_ROOT = resolve(fileURLToPath(import.meta.url), '../../..');
 
 export const DIST_CLIENT_PATH = resolve(PKG_ROOT, 'client');
+
 export const APP_PATH = join(DIST_CLIENT_PATH, 'app');
 export const SHARED_PATH = join(DIST_CLIENT_PATH, 'shared');
 export const DEFAULT_THEME_PATH = join(DIST_CLIENT_PATH, 'theme-default');
@@ -28,6 +29,10 @@ export const resolveAliases = ({ root, themeDir }: SiteConfig): AliasOptions => 
       find: path,
       replacement: paths[path],
     })),
+    {
+      find: /^nant\/share$/,
+      replacement: join(DIST_CLIENT_PATH, '/share.js'),
+    },
     {
       find: /^nant$/,
       replacement: join(DIST_CLIENT_PATH, '/index.js'),

@@ -117,6 +117,7 @@ const rules: Rule[] = [
   ['pr-main-content', { 'padding-right': 'calc((100vw - 1536px) / 2)' }],
   ['width-side-bar', { width: 'calc(100vw - 64px)' }],
   ['width-side-group', { width: 'calc(288px - 64px)' }],
+  ['height-side-content', { height: 'calc(100vh - 64px - 32px)' }],
   ['transition-side-bar', { transition: 'opacity .5s,transform .25s ease' }],
 ];
 

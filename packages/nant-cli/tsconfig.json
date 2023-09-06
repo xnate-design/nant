@@ -4,6 +4,7 @@
     "outDir": "lib",
     "paths": {
       "nant": ["./src/client/index.ts"],
+      "nant/shared": ["./types/shared.d.ts"],
       "nant/theme": ["./types/default-theme.d.ts"]
     }
   },

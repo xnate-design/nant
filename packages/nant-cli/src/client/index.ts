@@ -1,3 +1,3 @@
-// nant index.js
+// export type { Theme } from './app/theme';
 
-export type { Theme } from './app/theme';
+export type * from '../../types/shared';

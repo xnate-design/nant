@@ -27,7 +27,7 @@ export const createVitePlugins = async (
   siteConfig: SiteConfig,
   recreateServer?: () => Promise<void>,
 ): Promise<PluginOption[]> => {
-  const { srcDir, configPath, configDeps, markdown, site, vite: userViteConfig, pages } = siteConfig;
+  const { srcDir, configPath, configDeps, site, vite: userViteConfig, pages } = siteConfig;
 
   const siteData = site;
   let config: ResolvedConfig;
@@ -60,7 +60,7 @@ export const createVitePlugins = async (
           alias: resolveAliases(siteConfig),
         },
         optimizeDeps: {
-          include: ['react/jsx-dev-runtime'],
+          include: ['react/jsx-runtime'],
         },
         server: {
           fs: {
@@ -155,7 +155,7 @@ export const createVitePlugins = async (
   </head>
   <body class="antialiased min-h-screen w-full text-base bg-wash dark:bg-wash-dark text-primary dark:text-primary-dark">
     <div id="root"></div>
-    <script type="module" src="/@fs/${APP_PATH}/index.jsx"></script>
+    <script type="module" src="/@fs/${DIST_CLIENT_PATH}/main.jsx"></script>
   </body>
 </html>
             `;

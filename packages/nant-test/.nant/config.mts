@@ -5,7 +5,6 @@ export default defineConfig({
   description: 'nant react component ui',
   themeConfig: {
     logo: '',
-
     nav: [
       { text: 'Guide', link: '/docs/intro', activeMatch: '/docs' },
       { text: 'Components', link: '/components/button', activeMatch: '/components' },
@@ -39,7 +38,6 @@ export default defineConfig({
         },
       ],
     },
-
     socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
   },
 });
