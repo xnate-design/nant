@@ -7,4 +7,5 @@ export interface SiteData<ThemeConfig = any> {
   title?: string;
   description: string;
   themeConfig: ThemeConfig;
+  pages?: any[];
 }

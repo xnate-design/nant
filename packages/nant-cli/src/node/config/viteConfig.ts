@@ -1,7 +1,6 @@
 import react from '@vitejs/plugin-react';
 import Inspect from 'vite-plugin-inspect';
 import UnoCSS from 'unocss/vite';
-import { html } from '@nant/vite-plugins';
 import { resolveAliases, APP_PATH } from './alias.js';
 import { mdxPlugin } from '../plugins/markdown.js';
 
@@ -45,7 +44,7 @@ export const resolveInlineConfig = (config: SiteConfig): InlineConfig => {
     resolve,
     optimizeDeps,
     server,
-    plugins: [react(), html(injectHtmlData), Inspect(), UnoCSS()],
+    plugins: [react(), Inspect(), UnoCSS()],
     base: site?.base,
     configFile: vite?.configFile,
   };

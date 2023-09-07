@@ -1,7 +1,6 @@
 import fse from 'fs-extra';
 import path from 'path';
 
-import { isObject } from '@nant/shared';
 import logger from '../shared/logger.js';
 import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, normalizePath } from 'vite';
 import { DEFAULT_THEME_DIR } from '../shared/constant.js';
@@ -27,6 +26,10 @@ async function resolveConfigExtends(config: RawConfigExports): Promise<UserConfi
     return mergeConfig(base, resolved);
   }
   return resolved;
+}
+
+function isObject(value: unknown): value is Record<string, any> {
+  return Object.prototype.toString.call(value) === '[object Object]';
 }
 
 function mergeConfig(a: UserConfig, b: UserConfig, isRoot = true) {
@@ -125,6 +128,7 @@ export async function resolveConfig(
   const themeDir = (await fse.pathExists(useThemeDir)) ? useThemeDir : DEFAULT_THEME_DIR;
 
   const pages = await compilePage(srcDir, userConfig);
+  Object.assign(site, { pages });
 
   const config: SiteConfig = {
     root,

@@ -4,9 +4,7 @@ import siteData from '@siteData';
 import Layout from './Layout';
 
 export const getRouterConfig = () => {
-  const { pages } = siteData;
-
-  console.log(pages, 'pages');
+  const { pages = [] } = siteData;
 
   const router = [
     {

@@ -206,9 +206,6 @@ importers:
       '@nant/nant-icons':
         specifier: workspace:*
         version: link:../nant-icons
-      '@nant/vite-plugins':
-        specifier: workspace:*
-        version: link:../nant-vite-plugins
       '@types/lodash-es':
         specifier: ^4.17.8
         version: 4.17.8

@@ -1,12 +1,13 @@
 import type { Logger, UserConfig as ViteConfig } from 'vite';
 import type { SiteData, Awaitable } from '../../../types/shared';
 
-export interface UserConfig<ThemeConfig = any> {
-  extends?: RawConfigExports<ThemeConfig>;
-
+export interface LocaleSpecificConfig<ThemeConfig = any> {
   title?: string;
   description?: string;
   themeConfig?: ThemeConfig;
+}
+export interface UserConfig<ThemeConfig = any> extends LocaleSpecificConfig<ThemeConfig> {
+  extends?: RawConfigExports<ThemeConfig>;
 
   base?: string;
   srcDir?: string;
@@ -38,5 +39,4 @@ export interface SiteConfig<ThemeConfig = any> extends Pick<UserConfig, 'vite'> 
   pages: string[];
   logger: Logger;
   userConfig: UserConfig<ThemeConfig>;
-  vite: ViteConfig & { configFile?: string | false | undefined };
 }

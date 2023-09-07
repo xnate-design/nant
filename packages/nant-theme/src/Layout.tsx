@@ -1,15 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useParams, useLocation, Outlet, useNavigate } from 'react-router-dom';
 import SiteContext from './SiteContext';
-import { TopNav, SideBar, Main, MdxContainer } from './components/Layout';
+import { TopNav, SideBar, Main } from './components/Layout';
 import Home from './Home';
-import type { Toc } from '@nant/vite-plugins';
 
-interface ILayout {
-  children?: React.ReactElement;
-}
-
-const Layout = (props: ILayout) => {
+const Layout = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -35,7 +30,7 @@ const Layout = (props: ILayout) => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex-col flex">
       <TopNav hasSideBar={hasSideBar} />
       {hasSideBar ? <SideBar /> : ''}
       {content}

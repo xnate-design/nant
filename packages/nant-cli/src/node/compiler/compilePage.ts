@@ -23,7 +23,6 @@ export async function compilePage(srcDir: string, userConfig: UserConfig) {
       pages.push({
         path: `/components/${routePath}`,
         filePath: path,
-        component: () => import(path),
       });
     } else if (docsPath) {
       const [, routePath] = docsPath;
@@ -31,7 +30,6 @@ export async function compilePage(srcDir: string, userConfig: UserConfig) {
       pages.push({
         path: `/docs/${routePath}`,
         filePath: path,
-        component: () => import(path),
       });
     }
   });

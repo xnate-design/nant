@@ -2,23 +2,20 @@ import siteData from '@siteData';
 
 import type { SiteData, DefaultTheme } from 'nant/shared';
 
-export const initData = (): NantData<DefaultTheme.SiteConfig> => {
+console.log(siteData, 'siteData');
+
+export const initData = (): NantData => {
   return {
-    site: siteData.site,
-    themeConfig: siteData.site.themeConfig,
-    nav: siteData.site.themeConfig.nav,
-    sideBar: siteData.site.themeConfig.sidebar,
+    site: siteData,
+    themeConfig: siteData.themeConfig,
+    nav: siteData.themeConfig.nav,
+    sideBar: siteData.themeConfig.sidebar,
   };
 };
 
-export interface NantData<T> {
+export interface NantData<T = any> {
   site?: SiteData<T>;
   themeConfig?: T;
   nav?: DefaultTheme.NavItem[];
   sideBar?: DefaultTheme.SideBar;
-  title?: string;
-  lang?: string;
-  isDark?: boolean;
-  dir?: string;
-  localeIndex?: string;
 }

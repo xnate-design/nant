@@ -41,7 +41,7 @@ export const createVitePlugins = async (
 
     load(id) {
       if (id === SITE_DATA_REQUEST_PATH) {
-        let data = config.nant;
+        let data = siteData;
 
         if (config.command === 'build') {
           console.log('build');
@@ -87,7 +87,7 @@ export const createVitePlugins = async (
       // update pages, dynamicRoutes and rewrites on md file add / deletion
       const onFileAddDelete = async (file: string) => {
         if (file.endsWith('.md')) {
-          Object.assign(siteConfig, await compilePage(siteConfig.srcDir, siteConfig.userConfig));
+          Object.assign(siteData, await compilePage(siteConfig.srcDir, siteConfig.userConfig));
         }
       };
       server.watcher.on('add', onFileAddDelete).on('unlink', onFileAddDelete);
