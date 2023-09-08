@@ -1,10 +1,10 @@
 import cn from 'clsx';
-import type { Toc } from '@nant/vite-plugins';
 import { lowerCase } from 'lodash-es';
+import { DefaultTheme } from 'nant/theme';
 
 import { useActiveId } from '../../hooks/useActiveId';
 interface TocProps {
-  toc: Toc;
+  toc: DefaultTheme.Toc;
   depth?: number;
 }
 

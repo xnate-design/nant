@@ -32,6 +32,12 @@ const colors = {
   alt: '#f6f6f7',
   'alt-dark': '#161618',
 
+  soft: '#f6f6f7',
+  'soft-dark': '#202127',
+
+  'soft-g': 'rgba(142, 150, 170, .14)',
+  'soft-g-dark': 'rgba(101, 117, 133, .16)',
+
   wash: '#FFFFFF',
   'wash-dark': '#1b1b1f',
 

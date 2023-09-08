@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
+import { DocSearch } from '@docsearch/react';
 
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
@@ -83,12 +84,21 @@ const TopContent = ({ nav = [], section = '', hasSideBar = false }: TopContentPr
   const contentBodyClass = clsx(
     'flex flex-end items-center height-nav-title pointer-events-auto bg-wash dark:bg-wash-dark',
   );
-
   const themeBtnClass = clsx('');
+
+  const searchClass = clsx('search-box flex items-center flex-grow lg:pl-8 md:pl-6');
+
   return (
     <div className={contentClass}>
       <div className={contentBodyClass}>
-        <div className="flex-grow"></div>
+        <div className={searchClass}>
+          <DocSearch
+            appId="BOCE4DN1H2"
+            apiKey="3a89b1923593fa3a67271f30c9ca1c98"
+            indexName="wangbaoqi"
+            placeholder="quick search"
+          />
+        </div>
         <nav className="md:flex hidden md:pr-4">
           {nav?.map((item, idx) => (
             <NavItem key={idx} isActive={section === item.activeMatch} url={item.link}>

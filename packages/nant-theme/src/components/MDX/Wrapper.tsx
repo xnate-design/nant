@@ -1,9 +1,11 @@
 import clsx from 'clsx';
-import { Toc } from '@nant/vite-plugins';
+
+import { DefaultTheme } from 'nant/theme';
+
 import { TableContent } from '../Layout';
 export interface WrapperMdxProps {
   children?: React.ReactElement;
-  toc?: Toc;
+  toc?: DefaultTheme.Toc;
 }
 
 const WrapperMdx = (props: WrapperMdxProps) => {

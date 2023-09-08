@@ -18,6 +18,15 @@ export namespace DefaultTheme {
     activeMatch?: string;
   }
 
+  export interface TocEntry {
+    value: string;
+    depth: number;
+    id?: string;
+    children?: Array<TocEntry>;
+  }
+
+  export type Toc = Array<TocEntry>;
+
   // SideBar
   export type SideBar = SideBarMulti;
 

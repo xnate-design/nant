@@ -1,5 +1,6 @@
 @import url('./vars.css');
 @import url('./base.css');
+@import url('./algolia.css');
 
 
 
@@ -32,4 +33,7 @@
   text-align: right;
 }
 
+.nant-home-title {
+  -webkit-text-fill-color: #0000;
+}
 

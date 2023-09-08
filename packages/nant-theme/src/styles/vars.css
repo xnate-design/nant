@@ -2,7 +2,20 @@
 
 
 /* Default theme */
-html .nant-mdx {
+html {
+  --nt-color-text-1: rgba(60, 60, 67);
+  --nt-color-text-2: rgba(60, 60, 67, .78);
+  --nt-color-text-3: rgba(60, 60, 67, .56);
+  --nt-color-bg: #ffffff;
+  --nt-color-bg-alt: #f6f6f7;
+  --nt-color-bg-soft: #f6f6f7;
+
+  --nt-color-brand-1: #087ea4;
+  --nt-color-gray-soft: rgba(142, 150, 170, .14);
+
+  --nt-color-divider: #e2e2e3;
+
+
   --sp-colors-accent: #087ea4;
   --sp-colors-clickable: #959da5;
   --sp-colors-disabled: #24292e;
@@ -26,7 +39,19 @@ html .nant-mdx {
 }
 
 /* Dark theme */
-html.dark .nant-mdx {
+html.dark  {
+  --nt-color-text-1: rgba(255, 255, 245, .86);
+  --nt-color-text-2: rgba(235, 235, 245, .6);
+  --nt-color-text-3: rgba(235, 235, 245, .38);
+  --nt-color-bg: #1b1b1f;
+  --nt-color-bg-alt: #161618;
+  --nt-color-bg-soft: #202127;
+
+  --nt-color-brand-1: #149eca;
+  --nt-color-gray-soft: rgba(101, 117, 133, .16);
+
+  --nt-color-divider: #2e2e32;
+
   --sp-colors-accent: #149eca;
   --sp-colors-clickable: #999;
   --sp-colors-disabled: #fff;

@@ -4,6 +4,8 @@ import { getRouterConfig } from './router.jsx';
 
 import './styles/index.css';
 
+import '@docsearch/css';
+
 const routerConfig = getRouterConfig();
 const router = createBrowserRouter(routerConfig);
 
