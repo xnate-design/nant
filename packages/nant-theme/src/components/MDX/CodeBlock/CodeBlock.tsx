@@ -57,16 +57,16 @@ const CodeBlock = (props: CodeBlockProps) => {
   const language = className.replace(/language-/, '');
   const highlights = calculateLinesToHighlight(light ?? '');
 
-  const blockClass = clsx('bg-wash dark:bg-alt-dark rounded-2xl shadow-lg overflow-x-auto my-8');
-  const wrapperClass = clsx('w-full sp-wrapper');
+  const blockClass = clsx('bg-wash sandpack dark:bg-alt-dark rounded-2xl shadow-lg overflow-x-auto my-8');
+  const wrapperClass = clsx('w-full');
   const lineClass = clsx('ml-2 flex', showLineNumbers ? 'ml-2' : 'ml-4');
   return (
     <div className={blockClass}>
       <div className={wrapperClass}>
         <Highlight code={code} language={language} theme={themes}>
           {({ tokens, getLineProps, getTokenProps }) => (
-            <pre className="font-wotfard text-[15px]">
-              <code className="leading-6 py-8 font-base block">
+            <pre className=" text-[15px]">
+              <code className="leading-6 py-8 font-maple block text-sm">
                 {tokens.map((line, i) => (
                   <div
                     key={i}

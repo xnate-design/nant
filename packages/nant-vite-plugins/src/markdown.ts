@@ -11,10 +11,8 @@ import withToc from '@stefanprobst/rehype-extract-toc';
 import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-import { SourceMapGenerator } from 'source-map';
 import { VFile } from 'vfile';
 import { createFilter } from '@rollup/pluginutils';
-import { createFormatAwareProcessors } from '@mdx-js/mdx/lib/util/create-format-aware-processors.js';
 import { compile } from '@mdx-js/mdx';
 
 export type CompileOptions = Omit<import('@mdx-js/mdx').CompileOptions, 'SourceMapGenerator'>;
@@ -73,12 +71,12 @@ export const nantMdx = (options?: Options): Plugin => {
           development,
           ...rest,
         });
-
         const { data } = compiled;
         const toc = JSON.stringify({ toc: data.toc ?? [] });
+        const pagePath = JSON.stringify({ path: path });
         const jsxCode = String(compiled.value);
-        const suffix = `export default function(props) {
-          return ${jsxEnv}("div", { children: ${jsxEnv}(MDXContent, Object.assign({}, props, ${toc})) })
+        const suffix = `export default function MdxDocument (props) {
+          return ${jsxEnv}("div", { children: ${jsxEnv}(MDXContent, Object.assign({}, props, ${toc}, ${pagePath})) })
         }`;
 
         const code = jsxCode.replace('export default MDXContent;', suffix);

@@ -24,6 +24,15 @@ program
   });
 
 program
+  .command('build')
+  .description('Build nant ui development environment')
+
+  .action(async () => {
+    const { build } = await import('./commands/build.js');
+    return build();
+  });
+
+program
   .command('build:icons')
   .description('Build icons')
   .action(async () => {

@@ -1,9 +1,3 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
-// import tailwindConfig from '../../../../tailwind.config';
-
 export const CustomTheme = {
   colors: {
     accent: 'inherit',
@@ -37,7 +31,7 @@ export const CustomTheme = {
     // mono: tailwindConfig.theme.extend.fontFamily.mono
     //   .join(', ')
     //   .replace(/"/gm, ''),
-    size: '16px',
-    lineHeight: '24px',
+    size: '15px',
+    lineHeight: '22px',
   },
 };

@@ -37,3 +37,22 @@
   -webkit-text-fill-color: #0000;
 }
 
+
+
+.sandpack .sp-wrapper {
+  color-scheme: inherit;
+  font-size: var(--sp-font-size);
+  font-family: var(--sp-font-mono);
+}
+
+.sandpack .sp-layout {
+  border: 0;
+}
+
+.sandpack .sp-stack {
+  height: 100%;
+}
+
+.sandpack .sp-preview-container {
+  border-radius: 4px;
+}

@@ -52,7 +52,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
 
   const itemClass = clsx(
     item.link === pathname ? 'text-link dark:text-link-dark' : 'text-secondary dark:text-secondary-dark',
-    'flex items-center text-[15px] flex-grow py-1  font-medium capitalize hover:text-link hover:dark:text-link-dark',
+    'flex items-center text-[14px] flex-grow py-1 font-medium capitalize hover:text-link hover:dark:text-link-dark',
   );
 
   const itemsClass = clsx('items', {
@@ -74,7 +74,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
 
       return (
         <div className="relative w-full flex cursor-pointer" onClick={() => setCollapsed(!collapsed)}>
-          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-sm py-1 dark:text-primary-dark">
+          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-[15px] py-1 dark:text-primary-dark">
             {item.text}
           </h2>
           <button className="h-8 w-8 text-tertiary dark:text-tertiary-dark flex justify-center items-center -mr-2 cursor-pointer">

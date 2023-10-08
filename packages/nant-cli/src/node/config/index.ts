@@ -1,23 +1,25 @@
 import fse from 'fs-extra';
 import path from 'path';
-
 import logger from '../shared/logger.js';
+
+import { mergeWith } from 'lodash-es';
 import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, normalizePath } from 'vite';
 import { DEFAULT_THEME_DIR } from '../shared/constant.js';
 import { compilePage } from '../compiler/compilePage.js';
+import { ROOT, SITE_ROOT } from '../shared/constant.js';
+
+import { defaultNantConfig } from './siteConfig.js';
+
 import type { ConfigEnv } from 'vite';
 import type { SiteData, DefaultTheme } from '../../../types/shared';
-import type { RawConfigExports, UserConfig, SiteConfig } from './siteConfig.js';
+import type { RawConfigExports, UserConfig, SiteConfig, NantConfig } from './siteConfig.js';
+import { async } from 'fast-glob';
 
 const supportConfigExts = ['js', 'ts', 'mjs', 'mts'];
 
 const resolve = (root: string, file: string) => {
   return normalizePath(path.resolve(root, '.nant', file));
 };
-
-export function defineConfig(config: UserConfig<DefaultTheme.SiteConfig>) {
-  return config;
-}
 
 async function resolveConfigExtends(config: RawConfigExports): Promise<UserConfig> {
   const resolved = await (typeof config === 'function' ? config() : config);
@@ -30,6 +32,10 @@ async function resolveConfigExtends(config: RawConfigExports): Promise<UserConfi
 
 function isObject(value: unknown): value is Record<string, any> {
   return Object.prototype.toString.call(value) === '[object Object]';
+}
+
+function isArray(value: unknown): value is Record<string, any> {
+  return Object.prototype.toString.call(value) === '[object Array]';
 }
 
 function mergeConfig(a: UserConfig, b: UserConfig, isRoot = true) {
@@ -99,53 +105,74 @@ export async function resolveUserConfig(
   return [await resolveConfigExtends(userConfig), configPath, configDeps];
 }
 
-export async function resolveConfig(
-  root: string = process.cwd(),
-  command: 'serve' | 'build' = 'serve',
-  mode = 'development',
-) {
-  root = normalizePath(root);
+// export async function resolveConfig(
+//   root: string = process.cwd(),
+//   command: 'serve' | 'build' = 'serve',
+//   mode = 'development',
+// ) {
+//   root = normalizePath(root);
 
-  const [userConfig, configPath, configDeps] = await resolveUserConfig(root, command, mode);
+//   const [userConfig, configPath, configDeps] = await resolveUserConfig(root, command, mode);
 
-  const logger =
-    userConfig.vite?.customLogger ??
-    createLogger(userConfig.vite?.logLevel, {
-      prefix: '[nant]',
-      allowClearScreen: userConfig.vite?.clearScreen,
-    });
+//   const logger =
+//     userConfig.vite?.customLogger ??
+//     createLogger(userConfig.vite?.logLevel, {
+//       prefix: '[nant]',
+//       allowClearScreen: userConfig.vite?.clearScreen,
+//     });
 
-  const site = await resolveSiteData(root, userConfig);
-  const srcDir = normalizePath(path.resolve(root, userConfig.srcDir || '.'));
-  const assetsDir = userConfig.assetsDir ? userConfig.assetsDir.replace(/\//g, '') : 'assets';
-  const outDir = userConfig.outDir ? normalizePath(path.resolve(root, userConfig.outDir)) : resolve(root, 'dist');
-  const cacheDir = userConfig.cacheDir
-    ? normalizePath(path.resolve(root, userConfig.cacheDir))
-    : resolve(root, 'cache');
+//   const site = await resolveSiteData(root, userConfig);
+//   const srcDir = normalizePath(path.resolve(root, userConfig.srcDir || '.'));
+//   const assetsDir = userConfig.assetsDir ? userConfig.assetsDir.replace(/\//g, '') : 'assets';
+//   const outDir = userConfig.outDir ? normalizePath(path.resolve(root, userConfig.outDir)) : resolve(root, 'dist');
+//   const cacheDir = userConfig.cacheDir
+//     ? normalizePath(path.resolve(root, userConfig.cacheDir))
+//     : resolve(root, 'cache');
 
-  // resolve theme path
-  const useThemeDir = resolve(root, 'theme');
-  const themeDir = (await fse.pathExists(useThemeDir)) ? useThemeDir : DEFAULT_THEME_DIR;
+//   // resolve theme path
+//   const useThemeDir = resolve(root, 'theme');
+//   const themeDir = (await fse.pathExists(useThemeDir)) ? useThemeDir : DEFAULT_THEME_DIR;
 
-  const pages = await compilePage(srcDir, userConfig);
-  Object.assign(site, { pages });
+//   const pages = await compilePage(srcDir);
+//   Object.assign(site, { pages });
 
-  const config: SiteConfig = {
-    root,
-    srcDir,
-    assetsDir,
-    site,
-    themeDir,
-    pages,
-    userConfig,
-    configPath,
-    configDeps,
-    outDir,
-    cacheDir,
-    logger,
-    tempDir: resolve(root, '.temp'),
-    vite: userConfig.vite,
-  };
+//   const config: SiteConfig = {
+//     root,
+//     srcDir,
+//     assetsDir,
+//     site,
+//     themeDir,
+//     pages,
+//     userConfig,
+//     configPath,
+//     configDeps,
+//     outDir,
+//     cacheDir,
+//     logger,
+//     tempDir: resolve(root, '.temp'),
+//     vite: userConfig.vite,
+//   };
 
-  return config;
+//   return config;
+// }
+
+export function mergeStrategy(value: any, srcValue: any, key: string) {
+  if (key === 'pages' && isArray(srcValue)) {
+    return srcValue;
+  }
+}
+
+export async function getNantConfig(): Promise<NantConfig<DefaultTheme.Config>> {
+  const root = normalizePath(ROOT);
+  const srcDir = normalizePath(SITE_ROOT);
+
+  const defaultConfig = defaultNantConfig;
+
+  const pages = await compilePage(srcDir);
+
+  const [userConfig, configPath, configDeps] = await resolveUserConfig(root, 'serve', 'development');
+
+  const mergeConfig = { ...mergeWith(defaultConfig, userConfig), pages };
+
+  return mergeConfig;
 }

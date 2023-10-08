@@ -9,6 +9,8 @@ import TerminalBlock from './TerminalBlock';
 import clsx from 'clsx';
 import Link from './Link';
 
+import Sandpack from './Sandpack';
+
 const P = (p: JSX.IntrinsicElements['p']) => <p className="whitespace-pre-wrap leading-7 my-4" {...p} />;
 const Strong = (strong: JSX.IntrinsicElements['strong']) => <strong className="font-bold" {...strong} />;
 
@@ -88,4 +90,5 @@ export const MDXComponents = {
   Deprecated,
   TerminalBlock,
   CodeStep,
+  Sandpack,
 };

@@ -70,11 +70,8 @@ export namespace DefaultTheme {
     copyright?: string;
   }
 
-  export interface SiteConfig {
+  export interface Config {
     logo?: string;
-    logoUrl?: string;
-    siteTitle?: string;
-    outLine?: string;
     nav?: NavItem[];
     sidebar?: SideBar;
     socialLinks?: SocialLink[];

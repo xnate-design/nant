@@ -1,7 +1,8 @@
 import { createServer as createViteServer, createLogger } from 'vite';
 import c from 'picocolors';
-import { resolveConfig } from '../config/index.js';
-import { createVitePlugins } from '../plugins/index.js';
+import { getNantConfig } from '../config/index.js';
+
+import { getDevConfig } from '../config/viteConfig.js';
 import { bindShortcuts } from '../utils/shortcuts.js';
 import { getCliVersion } from '../shared/fsUtils.js';
 
@@ -32,16 +33,8 @@ export async function dev() {
 }
 
 async function createServer(recreateServer?: () => Promise<void>) {
-  const config = await resolveConfig();
-  const plugins = await createVitePlugins(config, recreateServer);
+  const nantConfig = await getNantConfig();
+  const inlineConfig = await getDevConfig(nantConfig, recreateServer);
 
-  return createViteServer({
-    root: config.srcDir,
-    base: config.site?.base,
-    cacheDir: config.cacheDir,
-    customLogger: config.logger,
-    configFile: config.vite?.configFile,
-    server: {},
-    plugins,
-  });
+  return createViteServer(inlineConfig);
 }
