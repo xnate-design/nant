@@ -25,7 +25,7 @@ export const getDevConfig = async (
   const plugins = await createNantPlugins(nantConfig, recreateServer);
 
   return {
-    // base: './',
+    base: './',
     root: DOC_ROOT,
     resolve: {
       alias: resolveAlias(),

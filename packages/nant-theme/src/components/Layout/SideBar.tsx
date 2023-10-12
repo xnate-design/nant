@@ -12,7 +12,7 @@ export const SideBar = () => {
   const section = useActiveSection();
 
   const sideBarGroup = useMemo(() => {
-    return sideBar[section];
+    return sideBar[section] ?? [];
   }, [sideBar, section]);
 
   const sideClass = clsx(

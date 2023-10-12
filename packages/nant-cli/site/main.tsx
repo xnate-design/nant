@@ -21,6 +21,8 @@ const root = ReactDOM.createRoot(container);
 
 const configContext = initData();
 
+console.log(configContext, 'configContext');
+
 const App = (
   <SiteContext.Provider value={configContext}>
     <SiteTheme />

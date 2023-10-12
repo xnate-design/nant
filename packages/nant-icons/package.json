@@ -1,19 +1,26 @@
 {
-  "name": "@nant/nant-icons",
+  "name": "@nant-design/nant-icons",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "nant build:icons"
   },
   "devDependencies": {
     "@nant/cli": "workspace:*",
     "react": "^18.2.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "nate wang <wangbaoqi8839@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "icons",
+    "svg",
+    "react-svg-icons"
+  ],
   "peerDependencies": {
     "react": "^18.2.0"
   }

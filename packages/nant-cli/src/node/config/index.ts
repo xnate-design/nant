@@ -105,57 +105,6 @@ export async function resolveUserConfig(
   return [await resolveConfigExtends(userConfig), configPath, configDeps];
 }
 
-// export async function resolveConfig(
-//   root: string = process.cwd(),
-//   command: 'serve' | 'build' = 'serve',
-//   mode = 'development',
-// ) {
-//   root = normalizePath(root);
-
-//   const [userConfig, configPath, configDeps] = await resolveUserConfig(root, command, mode);
-
-//   const logger =
-//     userConfig.vite?.customLogger ??
-//     createLogger(userConfig.vite?.logLevel, {
-//       prefix: '[nant]',
-//       allowClearScreen: userConfig.vite?.clearScreen,
-//     });
-
-//   const site = await resolveSiteData(root, userConfig);
-//   const srcDir = normalizePath(path.resolve(root, userConfig.srcDir || '.'));
-//   const assetsDir = userConfig.assetsDir ? userConfig.assetsDir.replace(/\//g, '') : 'assets';
-//   const outDir = userConfig.outDir ? normalizePath(path.resolve(root, userConfig.outDir)) : resolve(root, 'dist');
-//   const cacheDir = userConfig.cacheDir
-//     ? normalizePath(path.resolve(root, userConfig.cacheDir))
-//     : resolve(root, 'cache');
-
-//   // resolve theme path
-//   const useThemeDir = resolve(root, 'theme');
-//   const themeDir = (await fse.pathExists(useThemeDir)) ? useThemeDir : DEFAULT_THEME_DIR;
-
-//   const pages = await compilePage(srcDir);
-//   Object.assign(site, { pages });
-
-//   const config: SiteConfig = {
-//     root,
-//     srcDir,
-//     assetsDir,
-//     site,
-//     themeDir,
-//     pages,
-//     userConfig,
-//     configPath,
-//     configDeps,
-//     outDir,
-//     cacheDir,
-//     logger,
-//     tempDir: resolve(root, '.temp'),
-//     vite: userConfig.vite,
-//   };
-
-//   return config;
-// }
-
 export function mergeStrategy(value: any, srcValue: any, key: string) {
   if (key === 'pages' && isArray(srcValue)) {
     return srcValue;

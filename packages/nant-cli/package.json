@@ -1,23 +1,27 @@
 {
-  "name": "@nant/cli",
+  "name": "@nant-design/cli",
   "version": "1.0.0",
   "description": "nant-cli",
   "type": "module",
   "main": "./lib/node/index.js",
   "module": "./lib/node/index.js",
+
+  "author": "nate wang <wangbaoqi8839@gmail.com>",
+  "license": "MIT",
   "bin": {
     "nant": "./lib/node/bin.js"
   },
+  "keywords": [
+    "cli",
+    "nant"
+  ],
   "scripts": {
     "dev": "rimraf ./lib && run-p dev:start",
     "build": "rimraf ./lib && tsc",
     "dev:start": "tsc --watch --sourcemap",
-    "dev:watch": "node scripts/watchAndCopy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:watch": "node scripts/watchAndCopy"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@clack/prompts": "^0.7.0",
