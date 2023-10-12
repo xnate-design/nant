@@ -6,6 +6,8 @@ import Layout from './Layout';
 export const getRouterConfig = () => {
   const { pages = [] } = siteData;
 
+  console.log(pages, 'pages');
+
   const router = [
     {
       path: '/',

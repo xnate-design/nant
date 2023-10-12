@@ -10,7 +10,9 @@ export async function build() {
   process.env.NODE_ENV = 'production';
 
   const nantConfig = await getNantConfig();
-  const buildConfig = getBuildConfig(nantConfig);
+  const buildConfig = await getBuildConfig(nantConfig);
+
+  console.log(buildConfig, 'buildConfig');
 
   await buildVite(buildConfig);
 }

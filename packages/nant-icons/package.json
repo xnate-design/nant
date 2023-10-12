@@ -8,9 +8,13 @@
     "build": "nant build:icons"
   },
   "devDependencies": {
-    "@nant/cli": "workspace:*"
+    "@nant/cli": "workspace:*",
+    "react": "^18.2.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
 }

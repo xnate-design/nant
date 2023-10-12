@@ -1,16 +1,18 @@
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 import { getDirname } from './fsUtils.js';
 
+export const ROOT = process.cwd();
+
 export const dirname = getDirname(import.meta.url);
+console.log(dirname, 'dirname');
 
 export const CLIENT_PATH = resolve(dirname, '../../../', 'client');
 export const NODE_PATH = resolve(dirname, '../../', 'node');
 
-export const ROOT = process.cwd();
-export const DOC_ROOT = resolve(dirname, '../../../../', 'site');
+export const DOC_ROOT = join(dirname, '../../../../', 'site');
 export const SITE_ROOT = resolve(ROOT, '.');
 export const SITE_PUBLIC_PATH = resolve(ROOT, 'public');
-export const SITE_OUTPUT_PATH = resolve(ROOT, 'site');
+export const SITE_OUTPUT_PATH = resolve(ROOT, 'dist');
 
 export const INIT_DIR = resolve(dirname, '../../../../template');
 export const CONFIG_PATH = resolve(process.cwd(), '.nant/config.mts');

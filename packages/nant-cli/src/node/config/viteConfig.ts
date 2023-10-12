@@ -12,6 +12,12 @@ import type { RawConfigExports, UserConfig, SiteConfig, NantConfig } from './sit
 import type { InlineConfig, Plugin } from 'vite';
 import path from 'path';
 
+console.log(process.cwd(), 'DOC_ROOT1');
+
+console.log(path.join(DOC_ROOT, 'index.html'), 'DOC_ROOT');
+
+console.log(SITE_PUBLIC_PATH, 'SITE_PUBLIC_PATH');
+
 export const getDevConfig = async (
   nantConfig: NantConfig,
   recreateServer?: () => Promise<void>,
@@ -19,7 +25,7 @@ export const getDevConfig = async (
   const plugins = await createNantPlugins(nantConfig, recreateServer);
 
   return {
-    base: './',
+    // base: './',
     root: DOC_ROOT,
     resolve: {
       alias: resolveAlias(),
@@ -36,8 +42,10 @@ export const getDevConfig = async (
   };
 };
 
-export function getBuildConfig(nantConfig: NantConfig): InlineConfig {
-  const devConfig = getDevConfig(nantConfig);
+export const getBuildConfig = async (nantConfig: NantConfig): Promise<InlineConfig> => {
+  const devConfig = await getDevConfig(nantConfig);
+
+  console.log(devConfig, 'devConfig');
 
   return {
     ...devConfig,
@@ -49,12 +57,13 @@ export function getBuildConfig(nantConfig: NantConfig): InlineConfig {
       reportCompressedSize: false,
       emptyOutDir: true,
       cssTarget: 'chrome61',
+      sourcemap: true,
       rollupOptions: {
-        external: ['@siteData'],
+        // external: ['virtual:uno.css'],
         input: {
-          main: path.resolve(DOC_ROOT, 'index.html'),
+          main: path.join(DOC_ROOT, 'index.html'),
         },
       },
     },
   };
-}
+};
