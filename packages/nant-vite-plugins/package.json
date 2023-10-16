@@ -9,6 +9,9 @@
     "dev": "tsc --watch",
     "build": "rimraf ./lib && tsc"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "vite",
     "plugins",

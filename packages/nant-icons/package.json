@@ -7,6 +7,9 @@
   "scripts": {
     "build": "nant build:icons"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@nant/cli": "workspace:*",
     "react": "^18.2.0"

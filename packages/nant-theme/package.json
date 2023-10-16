@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "tsc --watch --sourcemap"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
