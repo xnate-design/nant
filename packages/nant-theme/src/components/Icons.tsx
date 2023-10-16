@@ -1,5 +1,5 @@
 import cn from 'clsx';
-import '@nant/nant-icons/dist/css/nant-webfont.css';
+import '@nant-design/nant-icons/dist/css/nant-webfont.css';
 
 interface NantIconProps {
   name: string;

@@ -11,8 +11,7 @@ import { SiteConfig, NantConfig } from './../config/siteConfig.js';
 import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH, resolveAlias } from '../config/alias.js';
 import { compilePage } from '../compiler/compilePage.js';
 import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
-import { nantMdx, html } from '@nant/vite-plugins';
-import { resolveUserConfig } from '../config/index.js';
+import { nantMdx, html } from '@nant-design/vite-plugins';
 
 import type { Plugin, PluginOption, ResolvedConfig, UserConfig } from 'vite';
 

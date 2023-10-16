@@ -10,7 +10,7 @@ import {
   UnstyledOpenInCodeSandboxButton,
 } from '@codesandbox/sandpack-react';
 
-import { ShareOutline } from '@nant/nant-icons/dist/react/ShareOutline';
+import { ShareOutline } from '@nant-design/nant-icons/dist/react/ShareOutline';
 
 interface IPresetProps {
   providedFiles: string[];

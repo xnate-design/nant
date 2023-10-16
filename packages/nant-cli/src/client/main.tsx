@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { SiteTheme, SiteContext } from '@nant/theme-default';
+import { SiteTheme, SiteContext } from '@nant-design/theme-default';
 import { initData } from './data';
 
 // import 'virtual:uno.css';

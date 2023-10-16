@@ -46,9 +46,6 @@ importers:
       '@mdx-js/rollup':
         specifier: ^2.3.0
         version: 2.3.0(rollup@3.28.1)
-      '@nant/nant-icons':
-        specifier: workspace:*
-        version: link:../nant-icons
       '@rollup/plugin-babel':
         specifier: ^6.0.3
         version: 6.0.3(@babel/core@7.22.10)(rollup@3.28.1)
@@ -107,13 +104,16 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.4.9)
     devDependencies:
-      '@nant/shared':
+      '@nant-design/nant-icons':
+        specifier: workspace:*
+        version: link:../nant-icons
+      '@nant-design/shared':
         specifier: workspace:*
         version: link:../nant-shared
-      '@nant/theme-default':
+      '@nant-design/theme-default':
         specifier: workspace:*
         version: link:../nant-theme
-      '@nant/vite-plugins':
+      '@nant-design/vite-plugins':
         specifier: workspace:*
         version: link:../nant-vite-plugins
       '@types/fs-extra':
@@ -150,9 +150,30 @@ importers:
         specifier: ^0.7.38
         version: 0.7.38(rollup@3.28.1)(vite@4.4.9)
 
+  packages/nant-cli/template:
+    devDependencies:
+      '@nant-design/cli':
+        specifier: '*'
+        version: link:..
+      '@types/react':
+        specifier: ^18.2.20
+        version: 18.2.20
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      typescript:
+        specifier: ^4.7.4
+        version: 4.7.4
+
   packages/nant-icons:
     devDependencies:
-      '@nant/cli':
+      '@nant-design/cli':
         specifier: workspace:*
         version: link:../nant-cli
       react:
@@ -163,7 +184,7 @@ importers:
 
   packages/nant-test:
     devDependencies:
-      '@nant/cli':
+      '@nant-design/cli':
         specifier: workspace:*
         version: link:../nant-cli
       '@types/react':
@@ -218,7 +239,7 @@ importers:
         specifier: ^6.15.0
         version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
-      '@nant/nant-icons':
+      '@nant-design/nant-icons':
         specifier: workspace:*
         version: link:../nant-icons
       '@types/lodash-es':
@@ -251,7 +272,7 @@ importers:
       '@mdx-js/mdx':
         specifier: ^2.3.0
         version: 2.3.0
-      '@nant/cli':
+      '@nant-design/cli':
         specifier: workspace:*
         version: link:../nant-cli
       '@rollup/pluginutils':

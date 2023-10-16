@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
-import { ChevronForwardOutline as ArrowRight } from '@nant/nant-icons/dist/react/ChevronForwardOutline';
+import { ChevronForwardOutline as ArrowRight } from '@nant-design/nant-icons/dist/react/ChevronForwardOutline';
 
 import { DefaultTheme } from 'nant/theme';
 

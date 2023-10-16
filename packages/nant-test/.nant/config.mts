@@ -1,4 +1,4 @@
-import { defineConfig } from '@nant/cli';
+import { defineConfig } from '@nant-design/cli';
 
 export default defineConfig({
   title: 'Nant ui',

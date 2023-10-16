@@ -6,8 +6,8 @@ import { isValidElement } from 'react';
 import * as React from 'react';
 import cn from 'clsx';
 
-import { WarningOutline } from '@nant/nant-icons/dist/react/WarningOutline';
-import { BugOutline } from '@nant/nant-icons/dist/react/BugOutline';
+import { WarningOutline } from '@nant-design/nant-icons/dist/react/WarningOutline';
+import { BugOutline } from '@nant-design/nant-icons/dist/react/BugOutline';
 
 type LogLevel = 'warning' | 'error' | 'info';
 

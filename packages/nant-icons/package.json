@@ -11,7 +11,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@nant/cli": "workspace:*",
+    "@nant-design/cli": "workspace:*",
     "react": "^18.2.0"
   },
   "author": "nate wang <wangbaoqi8839@gmail.com>",

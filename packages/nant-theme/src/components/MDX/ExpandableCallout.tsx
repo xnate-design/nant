@@ -6,9 +6,9 @@ import { useRef } from 'react';
 import * as React from 'react';
 import cn from 'clsx';
 
-import { DocumentTextOutline as IconNote } from '@nant/nant-icons/dist/react/DocumentTextOutline';
-import { AlertCircleOutline as IconWarning } from '@nant/nant-icons/dist/react/AlertCircleOutline';
-import { WarningOutline as IconPitfall } from '@nant/nant-icons/dist/react/WarningOutline';
+import { DocumentTextOutline as IconNote } from '@nant-design/nant-icons/dist/react/DocumentTextOutline';
+import { AlertCircleOutline as IconWarning } from '@nant-design/nant-icons/dist/react/AlertCircleOutline';
+import { WarningOutline as IconPitfall } from '@nant-design/nant-icons/dist/react/WarningOutline';
 
 type CalloutVariants = 'deprecated' | 'pitfall' | 'note' | 'wip';
 

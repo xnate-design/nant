@@ -6,12 +6,12 @@ import { DocSearch } from '@docsearch/react';
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
 import { Logo } from '../Logo';
-import { CloseOutline } from '@nant/nant-icons/dist/react/CloseOutline';
-import { ReorderFourOutline } from '@nant/nant-icons/dist/react/ReorderFourOutline';
-import { SearchOutline } from '@nant/nant-icons/dist/react/SearchOutline';
-import { SunnyOutline } from '@nant/nant-icons/dist/react/SunnyOutline';
-import { MoonOutline } from '@nant/nant-icons/dist/react/MoonOutline';
-import { LogoGithub } from '@nant/nant-icons/dist/react/LogoGithub';
+import { CloseOutline } from '@nant-design/nant-icons/dist/react/CloseOutline';
+import { ReorderFourOutline } from '@nant-design/nant-icons/dist/react/ReorderFourOutline';
+import { SearchOutline } from '@nant-design/nant-icons/dist/react/SearchOutline';
+import { SunnyOutline } from '@nant-design/nant-icons/dist/react/SunnyOutline';
+import { MoonOutline } from '@nant-design/nant-icons/dist/react/MoonOutline';
+import { LogoGithub } from '@nant-design/nant-icons/dist/react/LogoGithub';
 import { lowerCase } from 'lodash-es';
 
 import { DefaultTheme } from 'nant/theme';

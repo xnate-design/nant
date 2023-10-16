@@ -1,7 +1,7 @@
 import { isValidElement, useState, useEffect } from 'react';
 import * as React from 'react';
-import { CopyOutline as IconCopy } from '@nant/nant-icons/dist/react/CopyOutline';
-import { TerminalOutline as IconTerminal } from '@nant/nant-icons/dist/react/TerminalOutline';
+import { CopyOutline as IconCopy } from '@nant-design/nant-icons/dist/react/CopyOutline';
+import { TerminalOutline as IconTerminal } from '@nant-design/nant-icons/dist/react/TerminalOutline';
 
 type LogLevel = 'info' | 'warning' | 'error';
 

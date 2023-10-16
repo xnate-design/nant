@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { TopNav } from './components/Layout/index';
 
-import { LogoVite } from '@nant/nant-icons/dist/react/LogoVite';
-import { LogoUnocss } from '@nant/nant-icons/dist/react/LogoUnocss';
-import { LogoMarkdown } from '@nant/nant-icons/dist/react/LogoMarkdown';
-import { LogoReact } from '@nant/nant-icons/dist/react/LogoReact';
+import { LogoVite } from '@nant-design/nant-icons/dist/react/LogoVite';
+import { LogoUnocss } from '@nant-design/nant-icons/dist/react/LogoUnocss';
+import { LogoMarkdown } from '@nant-design/nant-icons/dist/react/LogoMarkdown';
+import { LogoReact } from '@nant-design/nant-icons/dist/react/LogoReact';
 import { useMemo } from 'react';
 
 export default function Home() {

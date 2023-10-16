@@ -14,7 +14,7 @@ export const getRouterConfig = () => {
       element: <Layout />,
       children: pages.map((page: any) => ({
         path: page.path,
-        element: <MdxContainer lazyChildren={React.lazy(() => import(`/* @vite-ignore */${page.filePath}`))} />,
+        element: <MdxContainer lazyChildren={React.lazy(() => import(`${page.filePath}`))} />,
       })),
     },
   ];

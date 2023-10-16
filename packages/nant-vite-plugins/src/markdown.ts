@@ -8,7 +8,6 @@ import images from 'remark-images';
 import unrwapImages from 'remark-unwrap-images';
 import withSlugs from 'rehype-slug';
 import withToc from '@stefanprobst/rehype-extract-toc';
-import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import { VFile } from 'vfile';
