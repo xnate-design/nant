@@ -5,11 +5,13 @@
   "type": "module",
   "main": "./lib/node/index.js",
   "module": "./lib/node/index.js",
-
   "author": "nate wang <wangbaoqi8839@gmail.com>",
   "license": "MIT",
   "bin": {
     "nant": "./lib/node/bin.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "cli",
