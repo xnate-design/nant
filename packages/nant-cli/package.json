@@ -23,7 +23,6 @@
     "dev:start": "tsc --watch --sourcemap",
     "dev:watch": "node scripts/watchAndCopy"
   },
-
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@clack/prompts": "^0.7.0",
@@ -38,7 +37,6 @@
     "fs-extra": "^11.1.1",
     "lodash-es": "^4.17.21",
     "picocolors": "^1.0.0",
-    "sharp": "^0.32.4",
     "svg-parser": "^2.0.4",
     "svgo": "^3.0.2",
     "svgtofont": "^4.0.0",
@@ -47,10 +45,10 @@
     "vite": "^4.4.9"
   },
   "devDependencies": {
-    "@nant-design/vite-plugins": "workspace:*",
-    "@nant-design/theme-default": "workspace:*",
     "@nant-design/nant-icons": "workspace:*",
     "@nant-design/shared": "workspace:*",
+    "@nant-design/theme-default": "workspace:*",
+    "@nant-design/vite-plugins": "workspace:*",
     "@types/fs-extra": "^11.0.1",
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.9",
@@ -60,8 +58,8 @@
     "@unocss/reset": "^0.55.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.1",
-    "vite-plugin-inspect": "^0.7.38",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite-plugin-inspect": "^0.7.38"
   },
   "peerDependencies": {
     "react": "^18.2.0",

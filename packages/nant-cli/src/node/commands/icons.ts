@@ -1,7 +1,6 @@
 import { resolve, parse } from 'path';
 import logger from '../shared/logger.js';
 import fse from 'fs-extra';
-import sharp from 'sharp';
 import svgToFont from 'svgtofont';
 import svgTransform from '../compiler/compileSvg.js';
 import { toPascalCase } from '../shared/fsUtils.js';
@@ -23,41 +22,6 @@ const removeDir = async () => {
     ensureDir(ICONS_CSS_DIR),
     ensureDir(ICONS_REACT_DIR),
   ]);
-};
-
-const buildPNG = async (svgFiles: string[]) => {
-  await Promise.all(
-    svgFiles.map(
-      (svg) =>
-        new Promise<void>((done) => {
-          const { name } = parse(svg);
-          sharp(resolve(ICONS_SVG_DIR, svg))
-            .resize({ height: 100 })
-            .toBuffer()
-            .then((buffer) => {
-              sharp({
-                create: {
-                  width: 100,
-                  height: 100,
-                  channels: 4,
-                  background: '#4a7afe',
-                },
-              })
-                .composite([
-                  {
-                    input: buffer,
-                    blend: 'dest-in',
-                  },
-                ])
-                .png()
-                .toFile(resolve(ICONS_PNG_DIR, `${name}.png`))
-                .then(() => {
-                  done();
-                });
-            });
-        }),
-    ),
-  );
 };
 
 const buildWebFont = async () => {

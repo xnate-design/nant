@@ -30,7 +30,6 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "@nant-design/cli": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",
     "@rollup/pluginutils": "^5.0.3",
     "@stefanprobst/rehype-extract-toc": "^2.2.0",
