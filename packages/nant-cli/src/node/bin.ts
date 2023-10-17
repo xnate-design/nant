@@ -24,6 +24,15 @@ program
   });
 
 program
+  .command('preview')
+  .description('Preview nant ui development environment')
+
+  .action(async () => {
+    const { preview } = await import('./commands/preview.js');
+    return preview();
+  });
+
+program
   .command('build')
   .description('Build nant ui development environment')
 

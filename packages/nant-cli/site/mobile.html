@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>nant mobile ui</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<%= description %>">
+    <meta name="description" content="nant mobile ui">
     <script>
       (function () {
         function setTheme(newTheme) {
           window.__theme = newTheme;
-          const iframe = document.querySelector('iframe');
           if (newTheme === 'dark') {
             document.documentElement.classList.add('dark');
-            if(iframe) {
-              const childHtml = iframe.contentDocument?.querySelector('html');
-              childHtml.classList.add('dark');
-
-            }
           } else if (newTheme === 'light') {
             document.documentElement.classList.remove('dark');
-            if(iframe) {
-              const childHtml = iframe.contentDocument?.querySelector('html');
-              childHtml.classList.remove('dark');
-            }
           }
         }
 
@@ -49,7 +39,6 @@
 
         darkQuery.addEventListener('change', function (e) {
           console.log('Dark query');
-
           if (!preferredTheme) {
             setTheme(e.matches ? 'dark' : 'light');
           }
@@ -65,8 +54,8 @@
       })();
     </script>
   </head>
-  <body class="antialiased min-h-screen w-full text-base bg-wash dark:bg-wash-dark text-primary dark:text-primary-dark">
-    <div id="root"></div>
-    <script type="module" src="./main.tsx"></script>
+  <body class="mobile-box antialiased min-h-screen w-full text-base bg-wash dark:bg-wash-dark text-primary dark:text-primary-dark">
+    <div id="app"></div>
+    <script type="module" src="./mobile.tsx"></script>
   </body>
 </html>

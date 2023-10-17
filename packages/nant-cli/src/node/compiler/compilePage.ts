@@ -1,13 +1,32 @@
-import fg, { async } from 'fast-glob';
+import fg from 'fast-glob';
 import fse from 'fs-extra';
 
-const { readFileSync } = fse;
-
-import type { UserConfig } from '../config/siteConfig.js';
+import { normalizePath } from 'vite';
+import {
+  SITE_COMPONENT_ROOT,
+  SITE_ROOT,
+  DOCS_DIR_NAME,
+  EXAMPLE_DIR_NAME,
+  EXAMPLE_INDEX_NAME,
+  SITE_DOC_ROOT,
+  COMPONENT_DIR_NAME,
+  SITE_PC_ROUTES,
+  SITE_MOBILE_ROUTES,
+} from '../shared/constant.js';
+import { outputFileSyncOnChange } from '../shared/fsUtils.js';
 
 const ROOT_DOCS_RE = /\/docs\/([-\w]+)(?:.draft)?\.md/;
 const COMPONENT_DOCS_RE = /\/src\/([-\w]+)\/docs\/([-\w]+)(?:.draft)?\.md/;
 const DEMOS_INDEX_RE = /\/src\/([-\w]+)\/demos\/([-\w]+)(?:.draft)?\.tsx/;
+
+const ROOT_DOCS_RE1 = /\/docs\/([-\w]+)(?:.draft)?\.md/;
+const DEMOS_INDEX_RE1 = /\/([-\w]+)\/demos\/index(?:.draft)?\.tsx/;
+const COMPONENT_DOCS_RE1 = /\/([-\w]+)\/docs\/([-\w]+)(?:.draft)?\.md/;
+
+const ROOT_DOCS_DIR = normalizePath(SITE_DOC_ROOT);
+const ROOT_COMPONENTS_DIR = normalizePath(SITE_COMPONENT_ROOT);
+
+const { readFileSync } = fse;
 
 const getDemosCodeSnippet = async (srcDir: string, name: string) => {
   const demosPaths = await fg(`${srcDir}/src/${name}/demos/*.tsx`);
@@ -23,39 +42,84 @@ const getDemosCodeSnippet = async (srcDir: string, name: string) => {
   });
 };
 
-export async function compilePage(srcDir: string) {
-  const allMarkdownFiles = (
-    await fg(['**.md'], {
-      cwd: srcDir,
-      ignore: ['**/node_modules'],
-    })
-  ).sort();
+// get root docs path
+const getRootDocPath = (path: string): string => {
+  const [, type] = path.match(ROOT_DOCS_RE1) ?? [];
+  return `/${DOCS_DIR_NAME}/${type}`;
+};
 
-  const rootDocs = await fg(`${srcDir}/docs/**/*.md`);
-  const componentDocs = await fg(`${srcDir}/src/**/docs/*.md`);
+// get components docs path
+const getComponentsDocPath = (path: string): string => {
+  const [, category] = path.match(COMPONENT_DOCS_RE1) ?? [];
+  return `/${COMPONENT_DIR_NAME}/${category}`;
+};
 
-  const rootPages = rootDocs.map((doc) => {
-    const [, routePath] = `/${doc}`.match(ROOT_DOCS_RE) ?? [];
-    return {
-      path: `/docs/${routePath}`,
-      filePath: `${doc}`,
-    };
-  });
+const getExampleRoutePath = (path: string): string => {
+  return '/' + path.match(DEMOS_INDEX_RE1)?.[1];
+};
 
-  const componentPages = await Promise.all(
-    componentDocs.map(async (doc) => {
-      const [, routePath] = `/${doc}`.match(COMPONENT_DOCS_RE) ?? [];
-      const demosMap = await getDemosCodeSnippet(srcDir, routePath);
+// get root docs
+const getRootDocs = async () => {
+  return await fg(`${ROOT_DOCS_DIR}/**/*.md`);
+};
 
-      return {
-        path: `/components/${routePath}`,
-        filePath: `${doc}`,
-        demosMap,
-      };
-    }),
+// get components docs
+const getComponentsDocs = async () => {
+  return await fg(`${ROOT_COMPONENTS_DIR}/**/${DOCS_DIR_NAME}/*.md`);
+};
+
+// get components demos
+const getComponentsDemos = async () => {
+  return await fg(`${ROOT_COMPONENTS_DIR}/**/${EXAMPLE_DIR_NAME}/${EXAMPLE_INDEX_NAME}`);
+};
+
+// get Pc site router
+const compilePcSiteRoutes = async () => {
+  const [rootDoc, componentDoc] = await Promise.all([getRootDocs(), getComponentsDocs()]);
+
+  const rootDocsRoutes = rootDoc.map(
+    (doc) => `
+  {
+    path: '${getRootDocPath(doc)}',
+    // @ts-ignore
+    component: () => import('${doc}')
+  }`,
   );
 
-  const paths = [...rootPages, ...componentPages];
+  const componentDocsRoutes = componentDoc.map(
+    (componentDoc) => `
+  {
+    path: '${getComponentsDocPath(componentDoc)}',
+    // @ts-ignore
+    component: () => import('${componentDoc}')
+  }`,
+  );
 
-  return paths;
+  const allPcRoutes = `export default [\
+    ${[...rootDocsRoutes, ...componentDocsRoutes]},
+]`;
+
+  outputFileSyncOnChange(SITE_PC_ROUTES, allPcRoutes);
+};
+
+const compileMobileSiteRoutes = async () => {
+  const demos = await getComponentsDemos();
+  const routes = demos.map(
+    (demo) => `
+  {
+    path: '${getExampleRoutePath(demo)}',
+    // @ts-ignore
+    component: () => import('${demo}')
+  }`,
+  );
+
+  const source = `export default [\
+    ${routes.join(',')}
+]`;
+
+  outputFileSyncOnChange(SITE_MOBILE_ROUTES, source);
+};
+
+export async function compilePage() {
+  await Promise.all([compilePcSiteRoutes(), compileMobileSiteRoutes()]);
 }

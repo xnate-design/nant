@@ -2,19 +2,21 @@ import React from 'react';
 import { MdxContainer } from './components/Layout';
 import siteData from '@siteData';
 import Layout from './Layout';
+import ErrorPage from './Error';
+
+import pcRoutes from '@pcRoute';
 
 export const getRouterConfig = () => {
-  const { pages = [] } = siteData;
-
-  console.log(pages, 'pages');
+  console.log(pcRoutes, 'pcRoutes');
 
   const router = [
     {
       path: '/',
       element: <Layout />,
-      children: pages.map((page: any) => ({
+      errorElement: <ErrorPage />,
+      children: pcRoutes.map((page: any) => ({
         path: page.path,
-        element: <MdxContainer lazyChildren={React.lazy(() => import(`${page.filePath}`))} />,
+        element: <MdxContainer lazyChildren={React.lazy(page.component)} />,
       })),
     },
   ];

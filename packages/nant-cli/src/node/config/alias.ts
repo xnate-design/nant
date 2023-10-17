@@ -3,6 +3,7 @@ import { SiteConfig } from './../config/siteConfig';
 import { fileURLToPath } from 'url';
 
 import type { Alias, AliasOptions } from 'vite';
+import { SITE_MOBILE_ROUTES, SITE_PC_ROUTES } from '../shared/constant.js';
 
 const PKG_ROOT = resolve(fileURLToPath(import.meta.url), '../../..');
 
@@ -57,6 +58,14 @@ export const resolveAlias = (): AliasOptions => {
       find: path,
       replacement: paths[path],
     })),
+    {
+      find: /^@pcRoute$/,
+      replacement: SITE_PC_ROUTES,
+    },
+    {
+      find: /^@mobileRoute$/,
+      replacement: SITE_MOBILE_ROUTES,
+    },
     {
       find: /^nant$/,
       replacement: join(DIST_CLIENT_PATH, '/index.js'),

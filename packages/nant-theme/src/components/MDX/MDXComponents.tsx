@@ -90,5 +90,5 @@ export const MDXComponents = {
   Deprecated,
   TerminalBlock,
   CodeStep,
-  Sandpack,
+  // Sandpack,
 };

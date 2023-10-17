@@ -57,6 +57,8 @@ export const nantMdx = (options?: Options): Plugin => {
   const extnames: string[] = ['.md', '.mdx'];
   const jsxEnv = development || development === undefined ? '_jsxDEV' : '_jsx';
 
+  console.log(process.env.NODE_ENV, 'NODE_ENV plugins');
+
   const filter = createFilter(include, exclude);
   return {
     name: 'vite-plugin-nant-mdx',

@@ -5,11 +5,10 @@ import UnoCSS from 'unocss/vite';
 import unocssConfig from '../config/unoConfig.js';
 import logger from '../shared/logger.js';
 
-import { createLogger, mergeConfig, searchForWorkspaceRoot } from 'vite';
-import { ROOT, SITE_ROOT, CONFIG_PATH, UNOCSS_CONFIG_PATH, VITE_CONFIG_PATH } from '../shared/constant.js';
-import { SiteConfig, NantConfig } from './../config/siteConfig.js';
-import { resolveAliases, DIST_CLIENT_PATH, APP_PATH, SITE_DATA_REQUEST_PATH, resolveAlias } from '../config/alias.js';
-import { compilePage } from '../compiler/compilePage.js';
+import { createLogger, searchForWorkspaceRoot } from 'vite';
+import { SITE_ROOT, CONFIG_PATH, UNOCSS_CONFIG_PATH, VITE_CONFIG_PATH } from '../shared/constant.js';
+import { NantConfig } from './../config/siteConfig.js';
+import { DIST_CLIENT_PATH, SITE_DATA_REQUEST_PATH, resolveAlias } from '../config/alias.js';
 import { deserializeFunctions, serializeFunctions } from '../shared/serialize.js';
 import { nantMdx, html } from '@nant-design/vite-plugins';
 
@@ -105,9 +104,13 @@ export const createNantPlugins = async (
     },
   };
 
+  const isPro = process.env.NODE_ENV === 'production';
+
+  console.log(isPro, process.env.NODE_ENV, 'isPro');
+
   return [
     nantPlugin,
-    nantMdx({ development: true }),
+    nantMdx({ development: !isPro }),
     react({
       include: /\.(mdx|md|js|jsx|ts|tsx)$/,
     }),

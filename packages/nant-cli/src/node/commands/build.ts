@@ -12,7 +12,5 @@ export async function build() {
   const nantConfig = await getNantConfig();
   const buildConfig = await getBuildConfig(nantConfig);
 
-  console.log(buildConfig, 'buildConfig');
-
   await buildVite(buildConfig);
 }

@@ -3,8 +3,6 @@
 
 this is the
 
-<Sandpack demoName='base'/>
-
 
 ## test code
 
@@ -44,7 +42,3 @@ this is the
   </div>
 </div>
 ```
-
-
-<Sandpack demoName='block'/>
-

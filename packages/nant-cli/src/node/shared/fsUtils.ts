@@ -26,3 +26,11 @@ export const toPascalCase = (str: string) =>
 export function getCliVersion() {
   return readJSONSync(CLI_PACKAGE_JSON).version;
 }
+
+export const outputFileSyncOnChange = (path: string, code: string) => {
+  ensureFileSync(path);
+  const content = readFileSync(path, 'utf8');
+  if (content !== code) {
+    outputFileSync(path, code);
+  }
+};

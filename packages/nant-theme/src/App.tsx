@@ -6,46 +6,10 @@ import './styles/index.css';
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
 import '@docsearch/css';
-import Layout from './Layout';
-import { MdxContainer } from './components/Layout/MdxContainer.jsx';
 
 const routerConfig = getRouterConfig();
 
-console.log(routerConfig, 'routerConfig');
-
-// const router = createBrowserRouter(routerConfig);
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      // {
-      //   index: true,
-      //   element: <Home />
-      // },
-      {
-        path: 'docs/intro',
-        // element: <div>about</div>,
-        element: (
-          <MdxContainer
-            lazyChildren={React.lazy(
-              () => import(`${'/Users/wangbaoqi/personal/xnate-design/nant/packages/nant-test/docs/intro.md'}`),
-            )}
-          />
-        ),
-
-        // Single route in lazy file
-      },
-
-      {
-        path: '*',
-        element: <div>no data</div>,
-      },
-    ],
-  },
-]);
-console.log(router, 'router');
+const router = createBrowserRouter(routerConfig);
 
 export default function App() {
   return <RouterProvider router={router} />;

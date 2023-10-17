@@ -3,17 +3,14 @@ import path from 'path';
 import logger from '../shared/logger.js';
 
 import { mergeWith } from 'lodash-es';
-import { createLogger, loadConfigFromFile, mergeConfig as mergeViteConfig, normalizePath } from 'vite';
-import { DEFAULT_THEME_DIR } from '../shared/constant.js';
+import { loadConfigFromFile, mergeConfig as mergeViteConfig, normalizePath } from 'vite';
+import { ROOT } from '../shared/constant.js';
 import { compilePage } from '../compiler/compilePage.js';
-import { ROOT, SITE_ROOT } from '../shared/constant.js';
 
 import { defaultNantConfig } from './siteConfig.js';
 
-import type { ConfigEnv } from 'vite';
 import type { SiteData, DefaultTheme } from '../../../types/shared';
-import type { RawConfigExports, UserConfig, SiteConfig, NantConfig } from './siteConfig.js';
-import { async } from 'fast-glob';
+import type { RawConfigExports, UserConfig, NantConfig } from './siteConfig.js';
 
 const supportConfigExts = ['js', 'ts', 'mjs', 'mts'];
 
@@ -113,15 +110,12 @@ export function mergeStrategy(value: any, srcValue: any, key: string) {
 
 export async function getNantConfig(): Promise<NantConfig<DefaultTheme.Config>> {
   const root = normalizePath(ROOT);
-  const srcDir = normalizePath(SITE_ROOT);
 
   const defaultConfig = defaultNantConfig;
+  const [userConfig] = await resolveUserConfig(root, 'serve', 'development');
+  const mergeConfig = { ...mergeWith(defaultConfig, userConfig) };
 
-  const pages = await compilePage(srcDir);
-
-  const [userConfig, configPath, configDeps] = await resolveUserConfig(root, 'serve', 'development');
-
-  const mergeConfig = { ...mergeWith(defaultConfig, userConfig), pages };
+  await compilePage();
 
   return mergeConfig;
 }
