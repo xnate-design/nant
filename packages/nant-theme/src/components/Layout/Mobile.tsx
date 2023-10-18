@@ -14,9 +14,7 @@ export const Mobile = () => {
 
   const mobileContainer = clsx('bg-alt dark:bg-alt-dark flex flex-col overflow-hidden rounded-3xl p-3 h-[625px] w-80');
 
-  const iframeClsx = clsx(
-    'rounded-0 overflow-hidden rounded-3xl flex-1 bg-wash dark:bg-wash-dark text-primary dark:text-primary-dark',
-  );
+  const iframeClsx = clsx('rounded-0 overflow-hidden rounded-3xl flex-1  text-primary dark:text-primary-dark');
 
   return (
     <div className={mobileContainer}>

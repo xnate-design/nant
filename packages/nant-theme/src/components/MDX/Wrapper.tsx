@@ -26,7 +26,7 @@ const WrapperMdx = (props: WrapperMdxProps) => {
   const asideClass = clsx(
     'relative hidden order-2 flex-grow w-full ',
     'xl:block',
-    isComponent ? 'w-xs pl-13' : 'pl-4 max-w-64',
+    isComponent ? 'max-w-[24rem] w-xs pl-13' : 'pl-4 max-w-64',
   );
 
   const asideContainerClass = clsx(

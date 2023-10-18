@@ -57,7 +57,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   const language = className.replace(/language-/, '');
   const highlights = calculateLinesToHighlight(light ?? '');
 
-  const blockClass = clsx('bg-wash sandpack dark:bg-alt-dark rounded-2xl shadow-lg overflow-x-auto my-8');
+  const blockClass = clsx('bg-alt sandpack dark:bg-alt-dark rounded-2xl overflow-x-auto my-8');
   const wrapperClass = clsx('w-full');
   const lineClass = clsx('ml-2 flex', showLineNumbers ? 'ml-2' : 'ml-4');
   return (

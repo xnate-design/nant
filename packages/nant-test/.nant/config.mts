@@ -34,6 +34,10 @@ export default defineConfig({
               text: 'Button 按钮',
               link: '/components/button',
             },
+            {
+              text: 'Card 卡片',
+              link: '/components/card',
+            },
           ],
         },
       ],

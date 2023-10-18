@@ -47,6 +47,7 @@ export const getBuildConfig = async (nantConfig: NantConfig): Promise<InlineConf
         // external: ['virtual:uno.css'],
         input: {
           main: path.join(DOC_ROOT, 'index.html'),
+          mobile: path.join(DOC_ROOT, 'mobile.html'),
         },
       },
     },
