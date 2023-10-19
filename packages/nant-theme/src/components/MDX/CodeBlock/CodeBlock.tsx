@@ -66,7 +66,7 @@ const CodeBlock = (props: CodeBlockProps) => {
         <Highlight code={code} language={language} theme={themes}>
           {({ tokens, getLineProps, getTokenProps }) => (
             <pre className=" text-[15px]">
-              <code className="leading-6 py-8 font-maple block text-sm">
+              <code className="leading-4 py-4 block text-sm">
                 {tokens.map((line, i) => (
                   <div
                     key={i}

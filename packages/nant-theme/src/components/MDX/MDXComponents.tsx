@@ -90,5 +90,12 @@ export const MDXComponents = {
   Deprecated,
   TerminalBlock,
   CodeStep,
-  // Sandpack,
+  Sandpack,
 };
+
+for (const key in MDXComponents) {
+  if (Object.prototype.hasOwnProperty.call(MDXComponents, key)) {
+    const MDXComponent: any = (MDXComponents as any)[key];
+    MDXComponent.mdxName = key;
+  }
+}

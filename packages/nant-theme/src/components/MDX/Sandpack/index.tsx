@@ -1,12 +1,7 @@
-import { ReactElement, Suspense, memo, useEffect, useState } from 'react';
+import { ReactElement, Suspense, memo, Children } from 'react';
 import SandpackRoot from './SandPackRoot';
 import siteData from '@siteData';
-import { sandpackFile } from './createFileMap';
-import { useLocation } from 'react-router-dom';
-
-interface ISandPack {
-  demoName: string;
-}
+import { createFileMap } from './createFileMap';
 
 const SandpackGlimmer = ({ code }: { code: string }) => (
   <div className="sandpack sandpack--playground my-8">
@@ -44,15 +39,24 @@ const SandpackGlimmer = ({ code }: { code: string }) => (
   </div>
 );
 
-export default memo(function SandpackWrapper(props: ISandPack) {
-  const { demoName } = props;
-  const { pathname } = useLocation();
+export default memo(function SandpackWrapper(props: any) {
+  const codeSnippet = createFileMap(Children.toArray(props.children));
 
-  const files = sandpackFile(demoName, pathname);
+  // To set the active file in the fallback we have to find the active file first.
+  // If there are no active files we fallback to App.js as default.
+  const activeCodeSnippet = Object.keys(codeSnippet).filter(
+    (fileName) => codeSnippet[fileName]?.active === true && codeSnippet[fileName]?.hidden === false,
+  );
+  let activeCode;
+  if (!activeCodeSnippet.length) {
+    activeCode = codeSnippet['/App.js'].code;
+  } else {
+    activeCode = codeSnippet[activeCodeSnippet[0]].code;
+  }
 
   return (
-    <Suspense fallback={null}>
-      <SandpackRoot {...props} files={files} />
+    <Suspense fallback={<SandpackGlimmer code={activeCode} />}>
+      <SandpackRoot {...props} />
     </Suspense>
   );
 });

@@ -52,7 +52,7 @@ const colors = {
   divider: '#e2e2e3',
   'divider-dark': '#2e2e32',
   // Gray
-  'gray-95': '#16181D',
+  'gray-95': '#2b333b',
   'gray-90': '#23272F',
   'gray-80': '#343A46',
   'gray-70': '#404756',

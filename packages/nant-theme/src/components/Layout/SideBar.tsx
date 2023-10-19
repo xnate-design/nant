@@ -59,7 +59,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
     hidden: collapsed,
   });
 
-  const iconClass = clsx('text-sm transition-transform', collapsed ? 'rotate-0' : 'rotate-90');
+  const iconClass = clsx('text-[14px] transition-transform', collapsed ? 'rotate-0' : 'rotate-90');
 
   const sideItem = () => {
     if (item.text) {
@@ -74,7 +74,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
 
       return (
         <div className="relative w-full flex cursor-pointer" onClick={() => setCollapsed(!collapsed)}>
-          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-[15px] py-1 dark:text-primary-dark">
+          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-[14px] py-1 dark:text-primary-dark">
             {item.text}
           </h2>
           <button className="h-8 w-8 text-tertiary dark:text-tertiary-dark flex justify-center items-center -mr-2 cursor-pointer">

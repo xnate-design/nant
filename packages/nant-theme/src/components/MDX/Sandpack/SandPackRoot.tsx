@@ -12,12 +12,28 @@ import {
 import { CustomTheme } from './Themes';
 
 import { PresetWrapper } from './CodeWrapper';
+import { createFileMap } from './createFileMap';
+import { Children, useState } from 'react';
 
-export default function SandpackRoot(props: { files: Record<string, SandpackFile> }) {
-  const providedFiles = Object.keys(props.files);
+type SandpackProps = {
+  children: React.ReactNode;
+  autorun?: boolean;
+  showDevTools?: boolean;
+};
+
+export default function SandpackRoot(props: SandpackProps) {
+  const { children, autorun = true, showDevTools = false } = props;
+  const [devToolsLoaded, setDevToolsLoaded] = useState(false);
+  const codeSnippets = Children.toArray(children) as React.ReactElement[];
+  const files = createFileMap(codeSnippets);
+
+  files['/styles.css'] = {
+    code: [files['/styles.css']?.code ?? ''].join('\n\n'),
+    hidden: !files['/styles.css']?.visible,
+  };
 
   return (
-    <div className="sandpack w-full my-8">
+    <div className="sandpack w-full my-8 -mr-16">
       <SandpackProvider
         theme={CustomTheme}
         template="react"
@@ -28,7 +44,7 @@ export default function SandpackRoot(props: { files: Record<string, SandpackFile
         }}
         {...props}
       >
-        <PresetWrapper providedFiles={providedFiles} />
+        <PresetWrapper providedFiles={Object.keys(files)} />
       </SandpackProvider>
     </div>
   );

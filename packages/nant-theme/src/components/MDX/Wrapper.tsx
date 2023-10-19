@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { DefaultTheme } from 'nant/theme';
 
-import { TableContent, Mobile } from '../Layout';
+import { TableContent, Mobile, PrevNext } from '../Layout';
 import { useLocation } from 'react-router-dom';
 export interface WrapperMdxProps {
   children?: React.ReactElement;
@@ -13,13 +13,12 @@ const WrapperMdx = (props: WrapperMdxProps) => {
   const { children = '', toc = [] } = props;
   const { pathname } = useLocation();
 
-  console.log(pathname, 'Wrapppp');
   const isComponent = pathname.indexOf('components') !== -1;
 
   const boxClass = clsx('m-auto w-full', 'xl:(flex justify-center)');
 
   const articleClass = clsx(
-    'nant-mdx break-words  font-normal text-primary dark:text-primary-dark pl-2 text-[15px]',
+    'nant-mdx break-words font-normal text-primary dark:text-primary-dark pl-6 text-[15px]',
     isComponent ? '' : '',
   );
 
@@ -41,8 +40,11 @@ const WrapperMdx = (props: WrapperMdxProps) => {
   return (
     <div className={boxClass}>
       <section className={contentClass}>
-        <div className="max-w-[800px] font-maple">
+        <div className="max-w-[800px] ">
           <article className={articleClass}>{children}</article>
+        </div>
+        <div className="my-4">
+          <PrevNext />
         </div>
       </section>
       <aside className={asideClass}>

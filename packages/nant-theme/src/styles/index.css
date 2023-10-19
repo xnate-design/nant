@@ -11,18 +11,21 @@
   overflow-x: auto;
 }
 .nant-mdx table tr {
-  border-top: 1px solid var(--sp-colors-divider);
+  border-top: 1px solid var(--nt-color-divider);
+}
+.nant-mdx table tr:nth-child(2n) {
+  background-color: var(--nt-color-bg-soft);
 }
 .nant-mdx table th,
 .nant-mdx table td {
-  border: 1px solid var(--sp-colors-divider);
+  border: 1px solid var(--nt-color-divider);
   padding: 8px 16px;
   text-align: center;
 }
 .nant-mdx table th {
   font-size: 16px;
   font-weight: 600;
-  background-color: var(--sp-colors-soft);
+  background-color: var(--nt-color-bg-soft);
 }
 .nant-mdx table th:first-child,
 .nant-mdx table tr td:first-child {

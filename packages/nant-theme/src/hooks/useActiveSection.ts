@@ -1,6 +1,4 @@
 import { useLocation } from 'react-router-dom';
-import { useContext } from 'react';
-import SiteContext from '../SiteContext';
 
 export const useActiveSection = () => {
   const { pathname } = useLocation();

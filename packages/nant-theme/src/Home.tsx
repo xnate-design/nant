@@ -88,7 +88,7 @@ export default function Home() {
               {featureLists.map((feature, idx) => {
                 return (
                   <div className="flex-1" key={idx}>
-                    <div className="border border-soft dark:border-soft-dark h-full rounded-lg bg-card dark:bg-card-dark">
+                    <div className="border border-soft dark:border-soft-dark h-full rounded-lg bg-soft dark:bg-soft-dark">
                       <article className="flex flex-col p-6 h-full w-full w-50 h-50">
                         <div className="flex w-12 h-12 justify-center items-center rounded-lg text-link bg-soft-g dark:bg-soft-g-dark">
                           <feature.icon className="text-lg" />
