@@ -27,17 +27,17 @@ export const PresetWrapper = memo(function PresetWrapper({ providedFiles }: IPre
 export const OpenInCodeSandboxButton = () => {
   return (
     <UnstyledOpenInCodeSandboxButton
-      className="text-[12px] text-primary cursor-pointer dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1 ml-2 md:ml-1"
+      className="text-[12px]  hover:text-primary dark:hover:text-primary-dark cursor-pointer inline-flex items-center duration-100 ease-in transition mx-1 ml-2 md:ml-1"
       title="Open in CodeSandbox"
     >
       {/* <ShareOutline /> */}
       <svg
-        width="1em"
-        height="1em"
+        width="1.2em"
+        height="1.2em"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="inline mx-1 relative top-[1px]"
+        className="inline mx-1 relative -top-[2px]"
       >
         <path
           d="M20.5001 2H15.5001C15.3675 2 15.2403 2.05268 15.1465 2.14645C15.0528 2.24021 15.0001 2.36739 15.0001 2.5V3.5C15.0001 3.63261 15.0528 3.75979 15.1465 3.85355C15.2403 3.94732 15.3675 4 15.5001 4H18.5901L7.6501 14.94C7.60323 14.9865 7.56604 15.0418 7.54065 15.1027C7.51527 15.1636 7.5022 15.229 7.5022 15.295C7.5022 15.361 7.51527 15.4264 7.54065 15.4873C7.56604 15.5482 7.60323 15.6035 7.6501 15.65L8.3501 16.35C8.39658 16.3969 8.45188 16.4341 8.51281 16.4594C8.57374 16.4848 8.63909 16.4979 8.7051 16.4979C8.7711 16.4979 8.83646 16.4848 8.89738 16.4594C8.95831 16.4341 9.01362 16.3969 9.0601 16.35L20.0001 5.41V8.5C20.0001 8.63261 20.0528 8.75979 20.1465 8.85355C20.2403 8.94732 20.3675 9 20.5001 9H21.5001C21.6327 9 21.7599 8.94732 21.8537 8.85355C21.9474 8.75979 22.0001 8.63261 22.0001 8.5V3.5C22.0001 3.10218 21.8421 2.72064 21.5608 2.43934C21.2795 2.15804 20.8979 2 20.5001 2V2Z"
@@ -48,7 +48,6 @@ export const OpenInCodeSandboxButton = () => {
           fill="currentColor"
         ></path>
       </svg>
-      <span className="hidden md:block">Fork</span>
     </UnstyledOpenInCodeSandboxButton>
   );
 };
@@ -58,9 +57,9 @@ const CodeWrapper = memo(function CodeWrapper({ providedFiles }: { providedFiles
   // const { files, activeFile } = sandpack;
 
   return (
-    <div className="bg-wash dark:bg-alt-dark rounded-lg border border border-border dark:border-border dark:border-border-dark overflow-hidden">
-      <div className="flex justify-between items-center h-10 bg-wash border-b dark:border-border-dark dark:bg-alt-dark px-4 font-wotfard">
-        <div className=""></div>
+    <div className="rounded-lg overflow-hidden dark:border-2 border-wash dark:border-gray-80 shadow-lg">
+      <div className="flex justify-between items-center h-9 border-b border-divider dark:border-divider-dark px-2 dark:bg-gray-80 bg-alt text-secondary dark:text-secondary-dark">
+        <div className="font-bold">CodePlayground</div>
         <OpenInCodeSandboxButton />
       </div>
       <SandpackLayout>

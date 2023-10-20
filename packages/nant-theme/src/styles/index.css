@@ -47,17 +47,17 @@
   font-size: var(--sp-font-size);
   font-family: var(--sp-font-mono);
 }
-
 .sandpack .sp-layout {
   border: 0;
 }
-
 .sandpack .sp-stack {
   height: 100%;
 }
-
 .sandpack .sp-preview-container {
   border-radius: 4px;
+}
+.sandpack .cm-gutter.cm-lineNumbers {
+  font-size: 13px;
 }
 
 

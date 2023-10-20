@@ -33,7 +33,7 @@ export default function SandpackRoot(props: SandpackProps) {
   };
 
   return (
-    <div className="sandpack w-full my-8 -mr-16">
+    <div className="sandpack w-full my-8 ">
       <SandpackProvider
         theme={CustomTheme}
         template="react"
