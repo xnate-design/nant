@@ -34,21 +34,18 @@ importers:
 
   packages/nant-cli:
     dependencies:
-      '@babel/plugin-transform-react-jsx':
-        specifier: ^7.22.5
-        version: 7.22.5(@babel/core@7.22.10)
       '@clack/prompts':
         specifier: ^0.7.0
         version: 0.7.0
-      '@mdx-js/react':
-        specifier: ^2.3.0
-        version: 2.3.0(react@18.2.0)
-      '@mdx-js/rollup':
-        specifier: ^2.3.0
-        version: 2.3.0(rollup@3.28.1)
-      '@rollup/plugin-babel':
-        specifier: ^6.0.3
-        version: 6.0.3(@babel/core@7.22.10)(rollup@3.28.1)
+      '@nant-design/nant-icons':
+        specifier: workspace:*
+        version: link:../nant-icons
+      '@nant-design/theme-default':
+        specifier: workspace:*
+        version: link:../nant-theme
+      '@nant-design/vite-plugins':
+        specifier: workspace:*
+        version: link:../nant-vite-plugins
       '@unocss/core':
         specifier: ^0.55.1
         version: 0.55.1
@@ -93,7 +90,7 @@ importers:
         version: 4.0.0
       unocss:
         specifier: ^0.55.1
-        version: 0.55.1(postcss@8.4.27)(rollup@3.28.1)(vite@4.4.9)
+        version: 0.55.1(postcss@8.4.27)(vite@4.4.9)
       url:
         specifier: ^0.11.1
         version: 0.11.1
@@ -101,18 +98,6 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.4.9)
     devDependencies:
-      '@nant-design/nant-icons':
-        specifier: workspace:*
-        version: link:../nant-icons
-      '@nant-design/shared':
-        specifier: workspace:*
-        version: link:../nant-shared
-      '@nant-design/theme-default':
-        specifier: workspace:*
-        version: link:../nant-theme
-      '@nant-design/vite-plugins':
-        specifier: workspace:*
-        version: link:../nant-vite-plugins
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
@@ -145,12 +130,22 @@ importers:
         version: 4.7.4
       vite-plugin-inspect:
         specifier: ^0.7.38
-        version: 0.7.38(rollup@3.28.1)(vite@4.4.9)
+        version: 0.7.38(vite@4.4.9)
 
   packages/nant-cli/template:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.15.0
+        version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@nant-design/cli':
-        specifier: '*'
+        specifier: latest
         version: link:..
       '@types/react':
         specifier: ^18.2.20
@@ -158,12 +153,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.7
         version: 18.2.7
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
       typescript:
         specifier: ^4.7.4
         version: 4.7.4
@@ -253,7 +242,7 @@ importers:
         version: 4.7.4
       unocss:
         specifier: ^0.55.1
-        version: 0.55.1(postcss@8.4.27)(rollup@3.28.1)(vite@4.4.9)
+        version: 0.55.1(postcss@8.4.27)(vite@4.4.9)
 
   packages/nant-vite-plugins:
     dependencies:
@@ -539,13 +528,6 @@ packages:
       jsesc: 2.5.2
     dev: false
 
-  /@babel/helper-annotate-as-pure@7.22.5:
-    resolution: {integrity: sha512-LvBTxu8bQSQkcyKOU+a1btnNFQ1dMAd0R6PyW3arXes06F6QLWLIrd681bxRPIXlrMGR3XYnW9JyML7dP3qgxg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.10
-    dev: false
-
   /@babel/helper-compilation-targets@7.22.10:
     resolution: {integrity: sha512-JMSwHD4J7SLod0idLq5PKgI+6g/hLD/iuWBq08ZX49xE14VpVEojJ5rHWptpirV2j020MvypRLAXAO50igCJ5Q==}
     engines: {node: '>=6.9.0'}
@@ -656,16 +638,6 @@ packages:
     dependencies:
       '@babel/types': 7.22.10
 
-  /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.22.10):
-    resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: false
-
   /@babel/plugin-transform-react-jsx-self@7.22.5(@babel/core@7.22.10):
     resolution: {integrity: sha512-nTh2ogNUtxbiSbxaT4Ds6aXnXEipHweN9YRgOX/oNXdf0cCrGn/+2LozFa3lnPV5D90MkjhgckCPBrsoSc1a7g==}
     engines: {node: '>=6.9.0'}
@@ -684,20 +656,6 @@ packages:
     dependencies:
       '@babel/core': 7.22.10
       '@babel/helper-plugin-utils': 7.22.5
-    dev: false
-
-  /@babel/plugin-transform-react-jsx@7.22.5(@babel/core@7.22.10):
-    resolution: {integrity: sha512-rog5gZaVbUip5iWDMTYbVM15XQq+RkUKhET/IHR6oizR+JEoN6CAfTTuHcK4vwUyzca30qqHqEpzBOnaRMWYMA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.22.5
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.10)
-      '@babel/types': 7.22.10
     dev: false
 
   /@babel/template@7.22.5:
@@ -1412,30 +1370,6 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react@2.3.0(react@18.2.0):
-    resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
-    peerDependencies:
-      react: '>=16'
-    dependencies:
-      '@types/mdx': 2.0.6
-      '@types/react': 18.2.20
-      react: 18.2.0
-    dev: false
-
-  /@mdx-js/rollup@2.3.0(rollup@3.28.1):
-    resolution: {integrity: sha512-wLvRfJS/M4UmdqTd+WoaySEE7q4BIejYf1xAHXYvtT1du/1Tl/z2450Gg2+Hu7fh05KwRRiehiTP9Yc/Dtn0fA==}
-    peerDependencies:
-      rollup: '>=2'
-    dependencies:
-      '@mdx-js/mdx': 2.3.0
-      '@rollup/pluginutils': 5.0.3(rollup@3.28.1)
-      rollup: 3.28.1
-      source-map: 0.7.4
-      vfile: 5.3.7
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1495,25 +1429,6 @@ packages:
   /@remix-run/router@1.8.0:
     resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
     engines: {node: '>=14.0.0'}
-    dev: false
-
-  /@rollup/plugin-babel@6.0.3(@babel/core@7.22.10)(rollup@3.28.1):
-    resolution: {integrity: sha512-fKImZKppa1A/gX73eg4JGo+8kQr/q1HBQaCGKECZ0v4YBBv3lFqi14+7xyApECzvkLTHCifx+7ntcrvtBIRcpg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      '@types/babel__core': ^7.1.9
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      '@types/babel__core':
-        optional: true
-      rollup:
-        optional: true
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/helper-module-imports': 7.22.5
-      '@rollup/pluginutils': 5.0.3(rollup@3.28.1)
-      rollup: 3.28.1
     dev: false
 
   /@rollup/pluginutils@5.0.3(rollup@3.28.1):
@@ -1874,7 +1789,7 @@ packages:
       eslint-visitor-keys: 3.4.2
     dev: true
 
-  /@unocss/astro@0.55.1(rollup@3.28.1)(vite@4.4.9):
+  /@unocss/astro@0.55.1(vite@4.4.9):
     resolution: {integrity: sha512-t3eibW16Dx+Wck8rkQ2+Xt4z1y5XoiS5jXcKqHRV9GqhbG9IyY7/Rp3nyBoHGZSAnZhdczjgBB9xnU2W6X7tAA==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0
@@ -1884,12 +1799,12 @@ packages:
     dependencies:
       '@unocss/core': 0.55.1
       '@unocss/reset': 0.55.1
-      '@unocss/vite': 0.55.1(rollup@3.28.1)(vite@4.4.9)
+      '@unocss/vite': 0.55.1(vite@4.4.9)
       vite: 4.4.9(@types/node@20.4.9)
     transitivePeerDependencies:
       - rollup
 
-  /@unocss/cli@0.55.1(rollup@3.28.1):
+  /@unocss/cli@0.55.1:
     resolution: {integrity: sha512-qH18Coozb/5XeoU/kiByppHayVXcnDWcKJecdz90u2OusQQjsPuJcfNdbh2EbSdOv44QVvyEHmHsO/gBn42DRw==}
     engines: {node: '>=14'}
     hasBin: true
@@ -2029,7 +1944,7 @@ packages:
     dependencies:
       '@unocss/core': 0.55.1
 
-  /@unocss/vite@0.55.1(rollup@3.28.1)(vite@4.4.9):
+  /@unocss/vite@0.55.1(vite@4.4.9):
     resolution: {integrity: sha512-wf1YZBk/Pw0poo3QBXXCCwM7qq83lXoKNdqKVui5H+iCa0haRkscHX6/2PmJVRgczdpCG9/kFl3tDI3KzQdOkA==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0
@@ -7725,7 +7640,7 @@ packages:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
 
-  /unocss@0.55.1(postcss@8.4.27)(rollup@3.28.1)(vite@4.4.9):
+  /unocss@0.55.1(postcss@8.4.27)(vite@4.4.9):
     resolution: {integrity: sha512-WyLlrkB1m37LT3jmT51BOmvcd2/aFL0/QuJLn0gYQUWHi28uPtGFTL2kEvivqxzEgDgDrzbQl8VBgy1RssbRHQ==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -7737,8 +7652,8 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@unocss/astro': 0.55.1(rollup@3.28.1)(vite@4.4.9)
-      '@unocss/cli': 0.55.1(rollup@3.28.1)
+      '@unocss/astro': 0.55.1(vite@4.4.9)
+      '@unocss/cli': 0.55.1
       '@unocss/core': 0.55.1
       '@unocss/extractor-arbitrary-variants': 0.55.1
       '@unocss/postcss': 0.55.1(postcss@8.4.27)
@@ -7756,7 +7671,7 @@ packages:
       '@unocss/transformer-compile-class': 0.55.1
       '@unocss/transformer-directives': 0.55.1
       '@unocss/transformer-variant-group': 0.55.1
-      '@unocss/vite': 0.55.1(rollup@3.28.1)(vite@4.4.9)
+      '@unocss/vite': 0.55.1(vite@4.4.9)
       vite: 4.4.9(@types/node@20.4.9)
     transitivePeerDependencies:
       - postcss
@@ -7873,7 +7788,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite-plugin-inspect@0.7.38(rollup@3.28.1)(vite@4.4.9):
+  /vite-plugin-inspect@0.7.38(vite@4.4.9):
     resolution: {integrity: sha512-+p6pJVtBOLGv+RBrcKAFUdx+euizg0bjL35HhPyM0MjtKlqoC5V9xkCmO9Ctc8JrTyXqODbHqiLWJKumu5zJ7g==}
     engines: {node: '>=14'}
     peerDependencies:
