@@ -1,6 +1,6 @@
 {
   "name": "@nant-design/theme-default",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "nant theme default",
   "main": "src/index.ts",
   "scripts": {
