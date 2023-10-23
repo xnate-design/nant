@@ -1,6 +1,6 @@
 {
   "name": "@nant-design/cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "nant-cli",
   "type": "module",
   "main": "./lib/node/index.js",
@@ -27,6 +27,10 @@
     "@clack/prompts": "^0.7.0",
     "@unocss/core": "^0.55.1",
     "@vitejs/plugin-react": "^4.0.4",
+    "@nant-design/nant-icons": "workspace:*",
+    "@nant-design/shared": "workspace:*",
+    "@nant-design/theme-default": "workspace:*",
+    "@nant-design/vite-plugins": "workspace:*",
     "chokidar": "^3.5.3",
     "commander": "^11.0.0",
     "fast-glob": "^3.3.1",
@@ -41,10 +45,6 @@
     "vite": "^4.4.9"
   },
   "devDependencies": {
-    "@nant-design/nant-icons": "workspace:*",
-    "@nant-design/shared": "workspace:*",
-    "@nant-design/theme-default": "workspace:*",
-    "@nant-design/vite-plugins": "workspace:*",
     "@types/fs-extra": "^11.0.1",
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.9",

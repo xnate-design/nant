@@ -106,8 +106,6 @@ export const createNantPlugins = async (
 
   const isPro = process.env.NODE_ENV === 'production';
 
-  console.log(isPro, process.env.NODE_ENV, 'isPro');
-
   return [
     nantPlugin,
     nantMdx({ development: !isPro }),
