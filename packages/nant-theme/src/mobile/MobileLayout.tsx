@@ -1,5 +1,6 @@
-import mobileRoute from '@mobileRoute';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+
+import mobileRoute from '@mobileRoute';
 
 const MobileHome = () => {
   return (

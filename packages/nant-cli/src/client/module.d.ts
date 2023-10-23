@@ -1,10 +1,8 @@
 /// <reference types="vite/client" />
 
-declare module '@siteData' {
-  import type { SiteData } from 'nant';
-  const data: SiteData;
-  export default data;
-}
+declare module '@pcRoute';
+declare module '@mobileRoute';
+declare module '@siteData';
 
 declare module '@theme/index' {
   import type { Theme } from 'nant';

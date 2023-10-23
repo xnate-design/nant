@@ -1,6 +1,6 @@
 {
   "name": "@nant-design/cli",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "nant-cli",
   "type": "module",
   "main": "./lib/node/index.js",
@@ -24,11 +24,7 @@
     "dev:watch": "node scripts/watchAndCopy"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@clack/prompts": "^0.7.0",
-    "@mdx-js/react": "^2.3.0",
-    "@mdx-js/rollup": "^2.3.0",
-    "@rollup/plugin-babel": "^6.0.3",
     "@unocss/core": "^0.55.1",
     "@vitejs/plugin-react": "^4.0.4",
     "chokidar": "^3.5.3",
