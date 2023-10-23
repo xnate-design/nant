@@ -4,19 +4,22 @@
   "description": "nant react ui",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nant dev",
-    "build": "nant build"
+    "build": "nant build",
+    "preview": "nant preview"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "nant wang<wangbaoqi8839@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
-    "@nant-design/cli": "*",
+    "@nant-design/cli": "latest",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.7.4"
+    "react-router-dom": "^6.15.0"
   }
 }

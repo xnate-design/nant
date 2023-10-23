@@ -12,6 +12,8 @@ export function TableContent({ toc, depth = 2 }: TocProps) {
   const headings = toc[0].children ?? [];
   const tocIds = headings.map((e) => e.value);
   const activeId = useActiveId(tocIds);
+
+  if (!headings.length) return '';
   return (
     <>
       <nav className="text-[13px] relative pl-6 font-medium ">

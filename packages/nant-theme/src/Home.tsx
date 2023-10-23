@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { TopNav } from './components/Layout/index';
 
 import { LogoVite } from '@nant-design/nant-icons/dist/react/LogoVite';
 import { LogoUnocss } from '@nant-design/nant-icons/dist/react/LogoUnocss';
@@ -8,7 +7,11 @@ import { LogoMarkdown } from '@nant-design/nant-icons/dist/react/LogoMarkdown';
 import { LogoReact } from '@nant-design/nant-icons/dist/react/LogoReact';
 import { useMemo } from 'react';
 
+import siteDate from '@siteData';
+
 export default function Home() {
+  console.log(siteDate, 'siteDate');
+
   const homeClass = clsx('lg:pt-16 w-full max-w-full flex-shrink flex-grow m-auto');
   const contentClass = clsx('md:pb-28 pb-20 font-wotfard');
   const heroClass = clsx(

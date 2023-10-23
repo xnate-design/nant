@@ -30,7 +30,7 @@ export const SideBar = () => {
           return (
             <div
               key={id}
-              className="lg:(pt-3 width-side-group) border-b-1 border-divider dark:border-divider-dark last:border-b-0 group"
+              className="lg:(pt-3 width-side-group px-0) border-b-1 border-divider dark:border-divider-dark last:border-b-0 group"
             >
               <SideGroupItem item={sideBar} level={0} />
             </div>
@@ -59,7 +59,11 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
     hidden: collapsed,
   });
 
-  const iconClass = clsx('text-[14px] transition-transform', collapsed ? 'rotate-0' : 'rotate-90');
+  const iconContainer = clsx(
+    'h-8 w-8  flex justify-center items-center -mr-2 cursor-pointer group-hover:text-primary dark:group-hover:text-primary-dark duration-100 ease-in transition',
+    collapsed ? 'text-tertiary dark:text-tertiary-dark' : 'text-primary dark:text-primary-dark',
+  );
+  const iconClass = clsx('text-[14px] transition-transform', collapsed ? 'rotate-0 ' : 'rotate-90');
 
   const sideItem = () => {
     if (item.text) {
@@ -73,11 +77,11 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
         );
 
       return (
-        <div className="relative w-full flex cursor-pointer" onClick={() => setCollapsed(!collapsed)}>
+        <div className="relative w-full flex cursor-pointer group" onClick={() => setCollapsed(!collapsed)}>
           <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-[14px] py-1 dark:text-primary-dark">
             {item.text}
           </h2>
-          <button className="h-8 w-8 text-tertiary dark:text-tertiary-dark flex justify-center items-center -mr-2 cursor-pointer">
+          <button className={iconContainer}>
             <ArrowRight className={iconClass} />
           </button>
         </div>
@@ -98,7 +102,7 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
   };
 
   const sectionClass = clsx('barItem ', {
-    'pb-6': !level,
+    'pb-3': !level,
   });
 
   return (

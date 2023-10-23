@@ -25,6 +25,45 @@ export default defineConfig({
             },
           ],
         },
+        {
+          text: 'Guide',
+          items: [
+            {
+              text: 'intro',
+              link: '/docs/intro',
+            },
+            {
+              text: 'start',
+              link: '/docs/start',
+            },
+          ],
+        },
+        {
+          text: 'Guide',
+          items: [
+            {
+              text: 'intro',
+              link: '/docs/intro',
+            },
+            {
+              text: 'start',
+              link: '/docs/start',
+            },
+          ],
+        },
+        {
+          text: 'Guide',
+          items: [
+            {
+              text: 'intro',
+              link: '/docs/intro',
+            },
+            {
+              text: 'start',
+              link: '/docs/start',
+            },
+          ],
+        },
       ],
       '/components': [
         {

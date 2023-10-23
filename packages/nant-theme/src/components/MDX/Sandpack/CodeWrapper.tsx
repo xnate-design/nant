@@ -10,7 +10,7 @@ import {
   UnstyledOpenInCodeSandboxButton,
 } from '@codesandbox/sandpack-react';
 
-import { ShareOutline } from '@nant-design/nant-icons/dist/react/ShareOutline';
+import { PlayOutline } from '@nant-design/nant-icons/dist/react/PlayOutline';
 
 interface IPresetProps {
   providedFiles: string[];
@@ -59,13 +59,16 @@ const CodeWrapper = memo(function CodeWrapper({ providedFiles }: { providedFiles
   return (
     <div className="rounded-lg overflow-hidden dark:border-2 border-wash dark:border-gray-80 shadow-lg">
       <div className="flex justify-between items-center h-9 border-b border-divider dark:border-divider-dark px-2 dark:bg-gray-80 bg-alt text-secondary dark:text-secondary-dark">
-        <div className="font-bold">CodePlayground</div>
+        <div className="font-bold flex items-center font-mono gap-2">
+          <PlayOutline />
+          CodePlayground
+        </div>
         <OpenInCodeSandboxButton />
       </div>
       <SandpackLayout>
         <div className="flex-1 max-h-[500px] min-h-[450px] flex flex-col">
           <div className="overflow-y-auto h-full flex-1">
-            <SandpackCodeViewer showLineNumbers showTabs={false} />
+            <SandpackCodeEditor showLineNumbers showTabs={false} />
           </div>
         </div>
         <div className="lg:w-82 w-full max-h-[500px] flex flex-col bg-alt dark:bg-alt-dark">
