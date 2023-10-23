@@ -1,6 +1,6 @@
 {
   "name": "@nant-design/cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "nant-cli",
   "type": "module",
   "main": "./lib/node/index.js",
@@ -28,7 +28,6 @@
     "@unocss/core": "^0.55.1",
     "@vitejs/plugin-react": "^4.0.4",
     "@nant-design/nant-icons": "workspace:*",
-    "@nant-design/shared": "workspace:*",
     "@nant-design/theme-default": "workspace:*",
     "@nant-design/vite-plugins": "workspace:*",
     "chokidar": "^3.5.3",
