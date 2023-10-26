@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nant-design/nant-icons": "workspace:*",
     "@types/lodash-es": "^4.17.8",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -25,6 +24,7 @@
     "@docsearch/css": "3",
     "@docsearch/react": "^3.5.2",
     "@unocss/reset": "^0.55.2",
+    "@nant-design/nant-icons": "workspace:*",
     "clsx": "^2.0.0",
     "lodash-es": "^4.17.21",
     "parse-numeric-range": "^1.3.0",

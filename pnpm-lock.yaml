@@ -32,6 +32,31 @@ importers:
         specifier: ^4.7.4
         version: 4.7.4
 
+  packages/nant-blog:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.15.0
+        version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@nant-design/cli':
+        specifier: latest
+        version: link:../nant-cli
+      '@types/react':
+        specifier: ^18.2.20
+        version: 18.2.20
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      typescript:
+        specifier: ^4.7.4
+        version: 4.7.4
+
   packages/nant-cli:
     dependencies:
       '@clack/prompts':
@@ -200,6 +225,9 @@ importers:
       '@docsearch/react':
         specifier: ^3.5.2
         version: 3.5.2(@algolia/client-search@4.19.1)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2)
+      '@nant-design/nant-icons':
+        specifier: workspace:*
+        version: link:../nant-icons
       '@unocss/reset':
         specifier: ^0.55.2
         version: 0.55.2
@@ -225,9 +253,6 @@ importers:
         specifier: ^6.15.0
         version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
-      '@nant-design/nant-icons':
-        specifier: workspace:*
-        version: link:../nant-icons
       '@types/lodash-es':
         specifier: ^4.17.8
         version: 4.17.8
