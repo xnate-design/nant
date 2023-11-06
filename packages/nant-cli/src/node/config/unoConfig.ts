@@ -125,6 +125,7 @@ const rules: Rule[] = [
   ['width-side-group', { width: 'calc(288px - 64px)' }],
   ['height-side-content', { height: 'calc(100vh - 64px - 32px)' }],
   ['transition-side-bar', { transition: 'opacity .5s,transform .25s ease' }],
+  ['box-shadow-mobile', { 'box-shadow': 'rgba(0, 0, 0, 0.1) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 10px 0px' }],
 ];
 
 const unocssConfig: UserConfig = defineConfig({

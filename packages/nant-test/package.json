@@ -15,6 +15,7 @@
     "@nant-design/cli": "workspace:*",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "less": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^4.7.4"

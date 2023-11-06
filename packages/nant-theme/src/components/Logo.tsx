@@ -1,5 +1,5 @@
-import { LogoReact } from '@nant-design/nant-icons/dist/react/LogoReact';
+import NantLogo from '/nant.png';
 
-export function Logo(props = { className: '' }) {
-  return <LogoReact {...props} />;
+export function Logo({ className = '' }) {
+  return <img src={NantLogo} className={className} alt="React logo" />;
 }

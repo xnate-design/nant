@@ -33,7 +33,7 @@ const WrapperMdx = (props: WrapperMdxProps) => {
     isComponent ? 'w-xs overflow-hidden' : 'w-56 overflow-y-auto',
   );
 
-  const asideContentClass = clsx('flex flex-col pb-8', isComponent ? 'w-full h-[620px]' : 'height-side-content');
+  const asideContentClass = clsx('flex flex-col', isComponent ? 'w-full h-[620px]' : 'height-side-content pb-8');
 
   const contentClass = clsx('relative m-auto w-full', 'xl:(order-1 m-0 ) lg:( pb-32)');
 

@@ -67,7 +67,7 @@ const TopTitle = ({ hasSideBar = false, title = '' }) => {
     <div className={titleClass}>
       <div className="pointer-events-auto">
         <Link to="/" className={linkClass}>
-          <Logo className="text-xl" />
+          <Logo className="w-12" />
           <span>{title}</span>
         </Link>
       </div>
