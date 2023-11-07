@@ -1,10 +1,8 @@
 import React from 'react';
 
-import './index.less';
+import { ButtonProps } from './propsType';
 
-type ButtonProps = {
-  children?: React.ReactNode;
-};
+import './index.less';
 
 export default function Button(props: ButtonProps) {
   const { children } = props;

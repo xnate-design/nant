@@ -18,9 +18,9 @@ export default function Home() {
     'lg:(pt-38 px-14 pb-14) sm:(pt-18 px-12 pb-14) pt-28 px-6 pb-12 -mt-20 flex flex-col lg:flex-row justify-content',
   );
   const heroImgClass = clsx(
-    'lg:(max-w-sm max-h-96) sm:(w-70 h-70) absolute top-1/2 left-1/2 rounded-full w-48 h-48 transform -translate-1/2 -translate-y-1/2)',
+    'lg:(max-w-sm max-h-96)  absolute top-1/2 left-1/2 w-[275px] h-[243px] transform -translate-1/2 -translate-y-1/2)',
   );
-  const heroGradientClass = clsx('bg-gradient-to-tr from-blue-40 to-green-40 ');
+  const heroGradientClass = clsx('bg-gradient-to-tr from-[#A6155A]  to-[#FFA930] ');
   const blueClass = clsx('filter blur-3xl');
   const featureClass = clsx('lg:(px-16) sm:(px-12) px-6 relative py-16');
   const containerClass = clsx('max-w-7xl m-auto');
@@ -57,7 +57,7 @@ export default function Home() {
           <div className={heroClass}>
             <div className="lg:(flex-grow order-1 flex-shrink-0 max-w-3xl text-left) flex order-2 text-center justify-center flex-col items-center">
               <h1 className="text-6xl font-bold w-full">
-                <span className="nant-home-title bg-clip-text bg-gradient-to-tr from-blue-40 to-green-40 decoration-black	">
+                <span className="nant-home-title bg-clip-text bg-gradient-to-tr from-[#A6155A]  to-[#FFA930] decoration-black	">
                   Nant Ui
                 </span>
               </h1>
@@ -78,9 +78,13 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:(flex-grow order-2 m-0 min-h-full) sm:(mt-24 mx-6 mb-10) order-1 mt-18 mx-6 mb-14">
-              <div className="lg:(flex items-center justify-center w-full h-full transform translate-x-8 translate-y-8) sm:(w-96 h-96) relative m-auto w-80 h-80">
+              <div className="lg:(flex items-center justify-center w-full h-full transform ) sm:(w-96 h-96) relative m-auto w-80 h-80">
                 <div className={`${heroImgClass} ${heroGradientClass} ${blueClass}`}></div>
-                <img className={heroImgClass} src="https://media.wangbaoqi.tech/assets/svg/me.webp" alt="me-logo" />
+                <img
+                  className={heroImgClass}
+                  src="https://media.wangbaoqi.tech/assets/blog/logo/nant.png"
+                  alt="me-logo"
+                />
               </div>
             </div>
           </div>

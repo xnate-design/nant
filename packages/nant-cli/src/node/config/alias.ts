@@ -3,7 +3,7 @@ import { SiteConfig } from './../config/siteConfig';
 import { fileURLToPath } from 'url';
 
 import type { Alias, AliasOptions } from 'vite';
-import { SITE_MOBILE_ROUTES, SITE_PC_ROUTES } from '../shared/constant.js';
+import { SITE_MOBILE_ROUTES, SITE_PC_ROUTES, SITE_PUBLIC_PATH } from '../shared/constant.js';
 
 const PKG_ROOT = resolve(fileURLToPath(import.meta.url), '../../..');
 

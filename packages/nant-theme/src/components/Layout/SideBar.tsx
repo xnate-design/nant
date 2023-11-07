@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import SiteContext from '../../SiteContext';
 import { useActiveSection } from '../../hooks';
 import { ChevronForwardOutline as ArrowRight } from '@nant-design/nant-icons/dist/react/ChevronForwardOutline';
-
 import { DefaultTheme } from 'nant/theme';
 
 export const SideBar = () => {
@@ -19,7 +18,6 @@ export const SideBar = () => {
     'fixed top-0 bottom-0 left-0 px-8 pt-8 pb-24 width-side-bar max-w-xs opacity-0 lg:bg-alt lg:dark:bg=al-dark lg:translate-x-0 lg:w-72',
     '2xl:pl-nav-title 2xl:width-top-nav lg:pt-16 lg:pb-32 lg:max-w-full lg:opacity-100 lg:bg-alt lg:dark:bg-alt-dark overflow-x-hidden overflow-y-auto -translate-x-full transition-side-bar overscroll-contain',
   );
-
   const curtainClass = clsx('lg:sticky lg:-t-16 lg:-mt-16 lg:left-0 lg:h-16 lg:-mx-8 lg:bg-alt lg:dark:bg-alt-dark');
 
   return (
@@ -42,7 +40,7 @@ export const SideBar = () => {
 };
 
 interface SideGroupProps {
-  item: DefaultTheme.NavItem;
+  item: DefaultTheme.SideBarItem;
   level: number;
 }
 
@@ -60,8 +58,9 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
   });
 
   const iconContainer = clsx(
-    'h-8 w-8  flex justify-center items-center -mr-2 cursor-pointer group-hover:text-primary dark:group-hover:text-primary-dark duration-100 ease-in transition',
+    'h-8 w-8 justify-center items-center -mr-2 cursor-pointer group-hover:text-primary dark:group-hover:text-primary-dark duration-100 ease-in transition',
     collapsed ? 'text-tertiary dark:text-tertiary-dark' : 'text-primary dark:text-primary-dark',
+    item.collapsed != null ? 'flex' : 'hidden',
   );
   const iconClass = clsx('text-[14px] transition-transform', collapsed ? 'rotate-0 ' : 'rotate-90');
 
@@ -77,8 +76,11 @@ const SideGroupItem = ({ item = {}, level = 0 }: SideGroupProps) => {
         );
 
       return (
-        <div className="relative w-full flex cursor-pointer group" onClick={() => setCollapsed(!collapsed)}>
-          <h2 className="flex items-center flex-grow font-bold h-8 text-primary text-[14px] py-1 dark:text-primary-dark">
+        <div
+          className="relative w-full flex cursor-pointer group"
+          onClick={item.collapsed != null ? () => setCollapsed(!collapsed) : () => void 0}
+        >
+          <h2 className="flex items-center flex-grow font-medium h-8 text-primary text-[15px] py-1 dark:text-primary-dark">
             {item.text}
           </h2>
           <button className={iconContainer}>

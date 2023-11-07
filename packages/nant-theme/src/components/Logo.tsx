@@ -1,5 +1,6 @@
-import NantLogo from '/nant.png';
+import siteDate from '@siteData';
 
+const { themeConfig = {} } = siteDate;
 export function Logo({ className = '' }) {
-  return <img src={NantLogo} className={className} alt="React logo" />;
+  return <img src={themeConfig.logo} className={className} alt="React logo" />;
 }

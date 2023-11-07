@@ -33,6 +33,7 @@ export namespace DefaultTheme {
   export interface SideBarItem {
     text?: string;
     link?: string;
+    icon?: string;
     items?: SideBarItem[];
     collapsed?: boolean;
     base?: string;

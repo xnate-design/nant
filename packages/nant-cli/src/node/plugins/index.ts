@@ -92,6 +92,8 @@ export const createNantPlugins = async (
 
     async handleHotUpdate(ctx) {
       const { file } = ctx;
+      console.log(file, 'hot update');
+
       if (file === CONFIG_PATH || watchesConfig.includes(file)) {
         viteLogger.info(logger.green(`${path.relative(process.cwd(), file)} changed, restarting server...\n`), {
           clear: true,

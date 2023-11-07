@@ -4,7 +4,6 @@ import { getDirname } from './fsUtils.js';
 export const ROOT = process.cwd();
 
 export const dirname = getDirname(import.meta.url);
-console.log(dirname, 'dirname');
 
 export const CLIENT_PATH = resolve(dirname, '../../../', 'client');
 export const NODE_PATH = resolve(dirname, '../../', 'node');
@@ -33,3 +32,5 @@ export const DOCS_DIR_NAME = 'docs';
 export const COMPONENT_DIR_NAME = 'components';
 export const EXAMPLE_DIR_NAME = 'demos';
 export const EXAMPLE_INDEX_NAME = 'index.tsx';
+
+console.log(SITE_PUBLIC_PATH, 'dirname');
