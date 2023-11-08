@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import clsx from 'clsx';
+import { ButtonProps, ButtonRef } from './propsType';
 
-import { ButtonProps } from './propsType';
+const clsxPrefix = 'nant-button';
 
-import './index.less';
+const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
+  const { block = false, type = 'default', size = 'normal', nativeType = 'button', children } = props;
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-export default function Button(props: ButtonProps) {
-  const { children } = props;
+  const className = clsx(clsxPrefix, {
+    [`${clsxPrefix}-block`]: block,
+    [`${clsxPrefix}-${type}`]: type,
+    [`${clsxPrefix}-${size}`]: size,
+  });
+  useImperativeHandle(ref, () => ({
+    get nativeElement() {
+      return buttonRef.current;
+    },
+  }));
+
   return (
-    <button type="button" className="btn btn-primary">
+    <button ref={buttonRef} type={nativeType} className={className}>
       {children}
     </button>
   );
-}
+});
+
+export default Button;

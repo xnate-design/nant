@@ -1,10 +1,23 @@
 import React from 'react';
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+
+interface BaseTypeProps {
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}
+
+type MergeHtmlAttributes = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>;
+
+export interface ButtonBaseProps {
   block?: boolean;
   type?: ButtonTypes;
   size?: ButtonSize;
   nativeType?: ButtonNativeType;
-  children?: React.ReactNode;
+}
+export interface ButtonProps extends BaseTypeProps, ButtonBaseProps, MergeHtmlAttributes {}
+
+export interface ButtonRef {
+  nativeElement: HTMLButtonElement | null;
 }
 
 export type ButtonNativeType = 'button' | 'submit' | 'reset' | undefined;

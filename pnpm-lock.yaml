@@ -272,6 +272,34 @@ importers:
         specifier: ^0.55.1
         version: 0.55.1(postcss@8.4.27)(vite@4.4.9)
 
+  packages/nant-ui:
+    dependencies:
+      '@nant-design/cli':
+        specifier: workspace:*
+        version: link:../nant-cli
+      clsx:
+        specifier: ^2.0.0
+        version: 2.0.0
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.20
+        version: 18.2.20
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      less:
+        specifier: ^4.2.0
+        version: 4.2.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      typescript:
+        specifier: ^4.7.4
+        version: 4.7.4
+
   packages/nant-vite-plugins:
     dependencies:
       '@mdx-js/mdx':

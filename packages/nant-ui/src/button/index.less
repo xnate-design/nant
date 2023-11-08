@@ -1,8 +1,72 @@
-@prefix-btn: 'nant-btn';
+@import url('../styles/common.less');
+:root {
+  --nt-button-default-color: '#fff';
+  --nt-button-default-text-color: '#000';
+  --nt-button-primary-color: var(--color-primary);
+  --nt-button-danger-color: var(--color-danger);
+  --nt-button-success-color: var(--color-success);
+  --nt-button-warning-color: var(--color-warning);
+  --nt-button-info-color: var(--color-info);
+  --nt-button-disabled-color: var(--color-disabled);
+  --nt-button-disabled-text-color: var(--color-text-disabled);
+  --nt-button-border-radius: 4px;
+  --nt-button-border-radius: 4px;
+  --nt-button-mini-padding: 0 9px;
+  --nt-button-small-padding: 0 11px;
+  --nt-button-normal-padding: 0 15px;
+  --nt-button-large-padding: 0 22px;
+  --nt-button-round-padding: 6px;
+  --nt-button-mini-height: 20px;
+  --nt-button-small-height: 28px;
+  --nt-button-normal-height: 36px;
+  --nt-button-large-height: 44px;
+  --nt-button-mini-font-size: var(--font-size-xs);
+  --nt-button-small-font-size: var(--font-size-sm);
+  --nt-button-normal-font-size: var(--font-size-md);
+  --nt-button-large-font-size: var(--font-size-lg);
+}
+@prefix-btn: ~'nant-button';
 
-.@{prefix-btn} {
+.nant-button {
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+  border: none;
+  border-radius: var(--nt-button-border-radius);
+  font-family: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  cursor: pointer;
+
   &-primary {
-    background-color: aquamarine;
-    color: cadetblue;
+    background-color: var(--nt-button-primary-color);
+    color: #ffffff;
+  }
+
+  &-info {
+    background-color: var(--nt-button-info-color);
+    color: #ffffff;
+  }
+
+  &-success {
+    background-color: var(--nt-button-success-color);
+    color: #ffffff;
+  }
+
+  &-danger {
+    background-color: var(--nt-button-danger-color);
+    color: #ffffff;
+  }
+
+  &-warning {
+    background-color: var(--nt-button-warning-color);
+    color: #ffffff;
+  }
+
+  &-normal {
+    height: var(--nt-button-normal-height);
+    padding: var(--nt-button-normal-padding);
+    font-size: var(--nt-button-normal-font-size);
   }
 }
