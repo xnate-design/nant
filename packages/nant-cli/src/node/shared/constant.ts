@@ -33,4 +33,6 @@ export const COMPONENT_DIR_NAME = 'components';
 export const EXAMPLE_DIR_NAME = 'demos';
 export const EXAMPLE_INDEX_NAME = 'index.tsx';
 
+export const JEST_CONFIG = resolve(dirname, '../../../../cjs/jest.config.cjs');
+
 console.log(SITE_PUBLIC_PATH, 'dirname');

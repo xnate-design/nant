@@ -33,6 +33,18 @@ program
   });
 
 program
+  .command('test')
+  .description('Run Jest in work directory')
+  .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
+  .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
+  .option('-c, --component <componentName>', 'Test a specific component')
+  .option('-cc --clearCache', 'Clear test cache')
+  .action(async (option) => {
+    const { test } = await import('./commands/test.js');
+    return test(option);
+  });
+
+program
   .command('build')
   .description('Build nant ui development environment')
 

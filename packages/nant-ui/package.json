@@ -7,15 +7,19 @@
     "dev": "nant dev",
     "build": "nant build",
     "preview": "nant preview",
-    "compile": "nant compile"
+    "compile": "nant compile",
+    "test": "nant test"
   },
   "keywords": [],
   "homepage": "https://nant.wangbaoqi.tech",
   "author": "nant wang <wangbaoqi8839@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@testing-library/react": "^14.1.0",
+    "@types/jest": "^29.5.8",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "jest": "^29.7.0",
     "less": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
