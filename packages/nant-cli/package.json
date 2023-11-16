@@ -24,6 +24,7 @@
     "dev:watch": "node scripts/watchAndCopy"
   },
   "dependencies": {
+    "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@clack/prompts": "^0.7.0",
@@ -53,6 +54,8 @@
     "vite": "^4.4.9"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.23.3",
+    "@jest/globals": "^29.7.0",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "^29.5.8",
     "@types/lodash-es": "^4.17.8",

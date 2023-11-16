@@ -21,7 +21,6 @@ export const test = async (cmd: JestCommandOptions) => {
     watch: cmd.watch,
     watchAll: cmd.watchAll,
     clearMocks: cmd.clearCache,
-    preset: 'ts-jest',
   };
 
   try {
