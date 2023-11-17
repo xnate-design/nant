@@ -116,6 +116,7 @@ export const createNantPlugins = async (
     }),
     html({
       data: {
+        logo: siteData.themeConfig.logo ?? '',
         title: siteData.title ?? '',
         description: siteData.description ?? '',
       },

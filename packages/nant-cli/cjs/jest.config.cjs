@@ -34,6 +34,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/dist/'],
 
+
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
