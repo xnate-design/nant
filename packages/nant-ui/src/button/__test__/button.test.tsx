@@ -34,6 +34,6 @@ describe('Button Component', () => {
       </>,
     );
 
-    expect(getByText('Primary')).toHaveClass(`${classPrefix}-primary`);
+    expect(getByText('Primary').closest('button')).toHaveClass(`${classPrefix}-primary`);
   });
 });

@@ -5,10 +5,10 @@ import { ButtonProps, ButtonRef } from './propsType';
 const clsxPrefix = 'nant-button';
 
 const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
-  const { block = false, type = 'default', size = 'normal', nativeType = 'button', children } = props;
+  const { className = '', block = false, type = 'default', size = 'normal', nativeType = 'button', children } = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const className = clsx(clsxPrefix, {
+  const btnClsx = clsx(clsxPrefix, className, {
     [`${clsxPrefix}-block`]: block,
     [`${clsxPrefix}-${type}`]: type,
     [`${clsxPrefix}-${size}`]: size,
@@ -20,7 +20,7 @@ const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
   }));
 
   return (
-    <button ref={buttonRef} type={nativeType} className={className}>
+    <button ref={buttonRef} type={nativeType} className={btnClsx}>
       {children}
     </button>
   );

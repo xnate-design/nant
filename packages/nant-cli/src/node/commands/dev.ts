@@ -2,7 +2,6 @@ import { createServer as createViteServer, createLogger, ViteDevServer } from 'v
 import c from 'picocolors';
 import chokidar, { FSWatcher } from 'chokidar';
 import { getNantConfig } from '../config/index.js';
-
 import { getDevConfig } from '../config/viteConfig.js';
 import { bindShortcuts } from '../utils/shortcuts.js';
 import { getCliVersion } from '../shared/fsUtils.js';

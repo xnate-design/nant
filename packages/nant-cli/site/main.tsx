@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { SiteTheme, SiteContext } from '@nant-design/theme-default';
@@ -18,7 +18,6 @@ export const initData = () => {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!;
 const root = ReactDOM.createRoot(container);
-
 const configContext = initData();
 
 console.log(configContext, 'configContext');

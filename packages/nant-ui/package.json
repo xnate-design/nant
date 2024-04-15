@@ -1,7 +1,7 @@
 {
   "name": "@nant-design/react-ui",
   "version": "1.0.0",
-  "description": "nant design react mobile ui component",
+  "description": "nant-design react-mobile-ui component library",
   "main": "index.js",
   "type": "module",
   "scripts": {
