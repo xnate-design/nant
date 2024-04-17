@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@nant-design/cli": "workspace:*",
-    "clsx": "^2.0.0"
+    "@tailwindcss/vite": "4.0.0-alpha.14",
+    "clsx": "^2.0.0",
+    "tailwindcss": "4.0.0-alpha.14"
   }
 }

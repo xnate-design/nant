@@ -1,7 +1,6 @@
 import { resolveAlias } from './alias.js';
 import { createNantPlugins } from '../plugins/index.js';
 import { DOC_ROOT, SITE_PUBLIC_PATH, SITE_OUTPUT_PATH } from '../shared/constant.js';
-
 import type { NantConfig } from './siteConfig.js';
 import type { InlineConfig } from 'vite';
 

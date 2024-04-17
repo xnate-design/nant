@@ -7,8 +7,6 @@ import ErrorPage from './Error';
 import pcRoutes from '@pcRoute';
 
 export const getRouterConfig = () => {
-  console.log(pcRoutes, 'pcRoutes');
-
   const router = [
     {
       path: '/',
