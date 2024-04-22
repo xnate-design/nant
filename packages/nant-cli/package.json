@@ -28,7 +28,6 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@clack/prompts": "^0.7.0",
-    "@nant-design/nant-icons": "workspace:*",
     "@nant-design/theme-default": "workspace:*",
     "@nant-design/vite-plugins": "workspace:*",
     "@testing-library/jest-dom": "^6.1.4",
