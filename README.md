@@ -1,3 +1,3 @@
 # nant ui
 
-mobile component ui based on react
+mobile component ui based on react vite
