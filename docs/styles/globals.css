@@ -1,7 +1,11 @@
+@import "tailwindcss";
+
+
+/*
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -23,16 +27,18 @@ body {
   background: rgb(var(--background-rgb))
 }
 
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  .max-width-nav {
-    max-width: calc(1536px - 64px)
-  }
-  .pl-nav-title {
-    padding-left: max(32px, calc((100% - (1536px - 64px)) / 2))
-  }
+
+} */
+
+.max-width-nav {
+  max-width: calc(1536px - 64px)
+}
+.pl-nav-title {
+  padding-left: max(32px, calc((100% - (1536px - 64px)) / 2))
 }
 
 

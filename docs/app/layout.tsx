@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Providers } from './provider';
 import { cn } from '@/utils/cn';
 import { fontOutfit } from '@/config/font';
-import './globals.css';
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={bodyClsx}>
         <Providers>{children}</Providers>
       </body>
