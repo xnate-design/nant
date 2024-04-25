@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.dark,
+[data-theme="dark"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb))
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .max-width-nav {
+    max-width: calc(1536px - 64px)
+  }
+  .pl-nav-title {
+    padding-left: max(32px, calc((100% - (1536px - 64px)) / 2))
+  }
+}
+
+
+/* ['max-width-nav', { 'max-width': 'calc(1536px - 64px)' }],
+['pl-nav-title', { 'padding-left': 'max(32px,calc((100% - (1536px - 64px)) / 2))' }],
+['height-nav-title', { height: 'calc(64px - 1px)' }],
+['width-top-nav', { width: 'calc((100% - (1536px - 64px)) / 2 + 288px - 32px)' }],
+['pr-top-content', { 'padding-right': 'calc((100vw - 1536px) / 2 + 32px)' }],
+['pl-top-content', { 'padding-left': 'calc((100vw - 1536px) / 2 + 288px)' }],
+['pr-main-content', { 'padding-right': 'calc((100vw - 1536px) / 2)' }],
+['width-side-bar', { width: 'calc(100vw - 64px)' }],
+['width-side-group', { width: 'calc(288px - 64px)' }],
+['height-side-content', { height: 'calc(100vh - 64px - 32px)' }],
+['transition-side-bar', { transition: 'opacity .5s,transform .25s ease' }],
+['box-shadow-mobile', { 'box-shadow': 'rgba(0, 0, 0, 0.1) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 10px 0px' }], */
