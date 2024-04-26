@@ -1,17 +1,24 @@
 {
   "name": "@nant-design/nant-icons",
   "version": "1.0.0",
-  "description": "",
+  "homepage": "https://nant.wangbaoqi.tech",
+  "description": "react icon of nant-design",
   "type": "module",
-  "main": "dist/",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "nant build:icons"
+    "clean": "rimraf dist",
+    "build": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@nant-design/cli": "workspace:*",
+    "@types/react": "^18.3.0",
+    "clean-package": "^2.2.0",
     "react": "^18.2.0"
   },
   "author": "nate wang <wangbaoqi8839@gmail.com>",
@@ -21,10 +28,24 @@
   ],
   "keywords": [
     "icons",
-    "svg",
-    "react-svg-icons"
+    "react-icons"
   ],
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": ">=18"
+  },
+  "clean-package": {
+    "indent": 2,
+    "remove": [
+      "devDependencies"
+    ],
+    "replace": {}
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   }
 }

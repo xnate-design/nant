@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nant-design/nant-icons": "workspace:*",
     "@tailwindcss/postcss": "4.0.0-alpha.14",
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
@@ -25,7 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^18.2.79",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",

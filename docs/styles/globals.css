@@ -1,30 +1,31 @@
 @import "tailwindcss";
 
 
-/*
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
- */
+@theme {
+  /* --color-*: initial; // 清除命名空间来覆盖整套变量 */
 
-:root {
+  --width-8xl: 90rem;
+}
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
+} */
 
-.dark,
+/* .dark,
 [data-theme="dark"] {
   --foreground-rgb: 255, 255, 255;
   --background-rgb: 0, 0, 0;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb))
+  /* color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb)) */
+
 }
 
 /* @layer utilities {

@@ -12,7 +12,7 @@ export const ThemeSwitch = () => {
       onClick={() => {
         setTheme(theme === 'light' ? 'dark' : 'light');
       }}
-      className="active:scale-95 transition-transform flex px-2 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link"
+      className="active:scale-95 transition-transform flex px-2 items-center justify-center hover:text-link hover:dark:text-link-dark outline-link cursor-pointer"
     >
       {theme === 'light' ? <MoonIcon /> : <SunFilledIcon />}
     </button>

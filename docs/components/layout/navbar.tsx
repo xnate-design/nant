@@ -28,7 +28,7 @@ export const Navbar = ({ hasSideBar = false }) => {
     hasSideBar ? 'lg:p-0 ' : '',
   );
 
-  const containerClass = cn('flex justify-between m-auto ', hasSideBar ? 'lg:max-w-full' : 'max-width-nav');
+  const containerClass = cn('flex justify-between m-auto ', hasSideBar ? 'lg:max-w-full' : 'max-w-8xl');
 
   return (
     <>
@@ -45,7 +45,7 @@ export const Navbar = ({ hasSideBar = false }) => {
 };
 
 const TopTitle = ({ hasSideBar = false, title = '' }) => {
-  const titleClass = cn('flex-shrink height-nav-title', {
+  const titleClass = cn('flex-shrink h-16', {
     'lg:absolute top-0 lg:left-0 lg:px-8 lg:w-72 lg:h-16 lg:bg-transparent 2xl:pl-nav-title 2xl:width-top-nav':
       hasSideBar,
   });
@@ -67,16 +67,10 @@ const TopTitle = ({ hasSideBar = false, title = '' }) => {
 };
 
 const TopContent = ({ nav = [], section = '', hasSideBar = false }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  console.log(nav, 'nav');
-
   const contentClass = cn('flex-grow pointer-events-none ', {
     '2xl:pr-top-content 2xl:pl-top-content lg:pl-72 lg:pr-8': hasSideBar,
   });
-  const contentBodyClass = cn(
-    'flex flex-end items-center height-nav-title pointer-events-auto bg-wash dark:bg-wash-dark',
-  );
+  const contentBodyClass = cn('flex flex-end items-center h-16 pointer-events-auto bg-wash dark:bg-wash-dark');
   const themeBtnClass = cn('');
 
   const searchClass = cn('search-box flex items-center flex-grow lg:pl-8 md:pl-6');
