@@ -1,11 +1,60 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
-@theme {
-  /* --color-*: initial; // 清除命名空间来覆盖整套变量 */
 
-  --width-8xl: 90rem;
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 331,78%,37%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 72.22% 50.59%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5% 64.9%;
+  --radius: 0.5rem;
 }
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 35,100%,59%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 85.7% 97.3%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+/*
+.dark\:bg-slate-800 {
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--color-slate-800, #1e293b);
+  }
+} */
 
 /* :root {
   --foreground-rgb: 0, 0, 0;
@@ -35,12 +84,12 @@ body {
 
 } */
 
-.max-width-nav {
+/* .max-width-nav {
   max-width: calc(1536px - 64px)
 }
 .pl-nav-title {
   padding-left: max(32px, calc((100% - (1536px - 64px)) / 2))
-}
+} */
 
 
 /* ['max-width-nav', { 'max-width': 'calc(1536px - 64px)' }],

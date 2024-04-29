@@ -1,32 +1,47 @@
-import React from 'react';
-export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
+import { IconSvgProps } from '../types';
+
+export const LogoAppleAr = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill={fill} viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
         d="M201.14 64 256 32l54.86 32"
       />
 
-      <path fill="none" stroke={fill} strokeLinecap="round" strokeMiterlimit="10" strokeWidth="32" d="M256 32v80" />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeMiterlimit="10"
+        strokeWidth="32"
+        d="M256 32v80"
+      />
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
         d="M310.86 448 256 480l-54.86-32"
       />
 
-      <path fill="none" stroke={fill} strokeLinecap="round" strokeMiterlimit="10" strokeWidth="32" d="M256 480v-80" />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeMiterlimit="10"
+        strokeWidth="32"
+        d="M256 480v-80"
+      />
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -35,7 +50,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeMiterlimit="10"
         strokeWidth="32"
@@ -44,7 +59,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -53,7 +68,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeMiterlimit="10"
         strokeWidth="32"
@@ -62,7 +77,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -71,7 +86,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeMiterlimit="10"
         strokeWidth="32"
@@ -80,7 +95,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
@@ -89,7 +104,7 @@ export const LogoAppleAr = ({ fill = 'currentColor', ...other }) => {
 
       <path
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeMiterlimit="10"
         strokeWidth="32"

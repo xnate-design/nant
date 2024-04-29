@@ -19,8 +19,8 @@ export const Navbar = ({ hasSideBar = false }) => {
   const { nav, title } = siteData;
   const section = useActiveSection(pathname);
 
-  const headerClass = cn('lg:fixed relative top-0 left-0 w-full z-20', {
-    'h-screen sticky top-0 lg:bottom-0 lg:h-screen flex flex-col shadow-lg dark:shadow-lg z-20': true,
+  const headerClass = cn('lg:(fixed bottom-0 h-screen) relative top-0 left-0 w-full z-20', {
+    'sticky top-0 flex flex-col z-20': true,
   });
 
   const navClass = cn(
@@ -86,7 +86,7 @@ const TopContent = ({ nav = [], section = '', hasSideBar = false }) => {
             placeholder="quick search"
           /> */}
         </div>
-        <nav className="md:flex hidden md:pr-4">
+        <nav className="md:flex hidden md:pr-4 ">
           {nav?.map((item, idx) => (
             <NavItem key={idx} isActive={section === item.activeMatch} url={item.link}>
               {item.text}

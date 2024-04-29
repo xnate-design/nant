@@ -5,9 +5,7 @@ import Home from './home';
 
 export default function App() {
   return (
-    <div className=" relative flex flex-col">
-      <Navbar />
-
+    <div className="">
       <Home />
     </div>
   );
