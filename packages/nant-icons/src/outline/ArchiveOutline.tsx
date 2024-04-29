@@ -1,6 +1,5 @@
 import { IconSvgProps } from '../types';
 
-import React from 'react';
 export const ArchiveOutline = (props: IconSvgProps) => {
   return (
     <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
