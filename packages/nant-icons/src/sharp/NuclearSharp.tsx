@@ -1,7 +1,7 @@
-import React from 'react';
-export const NuclearSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const NuclearSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <circle cx="256" cy="256" r="48" />
 
       <path d="m223.47 335.59-51.71 68a169.73 169.73 0 0 0 168.48 0l-51.71-68" fill="none" />

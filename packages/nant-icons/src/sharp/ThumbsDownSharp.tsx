@@ -1,7 +1,7 @@
-import React from 'react';
-export const ThumbsDownSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const ThumbsDownSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="m56 320 156.05 12-23 89.4c-6.08 26.6.7 41.87 22.39 48.62l34.69 9.85a4 4 0 0 0 4.4-1.72l129-202.34a8 8 0 0 1 6.81-3.81H496V64H378.39a48 48 0 0 1-15.18-2.46l-76.3-25.43a80 80 0 0 0-25.3-4.11H83.68c-19 0-31.5 13.52-35.23 32.16L16 206.42V280c0 22.06 18 38 40 40Z" />
 
       <path

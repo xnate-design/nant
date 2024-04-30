@@ -1,7 +1,7 @@
-import React from 'react';
-export const ReorderThreeSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const ReorderThreeSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M102 256h308m-308-80h308M102 336h308"
         fill="none"

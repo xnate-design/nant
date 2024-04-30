@@ -1,7 +1,7 @@
-import React from 'react';
-export const PawSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const PawSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="M442.8 361.82c-8.8-25.1-29.31-37.82-49.11-50.12-17.23-10.71-33.5-20.83-44.14-39-29.33-50.33-45.44-80.7-93.49-80.7s-64.21 30.38-93.61 80.69c-10.65 18.21-27 28.35-44.25 39.08-19.8 12.31-40.27 25-49.1 50.05a78.06 78.06 0 0 0-5.1 28.29C64 430.85 96.45 464 132.4 464s83.31-18.13 123.76-18.13S343.31 464 379.71 464 448 430.85 448 390.11a78.3 78.3 0 0 0-5.2-28.29Z" />
 
       <ellipse cx="72" cy="216" rx="56" ry="72" />

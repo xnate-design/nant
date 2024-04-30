@@ -1,7 +1,7 @@
-import React from 'react';
-export const NewspaperSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const NewspaperSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <rect x="96" y="112" width="96" height="96" rx="16" ry="16" fill="none" />
 
       <path d="M468 112h-52v304a32 32 0 0 0 32 32 32 32 0 0 0 32-32V124a12 12 0 0 0-12-12Z" />

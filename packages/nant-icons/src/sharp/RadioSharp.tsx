@@ -1,7 +1,7 @@
-import React from 'react';
-export const RadioSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const RadioSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <ellipse cx="256" cy="256" rx="36" ry="35.99" />
 
       <path d="m188.4 350.8-14.62-16.44a117.91 117.91 0 0 1 0-156.71l14.62-16.43 32.87 29.24-14.62 16.43a73.93 73.93 0 0 0 0 98.25l14.62 16.44Zm135.2 0-32.89-29.22 14.62-16.44a73.93 73.93 0 0 0 0-98.25l-14.62-16.43 32.87-29.24 14.62 16.43a117.91 117.91 0 0 1 0 156.71Z" />

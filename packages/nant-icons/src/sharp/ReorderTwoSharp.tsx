@@ -1,7 +1,7 @@
-import React from 'react';
-export const ReorderTwoSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const ReorderTwoSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M118 304h276m-276-96h276"
         fill="none"

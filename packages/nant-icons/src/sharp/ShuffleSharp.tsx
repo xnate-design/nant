@@ -1,7 +1,7 @@
-import React from 'react';
-export const ShuffleSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const ShuffleSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="m400 304 48 48-48 48m0-288 48 48-48 48M64 352h128l60-92"
         fill="none"

@@ -1,7 +1,7 @@
-import React from 'react';
-export const FitnessSharp = ({ fill = 'currentColor', ...other }) => {
+import { IconSvgProps } from '../types';
+export const FitnessSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill={fill} viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="M480 272h-37.34a261.41 261.41 0 0 1-18.25 32H480ZM32 240v32h37.34a225.1 225.1 0 0 1-12.4-32Z" />
 
       <path d="m304 259.78-51.73 103.46-48-160L169.89 272H69.34c10 20.92 23.5 41.41 40.63 61.68 40.12 47.46 94.25 79.75 137 108.32l9 6 9-6c42.78-28.57 96.91-60.86 137-108.32A322.78 322.78 0 0 0 424.41 304h-98.3Z" />

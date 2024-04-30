@@ -1,7 +1,7 @@
-import React from 'react';
-export const PrintSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const PrintSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="M400 96V56a8 8 0 0 0-8-8H120a8 8 0 0 0-8 8v40" />
 
       <rect x="152" y="264" width="208" height="160" rx="4" ry="4" fill="none" />

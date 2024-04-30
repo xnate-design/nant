@@ -1,7 +1,7 @@
-import React from 'react';
-export const WalkSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const WalkSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="m315.09 481.38-56.95-115.12-45-57.56a73.11 73.11 0 0 1-10.16-37.17V142h15.73A40.36 40.36 0 0 1 259 182.32v162.52"
         stroke="currentColor"

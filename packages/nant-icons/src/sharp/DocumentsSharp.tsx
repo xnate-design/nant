@@ -1,7 +1,7 @@
-import React from 'react';
-export const DocumentsSharp = ({ fill = 'currentColor', ...other }) => {
+import { IconSvgProps } from '../types';
+export const DocumentsSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill={fill} viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="M307.94 248 216 154.52V242a6 6 0 0 0 6 6Z" />
 
       <path d="M184 268V144H60a12 12 0 0 0-12 12v328a12 12 0 0 0 12 12h248a12 12 0 0 0 12-12V280H196a12 12 0 0 1-12-12Zm182-148h85.94L360 26.52V114a6 6 0 0 0 6 6Z" />

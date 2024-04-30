@@ -1,7 +1,7 @@
-import React from 'react';
-export const WifiSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const WifiSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M332.69 320a115 115 0 0 0-152.8 0m213.85-61a201.26 201.26 0 0 0-274.92 0"
         fill="none"

@@ -1,7 +1,7 @@
-import React from 'react';
-export const ThunderstormSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const ThunderstormSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path d="M405.84 136.9a151.25 151.25 0 0 0-47.6-81.9 153 153 0 0 0-241.81 51.86C60.5 110.16 16 156.65 16 213.33 16 272.15 63.91 320 122.8 320h72.31L176 416h48v80l112-144h-43.51l8-32h103.84a91.56 91.56 0 0 0 1.51-183.1Z" />
 
       <path d="m74.53 407.177 38.318-76.623 28.62 14.314-38.319 76.622zm23.99 64.013 30.318-60.623 28.62 14.314-30.317 60.621zm256.021-64.001 38.32-76.622 28.62 14.313-38.32 76.622zm24.001 64.011 30.317-60.622 28.62 14.313-30.317 60.622z" />

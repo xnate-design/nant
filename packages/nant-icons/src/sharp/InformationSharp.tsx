@@ -1,11 +1,11 @@
-import React from 'react';
-export const InformationSharp = ({ fill = 'currentColor', ...other }) => {
+import { IconSvgProps } from '../types';
+export const InformationSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill={fill} viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M196 220h64v172m-73 4h138"
         fill="none"
-        stroke={fill}
+        stroke="currentColor"
         strokeLinecap="square"
         strokeMiterlimit="10"
         strokeWidth="40"

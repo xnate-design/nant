@@ -1,7 +1,7 @@
-import React from 'react';
-export const RefreshSharp = ({ width = '410', height = '404', ...other }) => {
+import { IconSvgProps } from '../types';
+export const RefreshSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M320 146s24.36-12-64-12a160 160 0 1 0 160 160"
         fill="none"

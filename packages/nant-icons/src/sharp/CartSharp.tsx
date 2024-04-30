@@ -1,7 +1,7 @@
-import React from 'react';
-export const CartSharp = (props) => {
+import { IconSvgProps } from '../types';
+export const CartSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill="currentColor" viewBox="0 0 512 512" {...props}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <circle cx="176" cy="416" r="32" />
 
       <circle cx="400" cy="416" r="32" />

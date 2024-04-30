@@ -1,7 +1,7 @@
-import React from 'react';
-export const HelpCircleSharp = ({ fill = 'currentColor', ...other }) => {
+import { IconSvgProps } from '../types';
+export const HelpCircleSharp = (props: IconSvgProps) => {
   return (
-    <svg width="1.33em" height="1.33em" fill={fill} viewBox="0 0 512 512" {...other}>
+    <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512" {...props}>
       <path
         d="M288.55 150.84c-8.09-3.86-20-6-32.72-5.82-18 .22-33.13 5.2-45 14.78-23 18.48-24.55 40.37-24.77 42.8a61.69 61.69 0 0 0-.09 12 3 3 0 0 0 3 2.69h21.23a3 3 0 0 0 3-3A65.7 65.7 0 0 1 214 204c0-.11 1.14-11.7 14.36-22.34 7-5.64 16.11-8.44 27.83-8.59 9.32-.11 16.93 1.47 20.34 3.09C291 183 298 192.31 298 204.57c0 18-10.9 26.23-30.18 39.18C247.08 257.68 237 275.1 237 297v11a3 3 0 0 0 3 3h22a3 3 0 0 0 3-3v-11c0-9.16 2.23-19.13 18.44-30 19.95-13.41 42.56-28.6 42.56-62.43 0-23.14-13.3-42.23-37.45-53.73Z"
         fill="none"
