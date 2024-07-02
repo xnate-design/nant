@@ -20,12 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={bodyClsx}>
-        <Providers>
-          <div className="relative flex flex-col">
-            <Navbar />
-            {children}
-          </div>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

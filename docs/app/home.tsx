@@ -27,14 +27,6 @@ export default function Home() {
     <div className={homeClass}>
       <Hero />
       <div className={contentClass}></div>
-
-      {logoList.map((Logo, idx) => {
-        return <Logo className="w-10 h-10" key={idx} />;
-      })}
-      {/* <LogoAlipay />
-      <LogoAndroid />
-      <LogoAmazon />
-      <LogoAmplify /> */}
     </div>
   );
 }

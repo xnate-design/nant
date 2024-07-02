@@ -5,7 +5,6 @@ import { useContext, useState } from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
 import { useActiveSection } from '@/hooks';
 
 import { cn } from '@/utils/cn';
@@ -70,8 +69,7 @@ const TopContent = ({ nav = [], section = '', hasSideBar = false }) => {
   const contentClass = cn('flex-grow pointer-events-none ', {
     '2xl:pr-top-content 2xl:pl-top-content lg:pl-72 lg:pr-8': hasSideBar,
   });
-  const contentBodyClass = cn('flex flex-end items-center h-16 pointer-events-auto bg-wash dark:bg-wash-dark');
-  const themeBtnClass = cn('');
+  const contentBodyClass = cn('flex flex-end items-center h-16 pointer-events-auto bg-background');
 
   const searchClass = cn('search-box flex items-center flex-grow lg:pl-8 md:pl-6');
 
